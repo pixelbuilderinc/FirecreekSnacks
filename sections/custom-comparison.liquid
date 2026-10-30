@@ -1,0 +1,138 @@
+<div
+  class="comparison-section {{ section.settings.section_classname }}"
+  {% if section.settings.section_background != blank %}
+    style="background-color: {{ section.settings.section_background }};"
+  {% endif %}
+>
+  <div class="page-width">
+
+    <div class="comparison-wrapper">
+
+      <!-- Section Header -->
+      <div class="comparison-header">
+
+        {% if section.settings.section_heading != blank %}
+          <h2 class="section-heading">
+            {{ section.settings.section_heading }}
+          </h2>
+        {% endif %}
+
+        {% if section.settings.section_sub_text != blank %}
+          <div class="section-sub-text rte">
+            {{ section.settings.section_sub_text }}
+          </div>
+        {% endif %}
+
+      </div>
+
+      <!-- Comparison Items -->
+      {% if section.blocks.size > 0 %}
+        <div class="comparison-items">
+
+          {% for block in section.blocks %}
+            {% case block.type %}
+
+              {% when 'comparison_item' %}
+                <div
+                  class="comparison-item {{ block.settings.comparison_class }}"
+                  {{ block.shopify_attributes }}
+                >
+
+                  {% if block.settings.comparison_heading != blank %}
+                    <h3 class="comparison-heading">
+                      {{ block.settings.comparison_heading }}
+                    </h3>
+                  {% endif %}
+
+                  {% if block.settings.comparison_text != blank %}
+                    <div class="comparison-text rte">
+                      {{ block.settings.comparison_text }}
+                    </div>
+                  {% endif %}
+
+                </div>
+
+            {% endcase %}
+          {% endfor %}
+
+        </div>
+      {% endif %}
+
+      <!-- Bottom Text -->
+      {% if section.settings.comparison_text_bottom != blank %}
+        <div class="comparison-text-bottom">
+          {{ section.settings.comparison_text_bottom }}
+        </div>
+      {% endif %}
+
+    </div>
+
+  </div>
+</div>
+
+{% schema %}
+  {
+  "name": "Custom Comparison Section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_classname",
+      "label": "Section Classname"
+    },
+    {
+      "type": "color",
+      "id": "section_background",
+      "label": "Section Background"
+    },
+    {
+      "type": "textarea",
+      "id": "section_heading",
+      "label": "Section Heading"
+    },
+    {
+      "type": "richtext",
+      "id": "section_sub_text",
+      "label": "Section Sub Text"
+    },
+    {
+      "type": "textarea",
+      "id": "comparison_text_bottom",
+      "label": "Comparison Text Bottom"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Comparison Item",
+      "type": "comparison_item",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "comparison_heading",
+          "label": "Comparison Heading"
+        },
+        {
+          "type": "richtext",
+          "id": "comparison_text",
+          "label": "Comparison Text"
+        },
+        {
+          "type": "text",
+          "id": "comparison_class",
+          "label": "Comparison Classname"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Comparison Section"
+    }
+  ]
+}  
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

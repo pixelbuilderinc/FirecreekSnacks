@@ -1,0 +1,96 @@
+<div class="custom-section-grid-text {{ section.settings.classname }}" style="background-color: {{ section.settings.section_background }}">
+ <div class="page-width grid-text-inner">
+  {% if section.settings.caption != blank %}
+    <div class="section-caption">
+      {{ section.settings.caption }}
+    </div>
+  {% endif %}
+
+  {% if section.settings.heading != blank %}
+    <div class="section-heading">
+      {{ section.settings.heading }}
+    </div>
+  {% endif %}
+
+  <div class="section-content">
+    {% if section.settings.text_left != blank %}
+      <div class="content-column">
+        {{ section.settings.text_left }}
+      </div>
+    {% endif %}
+
+    {% if section.settings.text_right != blank %}
+      <div class="content-column">
+        {{ section.settings.text_right }}
+      </div>
+    {% endif %}
+  </div>
+
+  {% if section.settings.button_text != blank and section.settings.button_url != blank %}
+    <div class="section-button">
+      <a href="{{ section.settings.button_url }}" class="sec-button">
+        {{ section.settings.button_text }}
+      </a>
+    </div>
+  {% endif %}
+</div>
+</div>
+
+{% schema %}
+  {
+  "name": "Custom sec grid text",
+  "settings": [
+    {
+      "type": "text",
+      "id": "classname",
+      "label": "Section Classname"
+    },
+    {
+      "type": "color",
+      "id": "section_background",
+      "label": "Section Background"
+    },
+    {
+      "type": "text",
+      "id": "caption",
+      "label": "Caption"
+    },
+    {
+      "type": "richtext",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type": "richtext",
+      "id": "text_left",
+      "label": "Text Left"
+    },
+    {
+      "type": "richtext",
+      "id": "text_right",
+      "label": "Text Right"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text"
+    },
+    {
+      "type": "url",
+      "id": "button_url",
+      "label": "Button URL"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom sec grid text"
+    }
+  ]
+}  
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

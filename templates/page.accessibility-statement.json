@@ -1,0 +1,49 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "rich_text_MBktzF": {
+      "type": "rich-text",
+      "blocks": {
+        "text_NNnEYG": {
+          "type": "text",
+          "settings": {
+            "text": "<h1>Accessibility Statement</h1><p>At FireCreek Snacks, we are committed to providing a positive and inclusive experience for all individuals who visit our website, including those with disabilities. We recognize the importance of digital accessibility and are continually working to improve the usability and accessibility of our site within the scope of our resources and knowledge.</p><h2>Our Commitment to Accessibility</h2><p>Our goal is to make our website as accessible as reasonably possible for all users. Accessibility can vary widely depending on a user’s specific disability, device, and browsing tools. We have taken meaningful steps to assist with accessibility, including implementing a third-party accessibility widget and monitoring evolving standards.</p><p>We strive to follow the Web Content Accessibility Guidelines (WCAG) 2.1 to the extent feasible, though we acknowledge that full compliance may not always be possible given technological constraints and the involvement of third-party content.</p><h2>Accessibility Features</h2><p>Our site includes a third-party accessibility widget powered by UserWay, which provides features like:</p><ul><li>Keyboard navigation adjustments</li><li>Color contrast settings</li><li>Text resizing</li><li>Screen reader compatibility</li></ul><p>You can access these tools by clicking the accessibility icon on the lower corner of your screen.</p><p>Please note that while this widget improves access for many users, it may not be effective for all disabilities or work seamlessly across all devices and browsers.</p><h2>Third-Party Applications & Content</h2><p>Some content on our website relies on third-party applications or plug-ins (e.g., Google Maps, YouTube, Instagram), which we do not control. While we try to ensure accessibility throughout the website, we cannot guarantee accessibility or functionality of these third-party elements.</p><p>Similarly, some website features or embedded media (such as videos) may not be fully accessible. Where possible, we will provide alternative text, transcripts, or captions.</p><h2>Ongoing Efforts & Limitations</h2><p>We are a small business with limited resources, but we are committed to continuous improvement. We regularly review site functionality and content to identify and address accessibility barriers where practical.</p><p>Please understand that some issues may be outside our control or require longer timelines to resolve due to technical limitations or reliance on external services.</p><h2>Need Help Accessing Our Website?</h2><p>If you experience difficulty accessing any part of our site due to a disability, we want to help. You can reach us via the following methods strictly for accessibility support:</p><p><strong>Accessibility Assistance Line (24/7):</strong><br/>📞 618-535-4080</p><p><strong>Email Support:</strong><br/>✉️ <a href=\"mailto:cs@firecreeksnacks.com\" title=\"mailto:cs@firecreeksnacks.com\">cs@firecreeksnacks.com</a><br/>Please include a description of the issue you’re facing and the assistive technology you are using (if applicable). Your privacy will be respected—we do not require you to disclose personal details beyond what is necessary to resolve the concern.</p><h2>Privacy & Data</h2><p>We do not collect any personal information solely for accessibility assistance unless you voluntarily provide it. Any details you share will be used only to help address your access needs.</p><h2>External Resources</h2><p>Here are some resources that may help improve accessibility based on your browser or preferred tools:</p><ul><li><a href=\"https://www.google.com/accessibility/products-features/\">Google Accessibility</a></li><li><a href=\"https://addons.mozilla.org/en-US/firefox/\">Firefox Accessibility Add-ons</a></li><li><a href=\"https://support.microsoft.com/en-us/microsoft-edge/accessibility-features-in-microsoft-edge-4c696192-338e-9465-b2cd-bd9b698ad19a\">Microsoft Edge Accessibility Features</a></li><li><a href=\"https://www.freedomscientific.com/products/software/jaws/\">JAWS Screen Reader</a></li><li><a href=\"https://www.afb.org/blindness-and-low-vision/using-technology/assistive-technology-products/screen-readers\">American Foundation for the Blind - Screen Reader Overview</a></li></ul><h2>Feedback</h2><p>We welcome your suggestions. If you know of a way we can improve accessibility for you or others, please let us know using the contact options above.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "text_NNnEYG"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "class_name": "about-sec1 policy-section",
+        "desktop_content_position": "center",
+        "content_alignment": "left",
+        "color_scheme": "scheme-2",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    }
+  },
+  "order": [
+    "main",
+    "rich_text_MBktzF"
+  ]
+}

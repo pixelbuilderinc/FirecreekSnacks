@@ -1,0 +1,114 @@
+<div class="floating-bar-section {{ section.settings.classname }}" style="background-color: {{ section.settings.background_color }};">
+
+  <div class="page-width">
+
+    <div class="floating-bar-wrapper">
+
+      {% if section.settings.floating_bar_text != blank %}
+        <div class="floating-bar-text">
+          {{ section.settings.floating_bar_text }}
+        </div>
+      {% endif %}
+
+    
+    <div class="floating-bar-button">
+        {% if section.settings.button_text != blank and section.settings.button_url != blank %}
+        <a
+        href="{{ section.settings.button_url }}"
+        class="floating-btn"
+        >
+        {{ section.settings.button_text }}
+        </a>
+        {% endif %}
+        <div class="x-button">✕</div>
+    </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+{% schema %}
+{
+  "name": "Floating Bar",
+  "settings": [
+    {
+      "type": "text",
+      "id": "classname",
+      "label": "Section Classname"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color"
+    },
+    {
+      "type": "textarea",
+      "id": "floating_bar_text",
+      "label": "Floating bar text"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text"
+    },
+    {
+      "type": "url",
+      "id": "button_url",
+      "label": "Button URL"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Floating Bar"
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+.floating-bar-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.floating-bar-button {
+    display: inline-flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.glp1-floating-bar {
+    display: none;
+}
+
+.floating-bar-section.is-visible {
+    display: block;
+}
+
+@media only screen and (max-width: 767px) {
+ .floating-bar-wrapper {
+    align-items: start;
+    flex-direction: column;
+}
+}
+{% endstylesheet %}
+
+{% javascript %}
+$(document).ready(function () {
+
+    $(window).on('scroll', function () {
+
+        if ($(this).scrollTop() > 0) {
+            $('.glp1-floating-bar').addClass('is-visible');
+        } 
+
+    });
+
+    $(document).on('click', '.x-button', function () {
+        $('.floating-bar-section').remove();
+    });
+
+});
+{% endjavascript %}

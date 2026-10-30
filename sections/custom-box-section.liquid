@@ -1,0 +1,146 @@
+<div class="section-box {{ section.settings.classname }}">
+ <div class="page-width">
+  <div class="section-box-inner">
+  <div class="section-box-top-row">
+    <div class="section-box-content">
+      {% if section.settings.section_caption != blank %}
+        <span class="section-caption">
+          {{ section.settings.section_caption }}
+        </span>
+      {% endif %}
+
+      {% if section.settings.section_heading != blank %}
+        <h2 class="section-heading">
+          {{ section.settings.section_heading }}
+        </h2>
+      {% endif %}
+
+      {% if section.settings.section_text != blank %}
+        <div class="section-text">
+          {{ section.settings.section_text }}
+        </div>
+      {% endif %}
+    </div>
+
+    <div class="section-box-image">
+      {% assign section_image = section.settings.section_image %}
+      {% if section_image %}
+        {{
+          section_image
+          | image_url: width: section_image.width
+          | image_tag: loading: 'lazy', class: 'section-image'
+        }}
+
+        {% if section.settings.image_caption != blank %}
+          <div class="image-caption">
+            {{ section.settings.image_caption }}
+          </div>
+        {% endif %}
+      {% endif %}
+    </div>
+    </div>
+
+
+  {% if section.blocks.size > 0 %}
+    <div class="section-box-bottom-row">
+      {% for block in section.blocks %}
+        {% case block.type %}
+          {% when 'below_boxes' %}
+            <div class="info-box" {{ block.shopify_attributes }}>
+              {% if block.settings.box_heading != blank %}
+                <h3 class="info-box-heading">
+                  {{ block.settings.box_heading }}
+                </h3>
+              {% endif %}
+
+              {% if block.settings.box_sub_heading != blank %}
+                <div class="info-box-sub-heading">
+                  {{ block.settings.box_sub_heading }}
+                </div>
+              {% endif %}
+
+              {% if block.settings.box_text != blank %}
+                <div class="info-box-text">
+                  {{ block.settings.box_text }}
+                </div>
+              {% endif %}
+            </div>
+        {% endcase %}
+      {% endfor %}
+    </div>
+  {% endif %}
+</div>
+</div>
+</div>
+
+{% schema %}
+  {
+  "name": "Custom Box Section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "classname",
+      "label": "Section Classname"
+    },
+    {
+      "type": "text",
+      "id": "section_caption",
+      "label": "Section Caption"
+    },
+    {
+      "type": "text",
+      "id": "section_heading",
+      "label": "Section Heading"
+    },
+    {
+      "type": "richtext",
+      "id": "section_text",
+      "label": "Section Text"
+    },
+    {
+      "type": "image_picker",
+      "id": "section_image",
+      "label": "Section Image"
+    },
+    {
+      "type": "richtext",
+      "id": "image_caption",
+      "label": "Image Caption"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Below Boxes",
+      "type": "below_boxes",
+      "settings": [
+        {
+          "type": "text",
+          "id": "box_heading",
+          "label": "Box Heading"
+        },
+        {
+          "type": "text",
+          "id": "box_sub_heading",
+          "label": "Box Sub Heading"
+        },
+        {
+          "type": "richtext",
+          "id": "box_text",
+          "label": "Box Text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Box Section"
+    }
+  ]
+}  
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

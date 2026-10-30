@@ -1,0 +1,149 @@
+<div
+  class="progress-section {{ section.settings.section_classname }}"
+  {% if section.settings.section_color != blank %}
+    style="background-color: {{ section.settings.section_color }};"
+  {% endif %}
+>
+  <div class="page-width progress-inner">
+
+    {% if section.settings.section_caption != blank %}
+      <div class="section-caption">
+        {{ section.settings.section_caption }}
+      </div>
+    {% endif %}
+
+    {% if section.settings.section_heading != blank %}
+      <h2 class="section-heading">
+        {{ section.settings.section_heading }}
+      </h2>
+    {% endif %}
+
+    <div class="progress-items">
+
+      {% for block in section.blocks %}
+        <div class="progress-item" {{ block.shopify_attributes }}>
+
+          <div class="progress-header">
+            <span class="progress-title">
+              {{ block.settings.progress_text }}
+            </span>
+
+            <span class="progress-subtitle">
+              {{ block.settings.progress_subtext }}
+            </span>
+          </div>
+
+          <div class="custom-progress-bar">
+            <div
+              class="custom-progress-fill"
+              style="width: {{ block.settings.bar_percent_ }}%;"
+            ></div>
+          </div>
+
+        </div>
+      {% endfor %}
+
+    </div>
+    {% if  section.settings.section_text != blank or  section.settings.btn_text != blank    %}
+    <div class="section__text__area">
+        {% if  section.settings.section_text != blank  %}
+            <div class="section__text">
+                {{ section.settings.section_text }}    
+            </div>   
+        {%  endif %} 
+
+         {% if  section.settings.btn_text != blank  %}
+            <a class="section__button" href="{{ section.settings.btn_url}}">
+                {{ section.settings.btn_text }}    
+            </a>   
+        {%  endif %} 
+    </div>
+   {% endif %}
+  </div>
+</div>
+
+{% schema %}
+  {
+  "name": "Custom Progress Bar",
+  "settings": [
+    {
+      "type": "color",
+      "id": "section_color",
+      "label": "Section Color"
+    },
+    {
+      "type": "text",
+      "id": "section_classname",
+      "label": "Section Classname"
+    },
+    {
+      "type": "text",
+      "id": "section_caption",
+      "label": "Section Caption"
+    },
+    {
+      "type": "textarea",
+      "id": "section_heading",
+      "label": "Section Heading"
+    },
+    {
+      "type": "richtext",
+      "id": "section_text",
+      "label": "Section Text"
+    },
+    {
+      "type": "text",
+      "id": "btn_text",
+      "label": "Button Text"
+    },
+    {
+      "type": "url",
+      "id": "btn_url",
+      "label": "Button URL"
+    },
+  ],
+  "blocks": [
+    {
+      "name": "Progress Item",
+      "type": "progress_item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "progress_text",
+          "label": "Progress Text"
+        },
+        {
+          "type": "text",
+          "id": "progress_subtext",
+          "label": "Progress Subtext"
+        },
+        {
+        "type": "number",
+        "id": "bar_percent_",
+        "label": "Bar Percent %"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Progress Bar"
+    }
+  ]
+}  
+{% endschema %}
+
+{% stylesheet %}
+
+.custom-progress-bar {
+    height: 14px;
+}
+.custom-progress-fill {
+    height: 100%;
+    display: block !important;
+     background: rgb(140, 122, 99);
+}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

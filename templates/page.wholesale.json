@@ -1,0 +1,121 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 100
+      }
+    },
+    "collapsible_content_kANfUB": {
+      "type": "collapsible-content",
+      "blocks": {
+        "collapsible_row_p3hwJD": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Why choose FireCreek Snacks for wholesale beef sticks?",
+            "icon": "none",
+            "row_content": "<p>FireCreek Snacks offer handcrafted, clean-label beef sticks made in the USA with bold flavors and no refrigeration required. They’re shelf-stable, individually wrapped, and designed for high-margin sell-through — making them a standout wholesale snack for convenience, grocery, hardware, gyms, and more.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_UDUFAy": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "How do I order wholesale meat sticks from FireCreek Snacks?",
+            "icon": "none",
+            "row_content": "<p>Wholesale orders are easy through our partner Airgoods. You'll get $100 off your first order, free shipping for a year, and 60-day payment terms. It’s a streamlined way to get premium beef sticks in your store fast — with zero hassle.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_HMYaRM": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "What are the case pack and product details?",
+            "icon": "none",
+            "row_content": "<p>Each wholesale case contains 4 caddies (boxes), and each caddie includes 20 individually wrapped 1oz beef sticks — that’s 80 sticks per case. All products are gluten-free, soy-free, and shelf-stable with a 12-month shelf life. No refrigeration needed.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_84WKdf": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "What flavors of beef sticks do you offer?",
+            "icon": "none",
+            "row_content": "<p>We offer four bold meat stick flavors: Original (mild), Kicker (spicy), Teriyaki, and Sweet Heat BBQ. Each is crafted to appeal to a broad range of snackers — from kids to heat-seekers — helping you attract repeat buyers.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_jAN7eY": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "What types of retailers carry FireCreek Snacks?",
+            "icon": "none",
+            "row_content": "<p>Our wholesale beef sticks perform well in grocery, convenience, hardware, fitness, and hospitality. We’re proud to be stocked at Ace Hardware, True Value, LIDL, and Hyatt Hotels. FireCreek’s flexible placement makes it easy to integrate into any retail environment.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_WAxe8J": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Do you offer display or marketing support for wholesale partners?",
+            "icon": "none",
+            "row_content": "<p>Yes! FireCreek provides branded display options and marketing materials to support visibility and velocity. We also offer co-marketing opportunities to help you move more product and increase returns.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_RzVaWe": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "What sets FireCreek meat sticks apart from other wholesale snacks?",
+            "icon": "none",
+            "row_content": "<p>Unlike greasy, artificial meat snacks, FireCreek uses real smoke, no fillers, and premium American meat. Our clean-label, bold-flavored sticks offer the craft quality customers love with the scalability and margins retailers need.</p>",
+            "page": ""
+          }
+        }
+      },
+      "block_order": [
+        "collapsible_row_p3hwJD",
+        "collapsible_row_UDUFAy",
+        "collapsible_row_HMYaRM",
+        "collapsible_row_84WKdf",
+        "collapsible_row_jAN7eY",
+        "collapsible_row_WAxe8J",
+        "collapsible_row_RzVaWe"
+      ],
+      "custom_css": [
+        ".accordion__content.rte p {text-align: left;}"
+      ],
+      "name": "t:sections.collapsible_content.presets.name",
+      "settings": {
+        "class_name": "shop-sec4 wholesale-sec2",
+        "caption": "",
+        "heading": "FireCreek Snacks Wholesale FAQ",
+        "heading_size": "h1",
+        "heading_alignment": "left",
+        "layout": "none",
+        "container_color_scheme": "scheme-5",
+        "color_scheme": "scheme-5",
+        "open_first_collapsible_row": false,
+        "image": "shopify://shop_images/faq_img.jpg",
+        "image_ratio": "adapt",
+        "desktop_layout": "image_first",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    }
+  },
+  "order": [
+    "main",
+    "collapsible_content_kANfUB"
+  ]
+}

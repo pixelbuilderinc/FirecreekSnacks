@@ -1,0 +1,19 @@
+.bold-product__variants .select {
+  position: relative;
+  display: inline-block;
+}
+
+.bold-product__variants .select__select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  padding-right: 2.5em; 
+}
+
+.bold-product__variants .icon-caret {
+  position: absolute;
+  top: 50%;
+  right: 1em;
+  transform: translateY(-50%);
+  pointer-events: none;
+}

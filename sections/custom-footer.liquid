@@ -1,0 +1,160 @@
+<div
+  class="footer-section {{ section.settings.section_classname }}"
+  {% if section.settings.section_background_color != blank %}
+    style="background-color: {{ section.settings.section_background_color }};"
+  {% endif %}
+>
+  <div class="page-width">
+
+    <div class="footer-wrapper">
+
+      <!-- Footer Top -->
+      <div class="footer-top">
+
+        {% for block in section.blocks %}
+
+          {% case block.type %}
+
+            {% when 'footer_logo' %}
+              <div class="footer-logo" {{ block.shopify_attributes }}>
+
+                {% assign footer_image1 = block.settings.footer_image %}
+
+                {% if footer_image1 != blank %}
+                  {{
+                    footer_image1
+                    | image_url: width: footer_image1.width
+                    | image_tag:
+                      loading: 'lazy',
+                      class: 'footer-logo-image'
+                  }}
+                {% endif %}
+
+                {% if block.settings.footer_text != blank %}
+                  <div class="footer-logo-text">
+                    {{ block.settings.footer_text }}
+                  </div>
+                 
+                {% endif %}
+              </div>
+
+            {% when 'footer_menu' %}
+              <div class="footer-menu" {{ block.shopify_attributes }}>
+
+                {% if block.settings.footer_menu_head != blank %}
+                  <h3 class="footer-menu-title">
+                    {{ block.settings.footer_menu_head }}
+                  </h3>
+                {% endif %}
+
+                {% if block.settings.link_list_1 != blank %}
+                  <ul class="footer-menu-links">
+                    {% for link in block.settings.link_list_1.links %}
+                      <li>
+                        <a href="{{ link.url }}">
+                          {{ link.title }}
+                        </a>
+                      </li>
+                    {% endfor %}
+                  </ul>
+                {% endif %}
+
+              </div>
+
+          {% endcase %}
+
+        {% endfor %}
+
+      </div>
+
+      <!-- Footer Bottom -->
+     
+        <div class="footer-bottom">
+           {% if section.settings.footer_text_bottom != blank %}
+              {{ section.settings.footer_text_bottom }}
+            {% endif %}
+           {% if section.settings.legal_text != blank %}
+              <div class="legal-text">
+                {{  section.settings.legal_text }}
+            </div>
+            {% endif %}
+        </div>
+
+
+    </div>
+
+  </div>
+</div>
+
+{% schema %}
+  {
+  "name": "Custom Footer",
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_classname",
+      "label": "Section Classname"
+    },
+    {
+      "type": "color",
+      "id": "section_background_color",
+      "label": "Section Background Color"
+    },
+    {
+      "type": "richtext",
+      "id": "footer_text_bottom",
+      "label": "Footer Text Bottom"
+    },
+    {
+      "type": "richtext",
+      "id": "legal_text",
+      "label": "Legal Text"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Footer Menu",
+      "type": "footer_menu",
+      "settings": [
+        {
+          "type": "text",
+          "id": "footer_menu_head",
+          "label": "Footer Menu Head"
+        },
+        {
+          "type": "link_list",
+          "label": "Link List 1",
+          "id": "link_list_1"
+        }
+      ]
+    },
+    {
+      "name": "Footer Logo",
+      "type": "footer_logo",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "footer_image",
+          "label": "Footer Logo"
+        },
+         {
+          "type": "richtext",
+          "id": "footer_text",
+          "label": "Footer Text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Footer"
+    }
+  ]
+}  
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

@@ -1,0 +1,117 @@
+<div class="custom-cta {{ section.settings.classname }}">
+  <div class="cta-inner page-width" style="background-color: {{ section.settings.cta_background }};">
+
+    <div class="cta-content">
+
+      {% if section.settings.section_caption != blank %}
+        <div class="cta-caption">
+          {{ section.settings.section_caption }}
+        </div>
+      {% endif %}
+
+      {% if section.settings.section_heading != blank %}
+        <h2 class="cta-headline">
+          {{ section.settings.section_heading }}
+        </h2>
+      {% endif %}
+
+      {% if section.settings.section_text != blank %}
+        <div class="cta-text">
+          {{ section.settings.section_text }}
+        </div>
+      {% endif %}
+
+    </div>
+
+    <div class="cta-actions">
+
+      {% if section.settings.price != blank %}
+        <h3 class="cta-price">
+          {{ section.settings.price }}
+        </h3>
+        {% if section.settings.pric_sub_text != blank  %}<div class="cta-price-subtext">{{ section.settings.pric_sub_text }}</div> {% endif %}
+      {% endif %}
+
+      {% if section.settings.button_text != blank and section.settings.button_url != blank %}
+        <a {% if section.settings.open_in_new_tab == true %} target="_blank" {% endif %}
+          href="{{ section.settings.button_url }}"
+          class="cta-button"
+        >
+          {{ section.settings.button_text }}
+        </a>
+      {% endif %}
+
+    </div>
+
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Custom CTA",
+  "settings": [
+    {
+      "type": "text",
+      "id": "classname",
+      "label": "Section Classname"
+    },
+    {
+      "type": "color",
+      "id": "cta_background",
+      "label": "CTA Background"
+    },
+    {
+      "type": "text",
+      "id": "section_caption",
+      "label": "Section Caption"
+    },
+    {
+      "type": "text",
+      "id": "section_heading",
+      "label": "Section Heading"
+    },
+    {
+      "type": "richtext",
+      "id": "section_text",
+      "label": "Section Text"
+    },
+    {
+      "type": "text",
+      "id": "price",
+      "label": "Price"
+    },
+    {
+      "type": "text",
+      "id": "pric_sub_text",
+      "label": "Price Sub Text"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text"
+    },
+    {
+      "type": "url",
+      "id": "button_url",
+      "label": "Button URL"
+    },
+    {
+    "type": "checkbox",
+    "id": "open_in_new_tab",
+    "label": "Open in new tab",
+    "default": false
+  },
+  ],
+  "presets": [
+    {
+      "name": "Custom CTA"
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

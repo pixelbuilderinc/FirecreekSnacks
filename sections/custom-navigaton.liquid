@@ -1,0 +1,127 @@
+<div class="custom-nav-section {{ section.settings.classname }}">
+  <div class="page-width nav-inner">
+
+    {% if section.settings.image_picker_0 != blank %}
+      <div class="custom-nav-section__image">
+        {{
+          section.settings.image_picker_0
+          | image_url: width: section.settings.image_picker_0.width
+          | image_tag:
+            loading: 'lazy',
+            class: 'custom-nav-section__img'
+        }}
+      </div>
+    {% endif %}
+
+    {% if section.blocks.size > 0 %}
+      <nav class="custom-nav-section__nav">
+        <ul class="custom-nav-section__list">
+
+          {% for block in section.blocks %}
+            {% case block.type %}
+              {% when 'nav_item' %}
+
+                <li
+                  class="custom-nav-section__item {{ block.settings.nav_classname }}"
+                  {{ block.shopify_attributes }}
+                >
+                  {% if block.settings.nav_url != blank %}
+                    <a
+                      href="{{ block.settings.nav_url }}"
+                      class="custom-nav-section__link"
+                    >
+                      {{ block.settings.nav_text }}
+                    </a>
+                  {% else %}
+                    <span class="custom-nav-section__text">
+                      {{ block.settings.nav_text }}
+                    </span>
+                  {% endif %}
+                </li>
+
+            {% endcase %}
+          {% endfor %}
+         {% comment %}
+           <li><a class="cart-btn" href="{{ routes.cart_url }}">Cart <span class="cart-number">{{ cart.item_count }}</span></a></li>
+         {% endcomment %} 
+        </ul>
+      </nav>
+    {% endif %}
+
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Custom Navigation",
+  "settings": [
+    {
+      "type": "text",
+      "id": "classname",
+      "label": "Section Classname"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_picker_0",
+      "label": "Image"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "nav_item",
+      "name": "Nav Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "nav_text",
+          "label": "Nav Text"
+        },
+        {
+          "type": "url",
+          "id": "nav_url",
+          "label": "Nav URL"
+        },
+        {
+          "type": "text",
+          "id": "nav_classname",
+          "label": "Custom Class"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Navigation"
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+.custom-nav-section__list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 20px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.custom-nav-section__link {
+  text-decoration: none;
+}
+
+.custom-nav-section__link:hover {
+  text-decoration: underline;
+}
+
+.custom-nav-section .nav-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

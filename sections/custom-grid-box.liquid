@@ -1,0 +1,128 @@
+<div class="grid-box-section {{ section.settings.classname }}">
+    <div class="page-width">
+  <!-- SECTION HEADER -->
+  <div class="grid-section__header ">
+
+    {%- if section.settings.section_heading != blank -%}
+      <h2 class="grid-section__heading">
+        {{ section.settings.section_heading }}
+      </h2>
+    {%- endif -%}
+
+    {%- if section.settings.section_sub_heading != blank -%}
+      <p class="grid-section__subheading">
+        {{ section.settings.section_sub_heading }}
+      </p>
+    {%- endif -%}
+
+  </div>
+
+  <!-- GRID CONTAINER -->
+  <div class="grid-section__inner">
+
+    {%- for block in section.blocks -%}
+      {%- case block.type -%}
+
+        {%- when 'grid_box_block' -%}
+          <div class="grid-box"
+               style="border-top: 10px solid {{ block.settings.grid_box_color }};">
+
+            {%- if block.settings.grid_box_caption != blank -%}
+              <span style="color: {{ block.settings.grid_box_color }}" class="grid-box__caption">
+                {{ block.settings.grid_box_caption }}
+              </span>
+            {%- endif -%}
+
+            {%- if block.settings.grid_box_heading != blank -%}
+              <h3 class="grid-box__heading">
+                {{ block.settings.grid_box_heading }}
+              </h3>
+            {%- endif -%}
+
+            {%- if block.settings.grid_box_text != blank -%}
+              <div class="grid-box__text">
+                {{ block.settings.grid_box_text }}
+              </div>
+            {%- endif -%}
+
+            {%- if block.settings.grid_box_button != blank -%}
+              <div style="color: {{ block.settings.grid_box_color }}; border: 1px solid {{ block.settings.grid_box_color }}" href="#" class="grid-box__button">
+                {{ block.settings.grid_box_button }}
+              </div>
+            {%- endif -%}
+
+          </div>
+
+      {%- endcase -%}
+    {%- endfor -%}
+
+  </div>
+ </div>
+</div>
+
+{% schema %}
+  {
+  "name": "Custom Grid Box",
+  "settings": [
+    {
+      "type": "text",
+      "id": "classname",
+      "label": "Section Classname"
+    },
+    {
+      "type": "textarea",
+      "id": "section_heading",
+      "label": "Section Heading"
+    },
+    {
+      "type": "text",
+      "id": "section_sub_heading",
+      "label": "Section Sub Heading"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Grid Box Block",
+      "type": "grid_box_block",
+      "settings": [
+        {
+          "type": "text",
+          "id": "grid_box_caption",
+          "label": "Grid Box Caption"
+        },
+        {
+          "type": "text",
+          "id": "grid_box_heading",
+          "label": "Grid Box Heading"
+        },
+        {
+          "type": "richtext",
+          "id": "grid_box_text",
+          "label": "Grid Box Text"
+        },
+        {
+          "type": "text",
+          "id": "grid_box_button",
+          "label": "Grid Box Button"
+        },
+        {
+          "type": "color",
+          "id": "grid_box_color",
+          "label": "Grid Box Color"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Grid Box"
+    }
+  ]
+}  
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

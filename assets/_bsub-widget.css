@@ -1,0 +1,286 @@
+@keyframes bsub-fadeInFromNone {
+  0% {
+    display: none;
+    opacity: 0;
+  }
+  1% {
+    display: block;
+    opacity: 0;
+  }
+  100% {
+    display: block;
+    opacity: 1;
+  }
+}
+.bsub__hidden {
+  display: none;
+}
+
+.bsub-widget {
+  padding: 0 !important;
+  border: 0 !important;
+  margin: 0 !important;
+}
+.bsub-widget legend, .bsub-widget__convertibles-header {
+  margin-bottom: 5px;
+}
+
+.bsub-widget__wrapper {
+  padding: 1em;
+  border-radius: 8px;
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  font-size: 14px;
+}
+.bsub-widget__wrapper fieldset {
+  border: 0;
+  background-color: inherit;
+  margin: 0 0 6px 0;
+  padding: 0;
+}
+.bsub-widget__wrapper fieldset:last-child {
+  margin: 0;
+}
+
+.bsub-widget__wrapper legend, .bsub-widget__convertibles-header {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+
+.bsub-widget__wrapper--single .bsub-widget__groups-container {
+  display: none;
+}
+.bsub-widget__wrapper--single .bsub-options-container {
+  margin-top: 0;
+}
+
+.bsub-widget__groups-container {
+  display: flex;
+  align-items: stretch;
+}
+.bsub-widget__groups-container input[type=radio] {
+  display: none;
+}
+.bsub-widget__groups-container:only-child {
+  margin-bottom: 0;
+}
+
+.bsub-widget__group {
+  flex: 1 1 100%;
+}
+.bsub-widget__group + .bsub-widget__group {
+  margin-left: 1em;
+}
+
+.bsub-widget__group-header {
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  text-align: center;
+  padding: 1rem;
+  transition: 0.15s border-color ease-in-out, 0.15s background-color ease-in-out, 0.15s box-shadow ease-in-out;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+.bsub-widget__group-header .bsub-widget__image {
+  display: block;
+  width: 4em;
+  height: 4em;
+}
+
+.bsub-widget__group-label {
+  height: 100%;
+}
+
+.bsub-widget__group-discount-summary {
+  font-size: 12px;
+}
+
+.bsub-options-container {
+  animation: bsub-fadeInFromNone 100ms ease-in-out;
+  margin-top: 1em;
+}
+
+.bsub-widget input[type=radio],
+.bsub-widget input[type=checkbox] {
+  display: none;
+}
+
+.bsub-widget input:checked + div > .bsub-widget__unchecked-icon {
+  display: none;
+}
+.bsub-widget input:not(:checked) + div > .bsub-widget__checked-icon {
+  display: none;
+}
+
+.bsub-widget input:not(:checked) + div .bsub-widget__sub-text,
+.bsub-widget input:not(:checked) + div .bsub-widget__renewal-text {
+  display: none;
+}
+
+.bsub-widget__plan {
+  width: 100%;
+}
+
+.bsub-widget__plan,
+.bsub-option-container {
+  margin-bottom: 2px;
+}
+.bsub-widget__plan:last-child {
+  margin-bottom: 0;
+}
+
+.bsub-widget__plan-header,
+.bsub-widget__prepaid-checkbox-header {
+  display: flex !important;
+  align-items: center;
+  padding: 6px;
+  border-radius: 8px;
+  gap: 8px;
+}
+.bsub-widget__plan-header .bsub-widget__image,
+.bsub-widget__prepaid-checkbox-header .bsub-widget__image {
+  width: 18px;
+  height: 18px;
+  flex: 1 auto;
+  min-width: 18px;
+  max-width: 18px;
+}
+.bsub-widget__prepaid-checkbox-header .bsub-widget__text,
+.bsub-widget__plan-header .bsub-widget__text {
+  flex-grow: 1;
+}
+
+.bsub-widget__sub-text {
+  font-size: 12px;
+}
+
+.bsub-widget__renewal-text {
+  font-size: 1rem;
+  font-style: italic;
+}
+
+.bsub-widget__plan-pricing {
+  flex-shrink: 0;
+}
+
+.bsub-widget__prepaid-checkbox-header {
+  padding: 0;
+}
+
+.bsub-widget__prepaid-checkbox {
+  margin-bottom: 6px;
+}
+
+.bsub-widget__toggle-details-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: 13px;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+}
+
+.bsub-widget__toggle-details-btn:hover {
+  text-decoration: underline;
+}
+
+.bsub-widget__toggle-details-btn .bsub-widget__icon-info {
+  margin-right: 5px;
+  width: 14px;
+  height: 20px;
+}
+
+.bsub-widget__toggle-details-btn div {
+  margin-right: 5px;
+}
+
+.bsub-widget__toggle-details-btn .bsub-widget__icon-chevron {
+  transform: rotate(90deg);
+  transition: transform 0.2s ease-in-out;
+}
+
+.bsub-widget__toggle-details-btn--closed .bsub-widget__icon-chevron {
+  transform: rotate(0deg);
+}
+
+.bsub-widget__extra-actions {
+  margin-top: 1em;
+}
+
+/**
+ * NOTE: max-height must be a fixed value for transition animation to work properly.
+*/
+.bsub__collapsible-wrapper {
+  transition: max-height 0.4s ease-in-out;
+  overflow: hidden;
+  max-height: 400px;
+}
+
+.bsub__collapsible-wrapper--closed {
+  max-height: 0;
+  padding: 0;
+}
+
+.bsub-widget__sub-details {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  padding: 1em;
+  font-size: 14px;
+  border-radius: 4px;
+  box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.1);;
+}
+
+.bsub-widget__sub-details p {
+  margin: 0;
+}
+
+.bsub-widget__sub-details-heading {
+  font-weight: 700;
+}
+
+.bsub-widget__policy-link,
+.bsub-widget__branding {
+  display: flex;
+  gap: 1rem;
+}
+
+.bsub-widget__branding {
+  margin: 1rem 0;
+}
+
+.bsub-widget__recurring-product-container, .bsub-widget__recurring-name, .bsub-widget__recurring-prices {
+  display: flex;
+}
+
+.bsub-widget__recurring-product-image {
+  border-radius: 8px;
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  margin-right: 13px;
+}
+
+.bsub-widget__recurring-product-discounted-price {
+  font-weight: 600;
+}
+.bsub-widget__recurring-product-full-price {
+  color: rgba(0, 0, 0, 0.5);
+  text-decoration: line-through;
+  margin-left: 4px
+}
+
+.bsub-widget__recurring-product-name {
+  font-weight: 600;
+}
+
+.bsub-widget__recurring-variant-name {
+  margin-left: 4px;
+}
+
+.bsub-widget__recurring-product-details {
+  margin-top: 12px;
+}
+

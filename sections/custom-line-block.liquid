@@ -1,0 +1,129 @@
+<section
+  class="line-section {{ section.settings.section_classname }}"
+  {% if section.settings.section_background_color != blank %}
+    style="background-color: {{ section.settings.section_background_color }};"
+  {% endif %}
+>
+  <div class="page-width">
+
+    <div class="line-block-section-header">
+
+      {% if section.settings.section_caption != blank %}
+        <div class="section-caption">
+          {{ section.settings.section_caption }}
+        </div>
+      {% endif %}
+
+      {% if section.settings.section_heading != blank %}
+        <h2 class="section-heading">
+          {{ section.settings.section_heading }}
+        </h2>
+      {% endif %}
+
+    </div>
+
+    {% if section.blocks.size > 0 %}
+      <div class="line-blocks">
+
+        {% for block in section.blocks %}
+          {% case block.type %}
+            {% when 'line_block' %}
+
+              <div class="line-block-item" {{ block.shopify_attributes }}>
+
+             
+
+                <div class="line-content">
+                 <div class="line-head-wrap">
+                    <div
+                    class="line-dot"
+                    {% if block.settings.line_block_color != blank %}
+                        style="background-color: {{ block.settings.line_block_color }};"
+                    {% endif %}
+                    ></div>
+                  {% if block.settings.line_block_heading != blank %}
+                    <h3 class="line-heading">
+                      {{ block.settings.line_block_heading }}
+                    </h3>
+                  {% endif %}
+                  <div class="heading-line"></div>
+                </div>
+                  {% if block.settings.line_block_text != blank %}
+                    <div class="line-text rte">
+                      {{ block.settings.line_block_text }}
+                    </div>
+                  {% endif %}
+
+                </div>
+
+              </div>
+
+          {% endcase %}
+        {% endfor %}
+
+      </div>
+    {% endif %}
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Custom Line Block",
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_classname",
+      "label": "Section Classname"
+    },
+    {
+      "type": "color",
+      "id": "section_background_color",
+      "label": "Section Background Color"
+    },
+    {
+      "type": "text",
+      "id": "section_caption",
+      "label": "Section Caption"
+    },
+    {
+      "type": "text",
+      "id": "section_heading",
+      "label": "Section Heading"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "line_block",
+      "name": "Line Block",
+      "settings": [
+        {
+          "type": "text",
+          "id": "line_block_heading",
+          "label": "Line Block Heading"
+        },
+        {
+          "type": "richtext",
+          "id": "line_block_text",
+          "label": "Line Block Text"
+        },
+        {
+          "type": "color",
+          "id": "line_block_color",
+          "label": "Line Block Color"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Line Block"
+    }
+  ]
+}
+{% endschema %}
+
+
+
+{% javascript %}
+{% endjavascript %}

@@ -1,0 +1,135 @@
+<div class="testimonial-section {{ section.settings.classname }}" style="background-color: {{ section.settings.section_background }};">
+ <div class="page-width">
+  {% if section.settings.section_caption != blank %}
+    <span class="testimonial-section__caption">
+      {{ section.settings.section_caption }}
+    </span>
+  {% endif %}
+
+  {% if section.settings.section_heading != blank %}
+    <h2 class="testimonial-section__heading">
+      {{ section.settings.section_heading }}
+    </h2>
+  {% endif %}
+
+  <div class="testimonial-slider">
+      {% for block in section.blocks %}
+        {% case block.type %}
+          {% when 'testimonial_slide' %}
+
+            <div class="swiper-slide testimonial-slide" {{ block.shopify_attributes }}>
+               <div data-dc-tpl="103" class="testimonial-star" style="font-size: 15px; letter-spacing: 0.26em; color: rgb(244, 165, 42); margin-bottom: 16px;">★★★★★</div> 
+              {% if block.settings.testimonial_text != blank %}
+                <div class="testimonial-slide__text">
+                  {{ block.settings.testimonial_text }}
+                </div>
+              {% endif %}
+
+              <div class="testimonial-slide__author">
+
+                {% assign testimonial_image = block.settings.testimonial_image %}
+               
+                <div class="testimonial-slide__info">
+                    <div class="image-area">
+                        {% if testimonial_image %}
+                            <div class="testimonial-slide__image">
+                                {{
+                                testimonial_image
+                                | image_url: width: 120
+                                | image_tag: loading: 'lazy', class: 'testimonial-author-image'
+                                }}
+                            </div>
+                        {% endif %}
+                  </div>
+                  <div class="info-area">
+                  {% if block.settings.testimonial_name != blank %}
+                    <h4 class="testimonial-slide__name">
+                      {{ block.settings.testimonial_name }}
+                    </h4>
+                  {% endif %}
+
+                  {% if block.settings.testimonial_position != blank %}
+                    <span class="testimonial-slide__position">
+                      {{ block.settings.testimonial_position }}
+                    </span>
+                  {% endif %}
+                </div>
+                </div>
+
+              </div>
+
+            </div>
+
+        {% endcase %}
+      {% endfor %}
+  </div>
+  <div class="testimonial-btn">Scroll for more →</div>
+</div>
+</div>
+
+{% schema %}
+  {
+  "name": "Custom Testimonial",
+  "settings": [
+    {
+      "type": "text",
+      "id": "classname",
+      "label": "Section Classname"
+    },
+    {
+      "type": "color",
+      "id": "section_background",
+      "label": "Section Background"
+    },
+    {
+      "type": "text",
+      "id": "section_caption",
+      "label": "Section Caption"
+    },
+    {
+      "type": "text",
+      "id": "section_heading",
+      "label": "Section Heading"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Testimonial Slide",
+      "type": "testimonial_slide",
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "testimonial_text",
+          "label": "Testimonial Text"
+        },
+        {
+          "type": "image_picker",
+          "id": "testimonial_image",
+          "label": "Testimonial Image"
+        },
+        {
+          "type": "text",
+          "id": "testimonial_name",
+          "label": "Testimonial Name"
+        },
+        {
+          "type": "text",
+          "id": "testimonial_position",
+          "label": "Testimonial Position"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Testimonial"
+    }
+  ]
+}  
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

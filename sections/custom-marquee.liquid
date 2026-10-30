@@ -1,0 +1,106 @@
+<div class="marquee-section {{ section.settings.classname }}" style="background-color: {{  section.settings.section_background }};">
+  <div class="marquee-section__inner">
+    {% for block in section.blocks %}
+      {% case block.type %}
+        {% when 'markquee_text_item' %}
+          <div
+            class="marquee-section__item"
+            {{ block.shopify_attributes }}
+          >
+            {{ block.settings.marquee_text }}
+             <span>•</span>
+          </div>
+          
+      {% endcase %}
+    {% endfor %}
+
+    {% for block in section.blocks %}
+      {% case block.type %}
+        {% when 'markquee_text_item' %}
+          <div
+            class="marquee-section__item"
+            {{ block.shopify_attributes }}
+          >
+            {{ block.settings.marquee_text }}
+             <span>•</span>
+          </div>
+          
+      {% endcase %}
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Custom Marquee Slider",
+  "settings": [
+    {
+        "type": "text",
+        "id": "classname",
+        "label": "Section Classname"
+    },
+    {
+      "type": "color",
+      "id": "section_background",
+      "label": "Section Background"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "markquee_text_item",
+      "name": "Marquee Text Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "marquee_text",
+          "label": "Marquee Text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Marquee Slider"
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+.marquee-section {
+	display: flex;
+    justify-content: center;
+}
+
+.marquee-section__item {
+  white-space: nowrap;
+}
+
+.marquee-section__item {
+    white-space: nowrap;
+    display: flex;
+    gap: 25px;
+}
+
+.marquee-section__inner {
+    display: flex;
+    gap: 25px;
+}
+
+.marquee-section .marquee-section__inner {
+  animation: fc-marquee 50s linear infinite;
+}
+
+@keyframes fc-marquee {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

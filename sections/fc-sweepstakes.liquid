@@ -1,0 +1,764 @@
+<style>
+/* ===========================================================================
+   FireCreek Snacks — Color Tokens
+   Palette pulled from the brand logo (flame #F04828), the packaging system
+   (per-flavor accents), and the smoke/butcher-paper environment shots.
+   =========================================================================== */
+:root {
+  /* --- Brand core --------------------------------------------------------- */
+  --flame: #F04828;          /* the logo flame — primary brand accent        */
+  --flame-deep: #D23A1F;     /* pressed / hover-dark flame                    */
+  --flame-bright: #FF5C36;   /* hover-light flame, glows                      */
+  --ember: #C5342A;          /* deep brand red — social/hero fields          */
+  --ember-deep: #A52A20;
+
+  /* --- Ink / charcoal (warm, never pure black) ---------------------------- */
+  --char-950: #14110F;
+  --char-900: #1C1815;       /* the logo black — primary ink                 */
+  --char-800: #2A2420;
+  --char-700: #3D352F;
+  --char-600: #574C44;
+  --char-500: #756860;
+
+  /* --- Butcher paper / cream surfaces ------------------------------------- */
+  /* --- Surfaces (white → subtle grey; no creams/tan) ---------------------- */
+  --paper: #FFFFFF;          /* white — cards & raised surfaces              */
+  --cream: #FAFAF9;          /* page background — barely-there off-white      */
+  --cream-deep: #F2F2F0;     /* subtle grey panel / sunk section             */
+  --kraft: #E8E8E5;          /* deeper subtle grey                          */
+  /* Clearer aliases for the same surface ramp */
+  --surface-0: #FFFFFF;
+  --surface-1: #FAFAF9;
+  --surface-2: #F2F2F0;
+  --surface-3: #E8E8E5;
+
+  /* --- Smoke neutrals (near-neutral greys: borders, dividers, muted) ------ */
+  --smoke-100: #EFEFEE;
+  --smoke-200: #E3E3E1;
+  --smoke-300: #CBCBC8;
+  --smoke-400: #9B9B96;
+  --smoke-500: #6E6E6A;
+
+  /* --- Flavor accents (from the four package colorways) ------------------- */
+  --flavor-original: #E0712F; /* warm orange   */
+  --flavor-kicker: #2E74C2;   /* electric blue */
+  --flavor-sweet-heat: #C0392B;/* bbq red      */
+  --flavor-teriyaki: #7E4536; /* soy brown     */
+
+  /* --- Functional --------------------------------------------------------- */
+  --success: #4F7A3A;        /* "gluten free" green                          */
+  --warning: #E0922F;
+  --danger: #C0392B;
+  --info: #2E74C2;
+
+  /* =========================================================================
+     SEMANTIC ALIASES — reach for these in product work, not the raw scale.
+     ========================================================================= */
+  --bg-base: var(--surface-1);     /* subtle off-white page background */
+  --bg-raised: var(--surface-0);   /* white */
+  --bg-sunken: var(--surface-2);   /* subtle grey */
+  --bg-inverse: var(--ember);      /* dark-contrast field is brand red, never black */
+  --bg-brand: var(--flame);
+  --bg-brand-deep: var(--ember);
+
+  --surface-card: var(--surface-0);
+  --surface-card-inverse: var(--ember);
+
+  --text-primary: var(--char-900);
+  --text-secondary: var(--char-600);
+  --text-muted: var(--char-500);
+  --text-on-flame: #FFFFFF;
+  --text-on-dark: #FFFFFF;                          /* on brand-red fields */
+  --text-on-dark-muted: rgba(255, 255, 255, 0.78);
+  --text-brand: var(--flame);
+  --text-link: var(--flame-deep);
+
+  --border-subtle: var(--smoke-200);
+  --border-default: var(--smoke-300);
+  --border-strong: var(--char-900);
+  --border-brand: var(--flame);
+
+  --accent: var(--flame);
+  --accent-deep: var(--flame-deep);
+  --focus-ring: color-mix(in srgb, var(--flame) 55%, transparent);
+}
+/* ===========================================================================
+   FireCreek Snacks — Typography Tokens
+   Display is condensed & loud (Anton). Eyebrows/labels are tracked-out Oswald.
+   Body is Archivo. Brush script (Yellowtail) is a garnish only — never body.
+   =========================================================================== */
+:root {
+  /* --- Families ----------------------------------------------------------- */
+  --font-display: 'Anton', 'Oswald', 'Arial Narrow', sans-serif;
+  --font-condensed: 'Oswald', 'Arial Narrow', sans-serif;
+  --font-body: 'Archivo', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-script: 'Yellowtail', 'Brush Script MT', cursive;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  /* --- Weights ------------------------------------------------------------ */
+  --fw-regular: 400;   /* @kind other */
+  --fw-medium: 500;    /* @kind other */
+  --fw-semibold: 600;  /* @kind other */
+  --fw-bold: 700;      /* @kind other */
+  --fw-extrabold: 800; /* @kind other */
+
+  /* --- Type scale (rem, 16px base) ---------------------------------------- */
+  --text-2xs: 0.6875rem;  /* 11px */
+  --text-xs: 0.75rem;     /* 12px */
+  --text-sm: 0.875rem;    /* 14px */
+  --text-base: 1rem;      /* 16px */
+  --text-md: 1.125rem;    /* 18px */
+  --text-lg: 1.375rem;    /* 22px */
+  --text-xl: 1.75rem;     /* 28px */
+  --text-2xl: 2.25rem;    /* 36px */
+  --text-3xl: 3rem;       /* 48px */
+  --text-4xl: 4rem;       /* 64px */
+  --text-5xl: 5.5rem;     /* 88px */
+  --text-6xl: 7.5rem;     /* 120px */
+
+  /* --- Line heights ------------------------------------------------------- */
+  --leading-none: 0.95;
+  --leading-tight: 1.08;
+  --leading-snug: 1.25;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.65;
+
+  /* --- Letter spacing ----------------------------------------------------- */
+  --tracking-tightest: -0.02em;
+  --tracking-tight: -0.01em;
+  --tracking-normal: 0;
+  --tracking-wide: 0.04em;
+  --tracking-wider: 0.08em;
+  --tracking-widest: 0.16em;   /* eyebrows / overlines — Oswald uppercase    */
+
+  /* =========================================================================
+     SEMANTIC ROLES
+     ========================================================================= */
+  --role-display-family: var(--font-display);
+  --role-display-tracking: var(--tracking-tight);
+  --role-display-leading: var(--leading-none);
+
+  --role-eyebrow-family: var(--font-condensed);
+  --role-eyebrow-size: var(--text-sm);
+  --role-eyebrow-weight: var(--fw-semibold);
+  --role-eyebrow-tracking: var(--tracking-widest);
+
+  --role-body-family: var(--font-body);
+  --role-body-size: var(--text-base);
+  --role-body-leading: var(--leading-relaxed);
+
+  --role-script-family: var(--font-script);
+}
+/* ===========================================================================
+   FireCreek Snacks — Spacing, Radii & Layout Tokens
+   8px base grid. Radii are small & honest — this brand is built from straight
+   torn-paper edges and hard slabs, not soft pills (one full-round for chips).
+   =========================================================================== */
+:root {
+  /* --- Spacing scale (8px grid, with half-steps) -------------------------- */
+  --space-0: 0;
+  --space-1: 0.25rem;  /* 4px  */
+  --space-2: 0.5rem;   /* 8px  */
+  --space-3: 0.75rem;  /* 12px */
+  --space-4: 1rem;     /* 16px */
+  --space-5: 1.5rem;   /* 24px */
+  --space-6: 2rem;     /* 32px */
+  --space-7: 2.5rem;   /* 40px */
+  --space-8: 3rem;     /* 48px */
+  --space-9: 4rem;     /* 64px */
+  --space-10: 5rem;    /* 80px */
+  --space-12: 7.5rem;  /* 120px */
+
+  /* --- Radii -------------------------------------------------------------- */
+  --radius-none: 0;
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --radius-md: 6px;     /* default for cards / inputs                        */
+  --radius-lg: 10px;
+  --radius-full: 999px; /* chips, avatars, the rare true pill                */
+
+  /* --- Border widths ------------------------------------------------------ */
+  --border-hair: 1px;
+  --border-thin: 1.5px;
+  --border-bold: 2px;
+  --border-chunky: 3px;  /* the brand likes a confident outline             */
+
+  /* --- Layout ------------------------------------------------------------- */
+  --container-sm: 640px;
+  --container-md: 960px;
+  --container-lg: 1200px;
+  --container-xl: 1320px;
+  --gutter: var(--space-5);
+  --section-y: var(--space-10);
+}
+/* ===========================================================================
+   FireCreek Snacks — Effects: shadows, elevation, motion, textures
+   The look is print-shop, not glassmorphism: tight contact shadows, hard
+   offset "stamp" shadows for the loud CTAs, snappy motion, no blur-heavy glass.
+   =========================================================================== */
+:root {
+  /* --- Shadows ------------------------------------------------------------ */
+  --shadow-xs: 0 1px 2px rgba(28, 24, 21, 0.08);
+  --shadow-sm: 0 2px 6px rgba(28, 24, 21, 0.10);
+  --shadow-md: 0 6px 18px rgba(28, 24, 21, 0.12);
+  --shadow-lg: 0 16px 40px rgba(28, 24, 21, 0.16);
+  --shadow-inset: inset 0 1px 0 rgba(255, 255, 255, 0.5);
+
+  /* Hard "stamped" offset shadows — the signature CTA / sticker look.
+     Pair with --border-strong for the printed-label feel.                    */
+  --shadow-stamp: 4px 4px 0 var(--char-900);
+  --shadow-stamp-sm: 3px 3px 0 var(--char-900);
+  --shadow-stamp-flame: 4px 4px 0 var(--flame);
+
+  /* --- Glow (use sparingly, around the flame mark) ------------------------ */
+  --glow-flame: 0 0 24px rgba(240, 72, 40, 0.45);
+
+  /* --- Motion ------------------------------------------------------------- */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);          /* @kind other */
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);       /* @kind other */
+  --ease-snap: cubic-bezier(0.34, 1.56, 0.64, 1);      /* @kind other */ /* tiny overshoot */
+  --dur-fast: 120ms;  /* @kind other */
+  --dur-base: 200ms;  /* @kind other */
+  --dur-slow: 320ms;  /* @kind other */
+
+  /* --- Z-index ------------------------------------------------------------ */
+  --z-base: 0;        /* @kind other */
+  --z-sticky: 100;    /* @kind other */
+  --z-overlay: 800;   /* @kind other */
+  --z-modal: 900;     /* @kind other */
+  --z-toast: 1000;    /* @kind other */
+
+  /* --- Textures / fills ---------------------------------------------------- */
+  /* Faint kraft-paper grain you can layer behind cream surfaces.            */
+  --texture-grain:
+    radial-gradient(rgba(28,24,21,0.035) 1px, transparent 1px); /* @kind other */
+  --texture-grain-size: 4px 4px; /* @kind other */
+  /* Smoke wash for dark hero fields.                                        */
+  --wash-smoke: radial-gradient(120% 80% at 50% 120%,
+                rgba(255,255,255,0.10), transparent 60%); /* @kind other */
+}
+/* ===========================================================================
+   FireCreek Snacks — Base element styles & utility roles.
+   Light reset + the brand's default typographic voice on bare HTML, plus a
+   handful of role classes (.fc-eyebrow, .fc-display, .fc-script) that specimen
+   cards, components and kits all share.
+   =========================================================================== */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  line-height: var(--leading-relaxed);
+  color: var(--text-primary);
+  background: var(--bg-base);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Headings default to the loud condensed display voice ---------------------- */
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 400;       /* Anton ships a single weight */
+  line-height: var(--leading-none);
+  letter-spacing: var(--tracking-tight);
+  text-transform: uppercase;
+  margin: 0 0 0.4em;
+  color: var(--text-primary);
+}
+h1 { font-size: var(--text-4xl); }
+h2 { font-size: var(--text-3xl); }
+h3 { font-size: var(--text-2xl); }
+h4 { font-size: var(--text-xl); }
+
+h5, h6 {
+  font-family: var(--font-condensed);
+  font-weight: var(--fw-semibold);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+  margin: 0 0 0.5em;
+}
+
+p { margin: 0 0 1em; max-width: 68ch; text-wrap: pretty; }
+
+a {
+  color: var(--text-link);
+  text-underline-offset: 2px;
+  text-decoration-thickness: 1.5px;
+  transition: color var(--dur-fast) var(--ease-out);
+}
+a:hover { color: var(--flame); }
+
+strong, b { font-weight: var(--fw-bold); }
+small { font-size: var(--text-sm); }
+
+code, kbd, samp { font-family: var(--font-mono); font-size: 0.9em; }
+
+hr {
+  border: 0;
+  border-top: var(--border-bold) solid var(--char-900);
+  margin: var(--space-6) 0;
+}
+
+::selection { background: var(--flame); color: var(--paper); }
+
+:focus-visible {
+  outline: 3px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+
+/* --- Shared role utilities ------------------------------------------------- */
+.fc-eyebrow {
+  font-family: var(--font-condensed);
+  font-weight: var(--fw-semibold);
+  font-size: var(--text-sm);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-widest);
+  color: var(--flame);
+  display: inline-block;
+}
+.fc-display {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  line-height: var(--leading-none);
+  letter-spacing: var(--tracking-tight);
+}
+.fc-script {
+  font-family: var(--font-script);
+  text-transform: none;
+  letter-spacing: 0;
+  line-height: 1.2;
+  color: var(--flame);
+}
+.fc-kicker-rule {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+.fc-kicker-rule::before,
+.fc-kicker-rule::after {
+  content: "";
+  height: 2px;
+  width: 28px;
+  background: currentColor;
+}
+/* ===========================================================================
+   FireCreek Snacks — Design System entry point.
+   =========================================================================== */
+
+html { scroll-behavior: smooth; }
+body { margin: 0; background: #FAFAF9; color: #1C1815; font-family: 'Archivo', sans-serif; }
+.fcs a { color: #D23A1F; text-decoration: underline; text-underline-offset: 2px; }
+.fcs a:hover { color: #F04828; }
+@keyframes fcFlicker { 0%,100% { transform: scale(1) rotate(0deg); } 30% { transform: scale(1.06) rotate(-2deg); } 60% { transform: scale(0.97) rotate(1.5deg); } }
+/* hover states that the design handled in script */
+.fcs .fcs-btn { text-decoration: none; }
+.fcs .fcs-btn:hover { color: #fff; transform: translate(-1px,-1px); box-shadow: 3px 3px 0 #1C1815; }
+.fcs .fcs-btn:active { transform: translate(1px,1px); box-shadow: none; }
+.fcs-nav a:hover { color: #F04828 !important; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { animation: none !important; } }
+@media (max-width: 760px) { .fcs .fcs-hero-veil { background: rgba(255,255,255,0.9) !important; } }
+@media (max-width: 900px) { .fcs .fcs-rules-aside { position: static !important; } }
+@media (max-width: 760px) {
+  .fcs header[style*="sticky"] > div { flex-wrap: nowrap !important; padding: 8px 16px !important; gap: 12px !important; }
+  .fcs header[style*="sticky"] nav { flex-wrap: nowrap !important; gap: 14px !important; font-size: 12px !important; letter-spacing: 0.06em !important; white-space: nowrap; }
+  .fcs header[style*="sticky"] nav > a[href="#flavors"], .fcs header[style*="sticky"] nav > a[href="#rules"] { display: none !important; }
+  .fcs header[style*="sticky"] img { height: 40px !important; }
+}
+@media (max-width: 370px) {
+  .fcs header[style*="sticky"] nav { gap: 10px !important; font-size: 11px !important; letter-spacing: 0.03em !important; }
+  .fcs header[style*="sticky"] img { height: 34px !important; }
+  .fcs header[style*="sticky"] .fcs-btn { padding: 8px 10px !important; }
+}
+
+</style>
+<div class="fcs"><div class="sc-host" data-sc-name="Holiday Sweepstakes"><div style="min-height: 100vh; background: rgb(250, 250, 249);">
+
+  <div style="background: rgb(28, 24, 21); color: rgb(255, 255, 255); display: flex; justify-content: center; flex-wrap: wrap; gap: 6px 18px; padding: 10px 20px; font-family: Oswald, sans-serif; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; text-align: center;">
+    <span>The FireCreek Holiday Sweepstakes</span>
+    <span style="color: rgb(255, 92, 54);">Nov 1 – Dec 20, 2026</span>
+    <span>No purchase necessary</span>
+  </div>
+
+  <header style="position: sticky; top: 0px; z-index: 100; background: rgb(255, 255, 255); border-bottom: 2px solid rgb(28, 24, 21);">
+    <div style="max-width: 1240px; margin: 0px auto; padding: 10px 24px; display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap;">
+      <a href="/" style="display: flex;"><img src="{{ 'fcs-sweeps-firecreek-logo-black.png' | asset_url }}" alt="FireCreek Snacks" style="height: 52px; width: auto; display: block;"></a>
+      <nav style="display: flex; align-items: center; gap: 24px; flex-wrap: wrap; font-family: Oswald, sans-serif; font-size: 15px; letter-spacing: 0.1em; text-transform: uppercase;">
+        <a href="#prize" class="scp0" style="color: rgb(28, 24, 21); text-decoration: none;">The Prize</a>
+        <a href="#enter" class="scp0" style="color: rgb(28, 24, 21); text-decoration: none;">How to Enter</a>
+        <a href="#flavors" class="scp0" style="color: rgb(28, 24, 21); text-decoration: none;">Flavors</a>
+        <a href="#rules" class="scp0" style="color: rgb(28, 24, 21); text-decoration: none;">Official Rules</a>
+        <div style="display: contents;"><a href="/collections/firecreek-snacks-sticks" target="_blank" rel="noopener" class="fcs-btn" style="display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 8px 16px; width: auto; font-family: var(--font-condensed); font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; line-height: 1; color: var(--paper); background: var(--flame); border: 2px solid var(--char-900); border-radius: var(--radius-md); cursor: pointer; box-shadow: var(--shadow-stamp); transition: background var(--dur-fast) var(--ease-out), transform var(--dur-fast) var(--ease-out), box-shadow var(--dur-fast) var(--ease-out); opacity: 1; filter: none; user-select: none; text-decoration: none; box-sizing: border-box;">Shop Now</a></div>
+      </nav>
+    </div>
+  </header>
+
+  <section style="position: relative; z-index: 2; background: rgb(242, 242, 240); color: rgb(28, 24, 21);">
+    <img src="{{ 'fcs-sweeps-holiday-hero.webp' | asset_url }}" alt="FireCreek caddies in all four flavors on a marble counter with holiday greenery" style="position: absolute; inset: 0px; width: 100%; height: 100%; object-fit: cover; object-position: 70% center; display: block;">
+    <div class="fcs-hero-veil" style="position: absolute; inset: 0px; background: linear-gradient(90deg, rgba(255, 255, 255, 0.94) 0%, rgba(255, 255, 255, 0.86) 34%, rgba(255, 255, 255, 0) 58%);"></div>
+    <div style="max-width: 1240px; margin: 0px auto; position: relative; padding: 72px 24px 80px; min-height: 620px; display: flex; align-items: center;">
+      <div style="flex: 0 1 580px; min-width: 0px; display: flex; flex-direction: column; gap: 22px;">
+        <div style="display: flex; align-items: center; gap: 12px; font-family: Oswald, sans-serif; font-size: 15px; letter-spacing: 0.22em; text-transform: uppercase; color: rgb(210, 58, 31);">
+          <span style="width: 36px; height: 2px; background: rgb(240, 72, 40);"></span>
+          <span>THE FIRECREEK HOLIDAY SWEEPSTAKES 2026&nbsp;</span>
+        </div>
+        <div style="font-family: Yellowtail, cursive; color: rgb(210, 58, 31); font-size: clamp(36px, 4.6vw, 56px); line-height: 1; margin-bottom: -10px; transform: rotate(-3deg); transform-origin: left center;">Season's Eatings!</div>
+        <h1 style="margin: 0px; width: fit-content; max-width: 100%; color: rgb(28, 24, 21); font-family: Anton, sans-serif; font-weight: 400; text-transform: uppercase; font-size: clamp(56px, 7vw, 104px); line-height: 0.9; letter-spacing: 0.005em; text-wrap: balance;">Win a Year of <span style="color: rgb(255, 255, 255); background: rgb(240, 72, 40); border: 2px solid rgb(28, 24, 21); padding: 6px 14px 4px; display: block; width: fit-content; margin: 4px auto 14px; position: relative; font-size: 0.88em; line-height: 0.95; transform: rotate(-5deg); transform-origin: center center; box-shadow: rgb(28, 24, 21) 6px 6px 0px;">&nbsp; FireCreek<br>Meat Sticks</span></h1>
+        <p style="margin: 0px; font-size: 20px; line-height: 1.5; max-width: 440px; color: rgb(42, 36, 32); text-wrap: pretty;">One 20-count caddy of hickory-smoked FireCreek on your doorstep every month of 2027. That's 240 sticks. Santa could never.</p>
+
+        <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 6px;">
+          <div style="font-family: Oswald, sans-serif; font-size: 14px; letter-spacing: 0.18em; text-transform: uppercase; display: flex; gap: 10px; flex-wrap: wrap; align-items: baseline;">
+            <span style="font-weight: 600;">Entries close in</span>
+            <span style="color: rgb(87, 76, 68);">Dec 20, 2026 · 11:59 p.m. PT</span>
+          </div>
+          
+            <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+              
+                <div style="background: rgb(255, 255, 255); color: rgb(28, 24, 21); border: 2px solid rgb(28, 24, 21); border-radius: 6px; box-shadow: rgb(28, 24, 21) 4px 4px 0px; min-width: 84px; padding: 10px 12px 8px; display: flex; flex-direction: column; align-items: center; gap: 2px;">
+                  <span style="font-family: Anton, sans-serif; font-size: 44px; line-height: 1; font-variant-numeric: tabular-nums;" data-fcs-cd="d">62</span>
+                  <span style="font-family: Oswald, sans-serif; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: rgb(87, 76, 68);">Days</span>
+                </div>
+              
+                <div style="background: rgb(255, 255, 255); color: rgb(28, 24, 21); border: 2px solid rgb(28, 24, 21); border-radius: 6px; box-shadow: rgb(28, 24, 21) 4px 4px 0px; min-width: 84px; padding: 10px 12px 8px; display: flex; flex-direction: column; align-items: center; gap: 2px;">
+                  <span style="font-family: Anton, sans-serif; font-size: 44px; line-height: 1; font-variant-numeric: tabular-nums;" data-fcs-cd="h">12</span>
+                  <span style="font-family: Oswald, sans-serif; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: rgb(87, 76, 68);">Hours</span>
+                </div>
+              
+                <div style="background: rgb(255, 255, 255); color: rgb(28, 24, 21); border: 2px solid rgb(28, 24, 21); border-radius: 6px; box-shadow: rgb(28, 24, 21) 4px 4px 0px; min-width: 84px; padding: 10px 12px 8px; display: flex; flex-direction: column; align-items: center; gap: 2px;">
+                  <span style="font-family: Anton, sans-serif; font-size: 44px; line-height: 1; font-variant-numeric: tabular-nums;" data-fcs-cd="m">14</span>
+                  <span style="font-family: Oswald, sans-serif; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: rgb(87, 76, 68);">Mins</span>
+                </div>
+              
+                <div style="background: rgb(255, 255, 255); color: rgb(28, 24, 21); border: 2px solid rgb(28, 24, 21); border-radius: 6px; box-shadow: rgb(28, 24, 21) 4px 4px 0px; min-width: 84px; padding: 10px 12px 8px; display: flex; flex-direction: column; align-items: center; gap: 2px;">
+                  <span style="font-family: Anton, sans-serif; font-size: 44px; line-height: 1; font-variant-numeric: tabular-nums;" data-fcs-cd="s">17</span>
+                  <span style="font-family: Oswald, sans-serif; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: rgb(87, 76, 68);">Secs</span>
+                </div>
+              
+            </div>
+          
+        </div>
+
+        <div style="display: flex; gap: 14px; flex-wrap: wrap; margin-top: 10px;">
+          <div style="display: contents;"><a href="#enter" class="fcs-btn" style="display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 16px 30px; width: auto; font-family: var(--font-condensed); font-weight: 600; font-size: 16px; text-transform: uppercase; letter-spacing: 0.06em; line-height: 1; color: var(--cream); background: var(--char-900); border: 2px solid var(--char-900); border-radius: var(--radius-md); cursor: pointer; box-shadow: var(--shadow-stamp); transition: background var(--dur-fast) var(--ease-out), transform var(--dur-fast) var(--ease-out), box-shadow var(--dur-fast) var(--ease-out); opacity: 1; filter: none; user-select: none; text-decoration: none; box-sizing: border-box;">See 3 Ways to Enter</a></div>
+          <a href="#rules" class="scp1" style="display: inline-flex; align-items: center; height: 56px; padding: 0px 26px; border: 2px solid rgb(28, 24, 21); border-radius: 6px; background: rgb(255, 255, 255); color: rgb(28, 24, 21); text-decoration: none; font-family: Oswald, sans-serif; font-size: 17px; letter-spacing: 0.12em; text-transform: uppercase;">Official Rules</a>
+        </div>
+        <p style="margin: 0px; font-size: 13px; line-height: 1.5; color: rgb(61, 53, 47); max-width: 365px;">No purchase necessary. Open to legal residents of the 48 contiguous U.S. and D.C., 18+. Ends 12/20/26 at 11:59 p.m. PT. Void where prohibited.</p>
+      </div>
+
+    </div>
+    
+      <div style="position: relative; height: 26px; border-top: 2px solid rgb(28, 24, 21); border-bottom: 2px solid rgb(28, 24, 21); background: repeating-linear-gradient(-45deg, rgb(240, 72, 40) 0px, rgb(240, 72, 40) 16px, rgb(255, 255, 255) 16px, rgb(255, 255, 255) 32px);">
+        <div style="position: absolute; left: 0px; right: 0px; bottom: 100%; height: 22px; overflow: hidden; display: flex; align-items: flex-end; gap: 46px; padding-left: 20px; pointer-events: none;"><div style="flex: 0 0 auto; width: 10px; display: flex; flex-direction: column; align-items: center;"><div style="width: 10px; height: 15px; border-radius: 50% 50% 45% 45% / 60% 60% 40% 40%; background: rgb(240, 72, 40); box-shadow: rgb(240, 72, 40) 0px 0px 10px 2px;"></div><div style="width: 6px; height: 5px; background: rgb(28, 24, 21); border-radius: 1px;"></div></div><div style="flex: 0 0 auto; width: 10px; display: flex; flex-direction: column; align-items: center;"><div style="width: 10px; height: 15px; border-radius: 50% 50% 45% 45% / 60% 60% 40% 40%; background: rgb(46, 116, 194); box-shadow: rgb(46, 116, 194) 0px 0px 10px 2px;"></div><div style="width: 6px; height: 5px; background: rgb(28, 24, 21); border-radius: 1px;"></div></div><div style="flex: 0 0 auto; width: 10px; display: flex; flex-direction: column; align-items: center;"><div style="width: 10px; height: 15px; border-radius: 50% 50% 45% 45% / 60% 60% 40% 40%; background: rgb(224, 146, 47); box-shadow: rgb(224, 146, 47) 0px 0px 10px 2px;"></div><div style="width: 6px; height: 5px; background: rgb(28, 24, 21); border-radius: 1px;"></div></div><div style="flex: 0 0 auto; width: 10px; display: flex; flex-direction: column; align-items: center;"><div style="width: 10px; height: 15px; border-radius: 50% 50% 45% 45% / 60% 60% 40% 40%; background: rgb(79, 122, 58); box-shadow: rgb(79, 122, 58) 0px 0px 10px 2px;"></div><div style="width: 6px; height: 5px; background: rgb(28, 24, 21); border-radius: 1px;"></div></div><div style="flex: 0 0 auto; width: 10px; display: flex; flex-direction: column; align-items: center;"><div style="width: 10px; height: 15px; border-radius: 50% 50% 45% 45% / 60% 60% 40% 40%; background: rgb(240, 72, 40); box-shadow: rgb(240, 72, 40) 0px 0px 10px 2px;"></div><div style="width: 6px; height: 5px; background: rgb(28, 24, 21); border-radius: 1px;"></div></div><div style="flex: 0 0 auto; width: 10px; display: flex; flex-direction: column; align-items: center;"><div style="width: 10px; height: 15px; border-radius: 50% 50% 45% 45% / 60% 60% 40% 40%; background: rgb(46, 116, 194); box-shadow: rgb(46, 116, 194) 0px 0px 10px 2px;"></div><div style="width: 6px; height: 5px; background: rgb(28, 24, 21); border-radius: 1px;"></div></div><div style="flex: 0 0 auto; width: 10px; display: flex; flex-direction: column; align-items: center;"><div style="width: 10px; height: 15px; border-radius: 50% 50% 45% 45% / 60% 60% 40% 40%; background: rgb(224, 146, 47); box-shadow: rgb(224, 146, 47) 0px 0px 10px 2px;"></div><div style="width: 6px; height: 5px; background: rgb(28, 24, 21); border-radius: 1px;"></div></div><div style="flex: 0 0 auto; width: 10px; display: flex; flex-direction: column; align-items: center;"><div style="width: 10px; height: 15px; border-radius: 50% 50% 45% 45% / 60% 60% 40% 40%; background: rgb(79, 122, 58); box-shadow: rgb(79, 122, 58) 0px 0px 10px 2px;"></div><div style="width: 6px; height: 5px; background: rgb(28, 24, 21); border-radius: 1px;"></div></div><div style="flex: 0 0 auto; width: 10px; display: flex; flex-direction: column; align-items: center;"><div style="width: 10px; height: 15px; border-radius: 50% 50% 45% 45% / 60% 60% 40% 40%; background: rgb(240, 72, 40); box-shadow: rgb(240, 72, 40) 0px 0px 10px 2px;"></div><div style="width: 6px; height: 5px; background: rgb(28, 24, 21); border-radius: 1px;"></div></div><div style="flex: 0 0 auto; width: 10px; display: flex; flex-direction: column; align-items: center;"><div style="width: 10px; height: 15px; border-radius: 50% 50% 45% 45% / 60% 60% 40% 40%; background: rgb(46, 116, 194); box-shadow: rgb(46, 116, 194) 0px 0px 10px 2px;"></div><div style="width: 6px; height: 5px; background: rgb(28, 24, 21); border-radius: 1px;"></div></div><div style="flex: 0 0 auto; width: 10px; display: flex; flex-direction: column; align-items: center;"><div style="width: 10px; height: 15px; border-radius: 50% 50% 45% 45% / 60% 60% 40% 40%; background: rgb(224, 146, 47); box-shadow: rgb(224, 146, 47) 0px 0px 10px 2px;"></div><div style="width: 6px; height: 5px; background: rgb(28, 24, 21); border-radius: 1px;"></div></div><div style="flex: 0 0 auto; width: 10px; display: flex; flex-direction: column; align-items: center;"><div style="width: 10px; height: 15px; border-radius: 50% 50% 45% 45% / 60% 60% 40% 40%; background: rgb(79, 122, 58); box-shadow: rgb(79, 122, 58) 0px 0px 10px 2px;"></div><div style="width: 6px; height: 5px; background: rgb(28, 24, 21); border-radius: 1px;"></div></div><div style="flex: 0 0 auto; width: 10px; display: flex; flex-direction: column; align-items: center;"><div style="width: 10px; height: 15px; border-radius: 50% 50% 45% 45% / 60% 60% 40% 40%; background: rgb(240, 72, 40); box-shadow: rgb(240, 72, 40) 0px 0px 10px 2px;"></div><div style="width: 6px; height: 5px; background: rgb(28, 24, 21); border-radius: 1px;"></div></div><div style="flex: 0 0 auto; width: 10px; display: flex; flex-direction: column; align-items: center;"><div style="width: 10px; height: 15px; border-radius: 50% 50% 45% 45% / 60% 60% 40% 40%; background: rgb(46, 116, 194); box-shadow: rgb(46, 116, 194) 0px 0px 10px 2px;"></div><div style="width: 6px; height: 5px; background: rgb(28, 24, 21); border-radius: 1px;"></div></div><div style="flex: 0 0 auto; width: 10px; display: flex; flex-direction: column; align-items: center;"><div style="width: 10px; height: 15px; border-radius: 50% 50% 45% 45% / 60% 60% 40% 40%; background: rgb(224, 146, 47); box-shadow: rgb(224, 146, 47) 0px 0px 10px 2px;"></div><div style="width: 6px; height: 5px; background: rgb(28, 24, 21); border-radius: 1px;"></div></div><div style="flex: 0 0 auto; width: 10px; display: flex; flex-direction: column; align-items: center;"><div style="width: 10px; height: 15px; border-radius: 50% 50% 45% 45% / 60% 60% 40% 40%; background: rgb(79, 122, 58); box-shadow: rgb(79, 122, 58) 0px 0px 10px 2px;"></div><div style="width: 6px; height: 5px; background: rgb(28, 24, 21); border-radius: 1px;"></div></div><div style="flex: 0 0 auto; width: 10px; display: flex; flex-direction: column; align-items: center;"><div style="width: 10px; height: 15px; border-radius: 50% 50% 45% 45% / 60% 60% 40% 40%; background: rgb(240, 72, 40); box-shadow: rgb(240, 72, 40) 0px 0px 10px 2px;"></div><div style="width: 6px; height: 5px; background: rgb(28, 24, 21); border-radius: 1px;"></div></div><div style="flex: 0 0 auto; width: 10px; display: flex; flex-direction: column; align-items: center;"><div style="width: 10px; height: 15px; border-radius: 50% 50% 45% 45% / 60% 60% 40% 40%; background: rgb(46, 116, 194); box-shadow: rgb(46, 116, 194) 0px 0px 10px 2px;"></div><div style="width: 6px; height: 5px; background: rgb(28, 24, 21); border-radius: 1px;"></div></div><div style="flex: 0 0 auto; width: 10px; display: flex; flex-direction: column; align-items: center;"><div style="width: 10px; height: 15px; border-radius: 50% 50% 45% 45% / 60% 60% 40% 40%; background: rgb(224, 146, 47); box-shadow: rgb(224, 146, 47) 0px 0px 10px 2px;"></div><div style="width: 6px; height: 5px; background: rgb(28, 24, 21); border-radius: 1px;"></div></div><div style="flex: 0 0 auto; width: 10px; display: flex; flex-direction: column; align-items: center;"><div style="width: 10px; height: 15px; border-radius: 50% 50% 45% 45% / 60% 60% 40% 40%; background: rgb(79, 122, 58); box-shadow: rgb(79, 122, 58) 0px 0px 10px 2px;"></div><div style="width: 6px; height: 5px; background: rgb(28, 24, 21); border-radius: 1px;"></div></div><div style="flex: 0 0 auto; width: 10px; display: flex; flex-direction: column; align-items: center;"><div style="width: 10px; height: 15px; border-radius: 50% 50% 45% 45% / 60% 60% 40% 40%; background: rgb(240, 72, 40); box-shadow: rgb(240, 72, 40) 0px 0px 10px 2px;"></div><div style="width: 6px; height: 5px; background: rgb(28, 24, 21); border-radius: 1px;"></div></div><div style="flex: 0 0 auto; width: 10px; display: flex; flex-direction: column; align-items: center;"><div style="width: 10px; height: 15px; border-radius: 50% 50% 45% 45% / 60% 60% 40% 40%; background: rgb(46, 116, 194); box-shadow: rgb(46, 116, 194) 0px 0px 10px 2px;"></div><div style="width: 6px; height: 5px; background: rgb(28, 24, 21); border-radius: 1px;"></div></div><div style="flex: 0 0 auto; width: 10px; display: flex; flex-direction: column; align-items: center;"><div style="width: 10px; height: 15px; border-radius: 50% 50% 45% 45% / 60% 60% 40% 40%; background: rgb(224, 146, 47); box-shadow: rgb(224, 146, 47) 0px 0px 10px 2px;"></div><div style="width: 6px; height: 5px; background: rgb(28, 24, 21); border-radius: 1px;"></div></div><div style="flex: 0 0 auto; width: 10px; display: flex; flex-direction: column; align-items: center;"><div style="width: 10px; height: 15px; border-radius: 50% 50% 45% 45% / 60% 60% 40% 40%; background: rgb(79, 122, 58); box-shadow: rgb(79, 122, 58) 0px 0px 10px 2px;"></div><div style="width: 6px; height: 5px; background: rgb(28, 24, 21); border-radius: 1px;"></div></div><div style="flex: 0 0 auto; width: 10px; display: flex; flex-direction: column; align-items: center;"><div style="width: 10px; height: 15px; border-radius: 50% 50% 45% 45% / 60% 60% 40% 40%; background: rgb(240, 72, 40); box-shadow: rgb(240, 72, 40) 0px 0px 10px 2px;"></div><div style="width: 6px; height: 5px; background: rgb(28, 24, 21); border-radius: 1px;"></div></div><div style="flex: 0 0 auto; width: 10px; display: flex; flex-direction: column; align-items: center;"><div style="width: 10px; height: 15px; border-radius: 50% 50% 45% 45% / 60% 60% 40% 40%; background: rgb(46, 116, 194); box-shadow: rgb(46, 116, 194) 0px 0px 10px 2px;"></div><div style="width: 6px; height: 5px; background: rgb(28, 24, 21); border-radius: 1px;"></div></div><div style="flex: 0 0 auto; width: 10px; display: flex; flex-direction: column; align-items: center;"><div style="width: 10px; height: 15px; border-radius: 50% 50% 45% 45% / 60% 60% 40% 40%; background: rgb(224, 146, 47); box-shadow: rgb(224, 146, 47) 0px 0px 10px 2px;"></div><div style="width: 6px; height: 5px; background: rgb(28, 24, 21); border-radius: 1px;"></div></div><div style="flex: 0 0 auto; width: 10px; display: flex; flex-direction: column; align-items: center;"><div style="width: 10px; height: 15px; border-radius: 50% 50% 45% 45% / 60% 60% 40% 40%; background: rgb(79, 122, 58); box-shadow: rgb(79, 122, 58) 0px 0px 10px 2px;"></div><div style="width: 6px; height: 5px; background: rgb(28, 24, 21); border-radius: 1px;"></div></div><div style="flex: 0 0 auto; width: 10px; display: flex; flex-direction: column; align-items: center;"><div style="width: 10px; height: 15px; border-radius: 50% 50% 45% 45% / 60% 60% 40% 40%; background: rgb(240, 72, 40); box-shadow: rgb(240, 72, 40) 0px 0px 10px 2px;"></div><div style="width: 6px; height: 5px; background: rgb(28, 24, 21); border-radius: 1px;"></div></div><div style="flex: 0 0 auto; width: 10px; display: flex; flex-direction: column; align-items: center;"><div style="width: 10px; height: 15px; border-radius: 50% 50% 45% 45% / 60% 60% 40% 40%; background: rgb(46, 116, 194); box-shadow: rgb(46, 116, 194) 0px 0px 10px 2px;"></div><div style="width: 6px; height: 5px; background: rgb(28, 24, 21); border-radius: 1px;"></div></div><div style="flex: 0 0 auto; width: 10px; display: flex; flex-direction: column; align-items: center;"><div style="width: 10px; height: 15px; border-radius: 50% 50% 45% 45% / 60% 60% 40% 40%; background: rgb(224, 146, 47); box-shadow: rgb(224, 146, 47) 0px 0px 10px 2px;"></div><div style="width: 6px; height: 5px; background: rgb(28, 24, 21); border-radius: 1px;"></div></div><div style="flex: 0 0 auto; width: 10px; display: flex; flex-direction: column; align-items: center;"><div style="width: 10px; height: 15px; border-radius: 50% 50% 45% 45% / 60% 60% 40% 40%; background: rgb(79, 122, 58); box-shadow: rgb(79, 122, 58) 0px 0px 10px 2px;"></div><div style="width: 6px; height: 5px; background: rgb(28, 24, 21); border-radius: 1px;"></div></div><div style="flex: 0 0 auto; width: 10px; display: flex; flex-direction: column; align-items: center;"><div style="width: 10px; height: 15px; border-radius: 50% 50% 45% 45% / 60% 60% 40% 40%; background: rgb(240, 72, 40); box-shadow: rgb(240, 72, 40) 0px 0px 10px 2px;"></div><div style="width: 6px; height: 5px; background: rgb(28, 24, 21); border-radius: 1px;"></div></div><div style="flex: 0 0 auto; width: 10px; display: flex; flex-direction: column; align-items: center;"><div style="width: 10px; height: 15px; border-radius: 50% 50% 45% 45% / 60% 60% 40% 40%; background: rgb(46, 116, 194); box-shadow: rgb(46, 116, 194) 0px 0px 10px 2px;"></div><div style="width: 6px; height: 5px; background: rgb(28, 24, 21); border-radius: 1px;"></div></div><div style="flex: 0 0 auto; width: 10px; display: flex; flex-direction: column; align-items: center;"><div style="width: 10px; height: 15px; border-radius: 50% 50% 45% 45% / 60% 60% 40% 40%; background: rgb(224, 146, 47); box-shadow: rgb(224, 146, 47) 0px 0px 10px 2px;"></div><div style="width: 6px; height: 5px; background: rgb(28, 24, 21); border-radius: 1px;"></div></div><div style="flex: 0 0 auto; width: 10px; display: flex; flex-direction: column; align-items: center;"><div style="width: 10px; height: 15px; border-radius: 50% 50% 45% 45% / 60% 60% 40% 40%; background: rgb(79, 122, 58); box-shadow: rgb(79, 122, 58) 0px 0px 10px 2px;"></div><div style="width: 6px; height: 5px; background: rgb(28, 24, 21); border-radius: 1px;"></div></div><div style="flex: 0 0 auto; width: 10px; display: flex; flex-direction: column; align-items: center;"><div style="width: 10px; height: 15px; border-radius: 50% 50% 45% 45% / 60% 60% 40% 40%; background: rgb(240, 72, 40); box-shadow: rgb(240, 72, 40) 0px 0px 10px 2px;"></div><div style="width: 6px; height: 5px; background: rgb(28, 24, 21); border-radius: 1px;"></div></div><div style="flex: 0 0 auto; width: 10px; display: flex; flex-direction: column; align-items: center;"><div style="width: 10px; height: 15px; border-radius: 50% 50% 45% 45% / 60% 60% 40% 40%; background: rgb(46, 116, 194); box-shadow: rgb(46, 116, 194) 0px 0px 10px 2px;"></div><div style="width: 6px; height: 5px; background: rgb(28, 24, 21); border-radius: 1px;"></div></div><div style="flex: 0 0 auto; width: 10px; display: flex; flex-direction: column; align-items: center;"><div style="width: 10px; height: 15px; border-radius: 50% 50% 45% 45% / 60% 60% 40% 40%; background: rgb(224, 146, 47); box-shadow: rgb(224, 146, 47) 0px 0px 10px 2px;"></div><div style="width: 6px; height: 5px; background: rgb(28, 24, 21); border-radius: 1px;"></div></div><div style="flex: 0 0 auto; width: 10px; display: flex; flex-direction: column; align-items: center;"><div style="width: 10px; height: 15px; border-radius: 50% 50% 45% 45% / 60% 60% 40% 40%; background: rgb(79, 122, 58); box-shadow: rgb(79, 122, 58) 0px 0px 10px 2px;"></div><div style="width: 6px; height: 5px; background: rgb(28, 24, 21); border-radius: 1px;"></div></div><div style="flex: 0 0 auto; width: 10px; display: flex; flex-direction: column; align-items: center;"><div style="width: 10px; height: 15px; border-radius: 50% 50% 45% 45% / 60% 60% 40% 40%; background: rgb(240, 72, 40); box-shadow: rgb(240, 72, 40) 0px 0px 10px 2px;"></div><div style="width: 6px; height: 5px; background: rgb(28, 24, 21); border-radius: 1px;"></div></div><div style="flex: 0 0 auto; width: 10px; display: flex; flex-direction: column; align-items: center;"><div style="width: 10px; height: 15px; border-radius: 50% 50% 45% 45% / 60% 60% 40% 40%; background: rgb(46, 116, 194); box-shadow: rgb(46, 116, 194) 0px 0px 10px 2px;"></div><div style="width: 6px; height: 5px; background: rgb(28, 24, 21); border-radius: 1px;"></div></div><div style="flex: 0 0 auto; width: 10px; display: flex; flex-direction: column; align-items: center;"><div style="width: 10px; height: 15px; border-radius: 50% 50% 45% 45% / 60% 60% 40% 40%; background: rgb(224, 146, 47); box-shadow: rgb(224, 146, 47) 0px 0px 10px 2px;"></div><div style="width: 6px; height: 5px; background: rgb(28, 24, 21); border-radius: 1px;"></div></div><div style="flex: 0 0 auto; width: 10px; display: flex; flex-direction: column; align-items: center;"><div style="width: 10px; height: 15px; border-radius: 50% 50% 45% 45% / 60% 60% 40% 40%; background: rgb(79, 122, 58); box-shadow: rgb(79, 122, 58) 0px 0px 10px 2px;"></div><div style="width: 6px; height: 5px; background: rgb(28, 24, 21); border-radius: 1px;"></div></div><div style="flex: 0 0 auto; width: 10px; display: flex; flex-direction: column; align-items: center;"><div style="width: 10px; height: 15px; border-radius: 50% 50% 45% 45% / 60% 60% 40% 40%; background: rgb(240, 72, 40); box-shadow: rgb(240, 72, 40) 0px 0px 10px 2px;"></div><div style="width: 6px; height: 5px; background: rgb(28, 24, 21); border-radius: 1px;"></div></div><div style="flex: 0 0 auto; width: 10px; display: flex; flex-direction: column; align-items: center;"><div style="width: 10px; height: 15px; border-radius: 50% 50% 45% 45% / 60% 60% 40% 40%; background: rgb(46, 116, 194); box-shadow: rgb(46, 116, 194) 0px 0px 10px 2px;"></div><div style="width: 6px; height: 5px; background: rgb(28, 24, 21); border-radius: 1px;"></div></div><div style="flex: 0 0 auto; width: 10px; display: flex; flex-direction: column; align-items: center;"><div style="width: 10px; height: 15px; border-radius: 50% 50% 45% 45% / 60% 60% 40% 40%; background: rgb(224, 146, 47); box-shadow: rgb(224, 146, 47) 0px 0px 10px 2px;"></div><div style="width: 6px; height: 5px; background: rgb(28, 24, 21); border-radius: 1px;"></div></div><div style="flex: 0 0 auto; width: 10px; display: flex; flex-direction: column; align-items: center;"><div style="width: 10px; height: 15px; border-radius: 50% 50% 45% 45% / 60% 60% 40% 40%; background: rgb(79, 122, 58); box-shadow: rgb(79, 122, 58) 0px 0px 10px 2px;"></div><div style="width: 6px; height: 5px; background: rgb(28, 24, 21); border-radius: 1px;"></div></div></div>
+        <div style="position: absolute; left: 0px; right: 0px; top: 100%; height: 22px; overflow: hidden; display: flex; align-items: flex-start; gap: 46px; padding-left: 48px; pointer-events: none;"><div style="flex: 0 0 auto; width: 10px; display: flex; flex-direction: column; align-items: center;"><div style="width: 6px; height: 5px; background: rgb(28, 24, 21); border-radius: 1px;"></div><div style="width: 10px; height: 15px; border-radius: 45% 45% 50% 50% / 40% 40% 60% 60%; background: rgb(224, 146, 47); box-shadow: rgb(224, 146, 47) 0px 0px 10px 2px;"></div></div><div style="flex: 0 0 auto; width: 10px; display: flex; flex-direction: column; align-items: center;"><div style="width: 6px; height: 5px; background: rgb(28, 24, 21); border-radius: 1px;"></div><div style="width: 10px; height: 15px; border-radius: 45% 45% 50% 50% / 40% 40% 60% 60%; background: rgb(79, 122, 58); box-shadow: rgb(79, 122, 58) 0px 0px 10px 2px;"></div></div><div style="flex: 0 0 auto; width: 10px; display: flex; flex-direction: column; align-items: center;"><div style="width: 6px; height: 5px; background: rgb(28, 24, 21); border-radius: 1px;"></div><div style="width: 10px; height: 15px; border-radius: 45% 45% 50% 50% / 40% 40% 60% 60%; background: rgb(240, 72, 40); box-shadow: rgb(240, 72, 40) 0px 0px 10px 2px;"></div></div><div style="flex: 0 0 auto; width: 10px; display: flex; flex-direction: column; align-items: center;"><div style="width: 6px; height: 5px; background: rgb(28, 24, 21); border-radius: 1px;"></div><div style="width: 10px; height: 15px; border-radius: 45% 45% 50% 50% / 40% 40% 60% 60%; background: rgb(46, 116, 194); box-shadow: rgb(46, 116, 194) 0px 0px 10px 2px;"></div></div><div style="flex: 0 0 auto; width: 10px; display: flex; flex-direction: column; align-items: center;"><div style="width: 6px; height: 5px; background: rgb(28, 24, 21); border-radius: 1px;"></div><div style="width: 10px; height: 15px; border-radius: 45% 45% 50% 50% / 40% 40% 60% 60%; background: rgb(224, 146, 47); box-shadow: rgb(224, 146, 47) 0px 0px 10px 2px;"></div></div><div style="flex: 0 0 auto; width: 10px; display: flex; flex-direction: column; align-items: center;"><div style="width: 6px; height: 5px; background: rgb(28, 24, 21); border-radius: 1px;"></div><div style="width: 10px; height: 15px; border-radius: 45% 45% 50% 50% / 40% 40% 60% 60%; background: rgb(79, 122, 58); box-shadow: rgb(79, 122, 58) 0px 0px 10px 2px;"></div></div><div style="flex: 0 0 auto; width: 10px; display: flex; flex-direction: column; align-items: center;"><div style="width: 6px; height: 5px; background: rgb(28, 24, 21); border-radius: 1px;"></div><div style="width: 10px; height: 15px; border-radius: 45% 45% 50% 50% / 40% 40% 60% 60%; background: rgb(240, 72, 40); box-shadow: rgb(240, 72, 40) 0px 0px 10px 2px;"></div></div><div style="flex: 0 0 auto; width: 10px; display: flex; flex-direction: column; align-items: center;"><div style="width: 6px; height: 5px; background: rgb(28, 24, 21); border-radius: 1px;"></div><div style="width: 10px; height: 15px; border-radius: 45% 45% 50% 50% / 40% 40% 60% 60%; background: rgb(46, 116, 194); box-shadow: rgb(46, 116, 194) 0px 0px 10px 2px;"></div></div><div style="flex: 0 0 auto; width: 10px; display: flex; flex-direction: column; align-items: center;"><div style="width: 6px; height: 5px; background: rgb(28, 24, 21); border-radius: 1px;"></div><div style="width: 10px; height: 15px; border-radius: 45% 45% 50% 50% / 40% 40% 60% 60%; background: rgb(224, 146, 47); box-shadow: rgb(224, 146, 47) 0px 0px 10px 2px;"></div></div><div style="flex: 0 0 auto; width: 10px; display: flex; flex-direction: column; align-items: center;"><div style="width: 6px; height: 5px; background: rgb(28, 24, 21); border-radius: 1px;"></div><div style="width: 10px; height: 15px; border-radius: 45% 45% 50% 50% / 40% 40% 60% 60%; background: rgb(79, 122, 58); box-shadow: rgb(79, 122, 58) 0px 0px 10px 2px;"></div></div><div style="flex: 0 0 auto; width: 10px; display: flex; flex-direction: column; align-items: center;"><div style="width: 6px; height: 5px; background: rgb(28, 24, 21); border-radius: 1px;"></div><div style="width: 10px; height: 15px; border-radius: 45% 45% 50% 50% / 40% 40% 60% 60%; background: rgb(240, 72, 40); box-shadow: rgb(240, 72, 40) 0px 0px 10px 2px;"></div></div><div style="flex: 0 0 auto; width: 10px; display: flex; flex-direction: column; align-items: center;"><div style="width: 6px; height: 5px; background: rgb(28, 24, 21); border-radius: 1px;"></div><div style="width: 10px; height: 15px; border-radius: 45% 45% 50% 50% / 40% 40% 60% 60%; background: rgb(46, 116, 194); box-shadow: rgb(46, 116, 194) 0px 0px 10px 2px;"></div></div><div style="flex: 0 0 auto; width: 10px; display: flex; flex-direction: column; align-items: center;"><div style="width: 6px; height: 5px; background: rgb(28, 24, 21); border-radius: 1px;"></div><div style="width: 10px; height: 15px; border-radius: 45% 45% 50% 50% / 40% 40% 60% 60%; background: rgb(224, 146, 47); box-shadow: rgb(224, 146, 47) 0px 0px 10px 2px;"></div></div><div style="flex: 0 0 auto; width: 10px; display: flex; flex-direction: column; align-items: center;"><div style="width: 6px; height: 5px; background: rgb(28, 24, 21); border-radius: 1px;"></div><div style="width: 10px; height: 15px; border-radius: 45% 45% 50% 50% / 40% 40% 60% 60%; background: rgb(79, 122, 58); box-shadow: rgb(79, 122, 58) 0px 0px 10px 2px;"></div></div><div style="flex: 0 0 auto; width: 10px; display: flex; flex-direction: column; align-items: center;"><div style="width: 6px; height: 5px; background: rgb(28, 24, 21); border-radius: 1px;"></div><div style="width: 10px; height: 15px; border-radius: 45% 45% 50% 50% / 40% 40% 60% 60%; background: rgb(240, 72, 40); box-shadow: rgb(240, 72, 40) 0px 0px 10px 2px;"></div></div><div style="flex: 0 0 auto; width: 10px; display: flex; flex-direction: column; align-items: center;"><div style="width: 6px; height: 5px; background: rgb(28, 24, 21); border-radius: 1px;"></div><div style="width: 10px; height: 15px; border-radius: 45% 45% 50% 50% / 40% 40% 60% 60%; background: rgb(46, 116, 194); box-shadow: rgb(46, 116, 194) 0px 0px 10px 2px;"></div></div><div style="flex: 0 0 auto; width: 10px; display: flex; flex-direction: column; align-items: center;"><div style="width: 6px; height: 5px; background: rgb(28, 24, 21); border-radius: 1px;"></div><div style="width: 10px; height: 15px; border-radius: 45% 45% 50% 50% / 40% 40% 60% 60%; background: rgb(224, 146, 47); box-shadow: rgb(224, 146, 47) 0px 0px 10px 2px;"></div></div><div style="flex: 0 0 auto; width: 10px; display: flex; flex-direction: column; align-items: center;"><div style="width: 6px; height: 5px; background: rgb(28, 24, 21); border-radius: 1px;"></div><div style="width: 10px; height: 15px; border-radius: 45% 45% 50% 50% / 40% 40% 60% 60%; background: rgb(79, 122, 58); box-shadow: rgb(79, 122, 58) 0px 0px 10px 2px;"></div></div><div style="flex: 0 0 auto; width: 10px; display: flex; flex-direction: column; align-items: center;"><div style="width: 6px; height: 5px; background: rgb(28, 24, 21); border-radius: 1px;"></div><div style="width: 10px; height: 15px; border-radius: 45% 45% 50% 50% / 40% 40% 60% 60%; background: rgb(240, 72, 40); box-shadow: rgb(240, 72, 40) 0px 0px 10px 2px;"></div></div><div style="flex: 0 0 auto; width: 10px; display: flex; flex-direction: column; align-items: center;"><div style="width: 6px; height: 5px; background: rgb(28, 24, 21); border-radius: 1px;"></div><div style="width: 10px; height: 15px; border-radius: 45% 45% 50% 50% / 40% 40% 60% 60%; background: rgb(46, 116, 194); box-shadow: rgb(46, 116, 194) 0px 0px 10px 2px;"></div></div><div style="flex: 0 0 auto; width: 10px; display: flex; flex-direction: column; align-items: center;"><div style="width: 6px; height: 5px; background: rgb(28, 24, 21); border-radius: 1px;"></div><div style="width: 10px; height: 15px; border-radius: 45% 45% 50% 50% / 40% 40% 60% 60%; background: rgb(224, 146, 47); box-shadow: rgb(224, 146, 47) 0px 0px 10px 2px;"></div></div><div style="flex: 0 0 auto; width: 10px; display: flex; flex-direction: column; align-items: center;"><div style="width: 6px; height: 5px; background: rgb(28, 24, 21); border-radius: 1px;"></div><div style="width: 10px; height: 15px; border-radius: 45% 45% 50% 50% / 40% 40% 60% 60%; background: rgb(79, 122, 58); box-shadow: rgb(79, 122, 58) 0px 0px 10px 2px;"></div></div><div style="flex: 0 0 auto; width: 10px; display: flex; flex-direction: column; align-items: center;"><div style="width: 6px; height: 5px; background: rgb(28, 24, 21); border-radius: 1px;"></div><div style="width: 10px; height: 15px; border-radius: 45% 45% 50% 50% / 40% 40% 60% 60%; background: rgb(240, 72, 40); box-shadow: rgb(240, 72, 40) 0px 0px 10px 2px;"></div></div><div style="flex: 0 0 auto; width: 10px; display: flex; flex-direction: column; align-items: center;"><div style="width: 6px; height: 5px; background: rgb(28, 24, 21); border-radius: 1px;"></div><div style="width: 10px; height: 15px; border-radius: 45% 45% 50% 50% / 40% 40% 60% 60%; background: rgb(46, 116, 194); box-shadow: rgb(46, 116, 194) 0px 0px 10px 2px;"></div></div><div style="flex: 0 0 auto; width: 10px; display: flex; flex-direction: column; align-items: center;"><div style="width: 6px; height: 5px; background: rgb(28, 24, 21); border-radius: 1px;"></div><div style="width: 10px; height: 15px; border-radius: 45% 45% 50% 50% / 40% 40% 60% 60%; background: rgb(224, 146, 47); box-shadow: rgb(224, 146, 47) 0px 0px 10px 2px;"></div></div><div style="flex: 0 0 auto; width: 10px; display: flex; flex-direction: column; align-items: center;"><div style="width: 6px; height: 5px; background: rgb(28, 24, 21); border-radius: 1px;"></div><div style="width: 10px; height: 15px; border-radius: 45% 45% 50% 50% / 40% 40% 60% 60%; background: rgb(79, 122, 58); box-shadow: rgb(79, 122, 58) 0px 0px 10px 2px;"></div></div><div style="flex: 0 0 auto; width: 10px; display: flex; flex-direction: column; align-items: center;"><div style="width: 6px; height: 5px; background: rgb(28, 24, 21); border-radius: 1px;"></div><div style="width: 10px; height: 15px; border-radius: 45% 45% 50% 50% / 40% 40% 60% 60%; background: rgb(240, 72, 40); box-shadow: rgb(240, 72, 40) 0px 0px 10px 2px;"></div></div><div style="flex: 0 0 auto; width: 10px; display: flex; flex-direction: column; align-items: center;"><div style="width: 6px; height: 5px; background: rgb(28, 24, 21); border-radius: 1px;"></div><div style="width: 10px; height: 15px; border-radius: 45% 45% 50% 50% / 40% 40% 60% 60%; background: rgb(46, 116, 194); box-shadow: rgb(46, 116, 194) 0px 0px 10px 2px;"></div></div><div style="flex: 0 0 auto; width: 10px; display: flex; flex-direction: column; align-items: center;"><div style="width: 6px; height: 5px; background: rgb(28, 24, 21); border-radius: 1px;"></div><div style="width: 10px; height: 15px; border-radius: 45% 45% 50% 50% / 40% 40% 60% 60%; background: rgb(224, 146, 47); box-shadow: rgb(224, 146, 47) 0px 0px 10px 2px;"></div></div><div style="flex: 0 0 auto; width: 10px; display: flex; flex-direction: column; align-items: center;"><div style="width: 6px; height: 5px; background: rgb(28, 24, 21); border-radius: 1px;"></div><div style="width: 10px; height: 15px; border-radius: 45% 45% 50% 50% / 40% 40% 60% 60%; background: rgb(79, 122, 58); box-shadow: rgb(79, 122, 58) 0px 0px 10px 2px;"></div></div><div style="flex: 0 0 auto; width: 10px; display: flex; flex-direction: column; align-items: center;"><div style="width: 6px; height: 5px; background: rgb(28, 24, 21); border-radius: 1px;"></div><div style="width: 10px; height: 15px; border-radius: 45% 45% 50% 50% / 40% 40% 60% 60%; background: rgb(240, 72, 40); box-shadow: rgb(240, 72, 40) 0px 0px 10px 2px;"></div></div><div style="flex: 0 0 auto; width: 10px; display: flex; flex-direction: column; align-items: center;"><div style="width: 6px; height: 5px; background: rgb(28, 24, 21); border-radius: 1px;"></div><div style="width: 10px; height: 15px; border-radius: 45% 45% 50% 50% / 40% 40% 60% 60%; background: rgb(46, 116, 194); box-shadow: rgb(46, 116, 194) 0px 0px 10px 2px;"></div></div><div style="flex: 0 0 auto; width: 10px; display: flex; flex-direction: column; align-items: center;"><div style="width: 6px; height: 5px; background: rgb(28, 24, 21); border-radius: 1px;"></div><div style="width: 10px; height: 15px; border-radius: 45% 45% 50% 50% / 40% 40% 60% 60%; background: rgb(224, 146, 47); box-shadow: rgb(224, 146, 47) 0px 0px 10px 2px;"></div></div><div style="flex: 0 0 auto; width: 10px; display: flex; flex-direction: column; align-items: center;"><div style="width: 6px; height: 5px; background: rgb(28, 24, 21); border-radius: 1px;"></div><div style="width: 10px; height: 15px; border-radius: 45% 45% 50% 50% / 40% 40% 60% 60%; background: rgb(79, 122, 58); box-shadow: rgb(79, 122, 58) 0px 0px 10px 2px;"></div></div><div style="flex: 0 0 auto; width: 10px; display: flex; flex-direction: column; align-items: center;"><div style="width: 6px; height: 5px; background: rgb(28, 24, 21); border-radius: 1px;"></div><div style="width: 10px; height: 15px; border-radius: 45% 45% 50% 50% / 40% 40% 60% 60%; background: rgb(240, 72, 40); box-shadow: rgb(240, 72, 40) 0px 0px 10px 2px;"></div></div><div style="flex: 0 0 auto; width: 10px; display: flex; flex-direction: column; align-items: center;"><div style="width: 6px; height: 5px; background: rgb(28, 24, 21); border-radius: 1px;"></div><div style="width: 10px; height: 15px; border-radius: 45% 45% 50% 50% / 40% 40% 60% 60%; background: rgb(46, 116, 194); box-shadow: rgb(46, 116, 194) 0px 0px 10px 2px;"></div></div><div style="flex: 0 0 auto; width: 10px; display: flex; flex-direction: column; align-items: center;"><div style="width: 6px; height: 5px; background: rgb(28, 24, 21); border-radius: 1px;"></div><div style="width: 10px; height: 15px; border-radius: 45% 45% 50% 50% / 40% 40% 60% 60%; background: rgb(224, 146, 47); box-shadow: rgb(224, 146, 47) 0px 0px 10px 2px;"></div></div><div style="flex: 0 0 auto; width: 10px; display: flex; flex-direction: column; align-items: center;"><div style="width: 6px; height: 5px; background: rgb(28, 24, 21); border-radius: 1px;"></div><div style="width: 10px; height: 15px; border-radius: 45% 45% 50% 50% / 40% 40% 60% 60%; background: rgb(79, 122, 58); box-shadow: rgb(79, 122, 58) 0px 0px 10px 2px;"></div></div><div style="flex: 0 0 auto; width: 10px; display: flex; flex-direction: column; align-items: center;"><div style="width: 6px; height: 5px; background: rgb(28, 24, 21); border-radius: 1px;"></div><div style="width: 10px; height: 15px; border-radius: 45% 45% 50% 50% / 40% 40% 60% 60%; background: rgb(240, 72, 40); box-shadow: rgb(240, 72, 40) 0px 0px 10px 2px;"></div></div><div style="flex: 0 0 auto; width: 10px; display: flex; flex-direction: column; align-items: center;"><div style="width: 6px; height: 5px; background: rgb(28, 24, 21); border-radius: 1px;"></div><div style="width: 10px; height: 15px; border-radius: 45% 45% 50% 50% / 40% 40% 60% 60%; background: rgb(46, 116, 194); box-shadow: rgb(46, 116, 194) 0px 0px 10px 2px;"></div></div><div style="flex: 0 0 auto; width: 10px; display: flex; flex-direction: column; align-items: center;"><div style="width: 6px; height: 5px; background: rgb(28, 24, 21); border-radius: 1px;"></div><div style="width: 10px; height: 15px; border-radius: 45% 45% 50% 50% / 40% 40% 60% 60%; background: rgb(224, 146, 47); box-shadow: rgb(224, 146, 47) 0px 0px 10px 2px;"></div></div><div style="flex: 0 0 auto; width: 10px; display: flex; flex-direction: column; align-items: center;"><div style="width: 6px; height: 5px; background: rgb(28, 24, 21); border-radius: 1px;"></div><div style="width: 10px; height: 15px; border-radius: 45% 45% 50% 50% / 40% 40% 60% 60%; background: rgb(79, 122, 58); box-shadow: rgb(79, 122, 58) 0px 0px 10px 2px;"></div></div><div style="flex: 0 0 auto; width: 10px; display: flex; flex-direction: column; align-items: center;"><div style="width: 6px; height: 5px; background: rgb(28, 24, 21); border-radius: 1px;"></div><div style="width: 10px; height: 15px; border-radius: 45% 45% 50% 50% / 40% 40% 60% 60%; background: rgb(240, 72, 40); box-shadow: rgb(240, 72, 40) 0px 0px 10px 2px;"></div></div><div style="flex: 0 0 auto; width: 10px; display: flex; flex-direction: column; align-items: center;"><div style="width: 6px; height: 5px; background: rgb(28, 24, 21); border-radius: 1px;"></div><div style="width: 10px; height: 15px; border-radius: 45% 45% 50% 50% / 40% 40% 60% 60%; background: rgb(46, 116, 194); box-shadow: rgb(46, 116, 194) 0px 0px 10px 2px;"></div></div><div style="flex: 0 0 auto; width: 10px; display: flex; flex-direction: column; align-items: center;"><div style="width: 6px; height: 5px; background: rgb(28, 24, 21); border-radius: 1px;"></div><div style="width: 10px; height: 15px; border-radius: 45% 45% 50% 50% / 40% 40% 60% 60%; background: rgb(224, 146, 47); box-shadow: rgb(224, 146, 47) 0px 0px 10px 2px;"></div></div><div style="flex: 0 0 auto; width: 10px; display: flex; flex-direction: column; align-items: center;"><div style="width: 6px; height: 5px; background: rgb(28, 24, 21); border-radius: 1px;"></div><div style="width: 10px; height: 15px; border-radius: 45% 45% 50% 50% / 40% 40% 60% 60%; background: rgb(79, 122, 58); box-shadow: rgb(79, 122, 58) 0px 0px 10px 2px;"></div></div><div style="flex: 0 0 auto; width: 10px; display: flex; flex-direction: column; align-items: center;"><div style="width: 6px; height: 5px; background: rgb(28, 24, 21); border-radius: 1px;"></div><div style="width: 10px; height: 15px; border-radius: 45% 45% 50% 50% / 40% 40% 60% 60%; background: rgb(240, 72, 40); box-shadow: rgb(240, 72, 40) 0px 0px 10px 2px;"></div></div><div style="flex: 0 0 auto; width: 10px; display: flex; flex-direction: column; align-items: center;"><div style="width: 6px; height: 5px; background: rgb(28, 24, 21); border-radius: 1px;"></div><div style="width: 10px; height: 15px; border-radius: 45% 45% 50% 50% / 40% 40% 60% 60%; background: rgb(46, 116, 194); box-shadow: rgb(46, 116, 194) 0px 0px 10px 2px;"></div></div></div>
+      </div>
+    
+  </section>
+
+  <section id="prize" style="background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url({{ 'fcs-sweeps-snowy-wood-bg.webp' | asset_url }}) center top / cover no-repeat rgb(255, 255, 255); scroll-margin-top: 80px;">
+    <div style="max-width: 1240px; margin: 0px auto; padding: 150px 24px 96px; display: flex; flex-wrap: wrap; gap: 56px; align-items: center;">
+      <div style="flex: 1 1 400px; min-width: 0px; max-width: 560px; margin: 0px auto; position: relative;">
+        <div style="display: grid; grid-template-columns: repeat(2, minmax(0px, 1fr)); gap: 22px 20px; padding-bottom: 36px;">
+          <figure style="margin: 0px; background: rgb(255, 255, 255); border: 2px solid rgb(28, 24, 21); border-radius: 6px; box-shadow: rgb(28, 24, 21) 4px 4px 0px; padding: 8px 8px 10px; display: flex; flex-direction: column; gap: 8px; transform: rotate(-3deg) translateY(0px);">
+            <img src="{{ 'fcs-sweeps-holiday-original.webp' | asset_url }}" alt="Original caddy" style="width: 100%; aspect-ratio: 1 / 1; object-fit: cover; display: block; border-radius: 3px;">
+            <figcaption style="display: flex; justify-content: space-between; align-items: baseline; gap: 8px; font-family: Oswald, sans-serif; text-transform: uppercase; letter-spacing: 0.12em; font-size: 13px; color: rgb(28, 24, 21);"><span style="color: rgb(240, 72, 40); font-weight: 600;">Jan</span><span>Original</span></figcaption>
+          </figure>
+          <figure style="margin: 0px; background: rgb(255, 255, 255); border: 2px solid rgb(28, 24, 21); border-radius: 6px; box-shadow: rgb(28, 24, 21) 4px 4px 0px; padding: 8px 8px 10px; display: flex; flex-direction: column; gap: 8px; transform: rotate(2.5deg) translateY(36px);">
+            <img src="{{ 'fcs-sweeps-holiday-kicker.webp' | asset_url }}" alt="Kicker caddy" style="width: 100%; aspect-ratio: 1 / 1; object-fit: cover; display: block; border-radius: 3px;">
+            <figcaption style="display: flex; justify-content: space-between; align-items: baseline; gap: 8px; font-family: Oswald, sans-serif; text-transform: uppercase; letter-spacing: 0.12em; font-size: 13px; color: rgb(28, 24, 21);"><span style="color: rgb(240, 72, 40); font-weight: 600;">Feb</span><span>Kicker</span></figcaption>
+          </figure>
+          <figure style="margin: 0px; background: rgb(255, 255, 255); border: 2px solid rgb(28, 24, 21); border-radius: 6px; box-shadow: rgb(28, 24, 21) 4px 4px 0px; padding: 8px 8px 10px; display: flex; flex-direction: column; gap: 8px; transform: rotate(2deg) translateY(0px);">
+            <img src="{{ 'fcs-sweeps-holiday-sweet-heat-bbq.webp' | asset_url }}" alt="Sweet Heat BBQ caddy" style="width: 100%; aspect-ratio: 1 / 1; object-fit: cover; display: block; border-radius: 3px;">
+            <figcaption style="display: flex; justify-content: space-between; align-items: baseline; gap: 8px; font-family: Oswald, sans-serif; text-transform: uppercase; letter-spacing: 0.12em; font-size: 13px; color: rgb(28, 24, 21);"><span style="color: rgb(240, 72, 40); font-weight: 600;">Mar</span><span>Sweet Heat BBQ</span></figcaption>
+          </figure>
+          <figure style="margin: 0px; background: rgb(255, 255, 255); border: 2px solid rgb(28, 24, 21); border-radius: 6px; box-shadow: rgb(28, 24, 21) 4px 4px 0px; padding: 8px 8px 10px; display: flex; flex-direction: column; gap: 8px; transform: rotate(-2.5deg) translateY(36px);">
+            <img src="{{ 'fcs-sweeps-holiday-teriyaki.webp' | asset_url }}" alt="Teriyaki caddy" style="width: 100%; aspect-ratio: 1 / 1; object-fit: cover; display: block; border-radius: 3px;">
+            <figcaption style="display: flex; justify-content: space-between; align-items: baseline; gap: 8px; font-family: Oswald, sans-serif; text-transform: uppercase; letter-spacing: 0.12em; font-size: 13px; color: rgb(28, 24, 21);"><span style="color: rgb(240, 72, 40); font-weight: 600;">Apr</span><span>Teriyaki</span></figcaption>
+          </figure>
+        </div>
+        <div style="position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%) rotate(-8deg); width: 112px; height: 112px; border-radius: 50%; background: rgb(240, 72, 40); color: rgb(255, 255, 255); border: 3px solid rgb(28, 24, 21); box-shadow: rgb(28, 24, 21) 4px 4px 0px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;">
+          <span style="font-family: Anton, sans-serif; font-size: 40px; line-height: 0.95;">×12</span>
+          <span style="font-family: Oswald, sans-serif; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase;">Months</span>
+        </div>
+      </div>
+      <div style="flex: 1 1 520px; min-width: 0px; display: flex; flex-direction: column; gap: 22px;">
+        <div style="display: contents;"><header style="display: flex; flex-direction: column; gap: 10px; align-items: flex-start; text-align: left;"><span style="font-family: var(--font-condensed); font-weight: 600; font-size: var(--text-sm); text-transform: uppercase; letter-spacing: var(--tracking-widest); color: var(--flame);">The Grand Prize</span><h2 style="font-family: var(--font-display); text-transform: uppercase; line-height: var(--leading-none); letter-spacing: var(--tracking-tight); font-size: var(--text-3xl); color: var(--char-900); margin: 0px;">The Gift That Keeps On<span style="color: var(--flame);"> Smoking</span></h2></header></div>
+        <p style="margin: 0px; font-size: 18px; line-height: 1.6; color: rgb(61, 53, 47); max-width: 600px; text-wrap: pretty;">One lucky winner gets a year's supply of FireCreek Snacks: a 20-count box delivered every month for twelve straight months, starting January 2027. Pick your flavor each month, or let us surprise you. Either way, your snack drawer is sorted until 2028. And don't forget, our meat sticks are always made with real hickory smoke, never that liquid nonsense.</p>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 14px; margin-top: 6px;">
+          <div style="border: 2px solid rgb(28, 24, 21); border-radius: 6px; padding: 18px 20px; background: rgb(250, 250, 249); display: flex; flex-direction: column; gap: 4px;">
+            <span style="font-family: Anton, sans-serif; font-size: 52px; line-height: 1; color: rgb(240, 72, 40);">12</span>
+            <span style="font-family: Oswald, sans-serif; font-size: 14px; letter-spacing: 0.14em; text-transform: uppercase;">Monthly caddies</span>
+          </div>
+          <div style="border: 2px solid rgb(28, 24, 21); border-radius: 6px; padding: 18px 20px; background: rgb(250, 250, 249); display: flex; flex-direction: column; gap: 4px;">
+            <span style="font-family: Anton, sans-serif; font-size: 52px; line-height: 1; color: rgb(240, 72, 40);">240</span>
+            <span style="font-family: Oswald, sans-serif; font-size: 14px; letter-spacing: 0.14em; text-transform: uppercase;">Meat sticks</span>
+          </div>
+          <div style="border: 2px solid rgb(28, 24, 21); border-radius: 6px; padding: 18px 20px; background: rgb(250, 250, 249); display: flex; flex-direction: column; gap: 4px;">
+            <span style="font-family: Anton, sans-serif; font-size: 52px; line-height: 1; color: rgb(240, 72, 40);">$598</span>
+            <span style="font-family: Oswald, sans-serif; font-size: 14px; letter-spacing: 0.14em; text-transform: uppercase;">Approx. retail value</span>
+          </div>
+        </div>
+        <p style="margin: 0px; font-size: 14px; color: rgb(117, 104, 96);">Winner drawn on or about December 31, 2026. Ships to the lower 48 and D.C.</p>
+        <div style="display: flex; justify-content: center;">
+          <div style="display: contents;"><a href="/collections/firecreek-snacks-sticks" target="_blank" rel="noopener" class="fcs-btn" style="display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 16px 30px; width: auto; font-family: var(--font-condensed); font-weight: 600; font-size: 16px; text-transform: uppercase; letter-spacing: 0.06em; line-height: 1; color: var(--paper); background: var(--flame); border: 2px solid var(--char-900); border-radius: var(--radius-md); cursor: pointer; box-shadow: var(--shadow-stamp); transition: background var(--dur-fast) var(--ease-out), transform var(--dur-fast) var(--ease-out), box-shadow var(--dur-fast) var(--ease-out); opacity: 1; filter: none; user-select: none; text-decoration: none; box-sizing: border-box;">Shop Now</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="enter" style="background: linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6)), url({{ 'fcs-sweeps-evergreen-bokeh-bg.webp' | asset_url }}) center center / cover no-repeat rgb(255, 255, 255); border-top: 2px solid rgb(28, 24, 21); border-bottom: 2px solid rgb(28, 24, 21); scroll-margin-top: 80px;">
+    <div style="max-width: 1240px; margin: 0px auto; padding: 88px 24px; display: flex; flex-direction: column; gap: 44px;">
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 14px; text-align: center;">
+        <div style="display: contents;"><header style="display: flex; flex-direction: column; gap: 10px; align-items: center; text-align: center;"><span class="fc-kicker-rule" style="font-family: var(--font-condensed); font-weight: 600; font-size: var(--text-sm); text-transform: uppercase; letter-spacing: var(--tracking-widest); color: var(--flame);">How to Enter</span><h2 style="font-family: var(--font-display); text-transform: uppercase; line-height: var(--leading-none); letter-spacing: var(--tracking-tight); font-size: var(--text-3xl); color: var(--char-900); margin: 0px;">3 Ways to Get on the<span style="color: var(--flame);"> Nice List</span></h2></header></div>
+        <p style="margin: 0px; font-size: 18px; line-height: 1.6; color: rgb(61, 53, 47); max-width: 620px; text-wrap: pretty;">Pick one, pick all three. Every entry is another shot at the drawing, and they stack like presents under the tree.</p>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; align-items: stretch;">
+
+        <div style="background: rgb(255, 255, 255); border: 2px solid rgb(28, 24, 21); border-radius: 6px; box-shadow: rgba(28, 24, 21, 0.12) 0px 6px 18px; display: flex; flex-direction: column; overflow: hidden;">
+          <div style="background: rgb(240, 72, 40); color: rgb(255, 255, 255); padding: 20px 24px; display: flex; align-items: center; justify-content: space-between; gap: 12px; border-bottom: 2px solid rgb(28, 24, 21);">
+            <span style="font-family: Anton, sans-serif; font-size: 64px; line-height: 0.9;">01</span>
+            <span style="font-family: Oswald, sans-serif; font-size: 14px; letter-spacing: 0.16em; text-transform: uppercase; background: rgb(255, 255, 255); color: rgb(28, 24, 21); border: 2px solid rgb(28, 24, 21); padding: 6px 10px; border-radius: 4px;">1 entry per $10</span>
+          </div>
+          <div style="padding: 24px; display: flex; flex-direction: column; gap: 16px; flex: 1 1 0%;">
+            <div style="display: flex; flex-direction: column; gap: 4px;">
+              <span style="font-family: Oswald, sans-serif; font-size: 14px; letter-spacing: 0.18em; text-transform: uppercase; color: rgb(240, 72, 40);">Shop &amp; Enter</span>
+              <h3 style="margin: 0px; font-family: Anton, sans-serif; font-weight: 400; font-size: 36px; line-height: 1; text-transform: uppercase;">Treat Yo' Elf</h3>
+            </div>
+            <ol style="margin: 0px; padding-left: 20px; display: flex; flex-direction: column; gap: 10px; font-size: 16px; line-height: 1.5; color: rgb(61, 53, 47);">
+              <li>Place an order at <a href="/">firecreeksnacks.com</a> between Nov 1 and Dec 20.</li>
+              <li>Get 1 entry for every $10 spent (subtotal after discounts, before tax and shipping).</li>
+              <li>That's it. Entries land automatically on the email you use at checkout.</li>
+            </ol>
+            <div style="background: rgb(250, 250, 249); border: 1px dashed rgb(155, 155, 150); border-radius: 6px; padding: 12px 14px; font-size: 14px; line-height: 1.5; color: rgb(61, 53, 47);"><strong style="color: rgb(28, 24, 21);">New here?</strong> Any order with a 4-Piece Sampler Pack earns at least 2 entries.</div>
+            <p style="margin: 0px; font-size: 13px; color: rgb(117, 104, 96); line-height: 1.5;">Amazon, TikTok Shop and other retailer purchases don't count.</p>
+            <div style="margin-top: auto; padding-top: 6px;">
+              <div style="display: contents;"><a href="/collections/firecreek-snacks-sticks" target="_blank" rel="noopener" class="fcs-btn" style="display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 22px; width: 100%; font-family: var(--font-condensed); font-weight: 600; font-size: 14px; text-transform: uppercase; letter-spacing: 0.06em; line-height: 1; color: var(--paper); background: var(--flame); border: 2px solid var(--char-900); border-radius: var(--radius-md); cursor: pointer; box-shadow: var(--shadow-stamp); transition: background var(--dur-fast) var(--ease-out), transform var(--dur-fast) var(--ease-out), box-shadow var(--dur-fast) var(--ease-out); opacity: 1; filter: none; user-select: none; text-decoration: none; box-sizing: border-box;">Shop Now</a></div>
+            </div>
+          </div>
+        </div>
+
+        <div style="background: rgb(255, 255, 255); border: 2px solid rgb(28, 24, 21); border-radius: 6px; box-shadow: rgba(28, 24, 21, 0.12) 0px 6px 18px; display: flex; flex-direction: column; overflow: hidden;">
+          <div style="background: rgb(197, 52, 42); color: rgb(255, 255, 255); padding: 20px 24px; display: flex; align-items: center; justify-content: space-between; gap: 12px; border-bottom: 2px solid rgb(28, 24, 21);">
+            <span style="font-family: Anton, sans-serif; font-size: 64px; line-height: 0.9;">02</span>
+            <span style="font-family: Oswald, sans-serif; font-size: 14px; letter-spacing: 0.16em; text-transform: uppercase; background: rgb(255, 255, 255); color: rgb(28, 24, 21); border: 2px solid rgb(28, 24, 21); padding: 6px 10px; border-radius: 4px;">2 entries per post</span>
+          </div>
+          <div style="padding: 24px; display: flex; flex-direction: column; gap: 16px; flex: 1 1 0%;">
+            <div style="display: flex; flex-direction: column; gap: 4px;">
+              <span style="font-family: Oswald, sans-serif; font-size: 14px; letter-spacing: 0.18em; text-transform: uppercase; color: rgb(240, 72, 40);">Post &amp; Enter</span>
+              <h3 style="margin: 0px; font-family: Anton, sans-serif; font-weight: 400; font-size: 36px; line-height: 1; text-transform: uppercase;">Sleigh the Feed</h3>
+            </div>
+            <ol style="margin: 0px; padding-left: 20px; display: flex; flex-direction: column; gap: 10px; font-size: 16px; line-height: 1.5; color: rgb(61, 53, 47);">
+              <li>Post a photo or video featuring a FireCreek product on Instagram or TikTok from a public account.</li>
+              <li>Tag <strong style="color: rgb(28, 24, 21);">@firecreeksnacks</strong> and add <strong style="color: rgb(28, 24, 21);">#firecreekgiveaway</strong> to your caption.</li>
+              <li>Each qualifying post earns 2 entries, up to 20 posts. Winners get a DM.</li>
+            </ol>
+            <div style="background: rgb(250, 250, 249); border: 1px dashed rgb(155, 155, 150); border-radius: 6px; padding: 12px 14px; font-family: Oswald, sans-serif; font-size: 17px; letter-spacing: 0.04em; color: rgb(28, 24, 21); text-align: center;">@firecreeksnacks #firecreekgiveaway</div>
+            <p style="margin: 0px; font-size: 13px; color: rgb(117, 104, 96); line-height: 1.5;">No purchase required. Your stocking-stuffer selfie counts.</p>
+            <div style="margin-top: auto; padding-top: 6px;">
+              <div style="display: flex; flex-direction: column; gap: 8px;">
+                <span style="font-family: Oswald, sans-serif; font-size: 14px; letter-spacing: 0.18em; text-transform: uppercase; color: rgb(28, 24, 21);">Follow Us</span>
+                <div style="display: grid; grid-template-columns: repeat(3, minmax(0px, 1fr)); gap: 8px;">
+                  <a href="https://www.instagram.com/firecreeksnacks" target="_blank" rel="noopener" class="scp2 scp3" style="display: flex; align-items: center; justify-content: center; height: 40px; box-sizing: border-box; background: rgb(240, 72, 40); color: rgb(255, 255, 255); border: 2px solid rgb(28, 24, 21); border-radius: 6px; box-shadow: rgb(28, 24, 21) 4px 4px 0px; text-decoration: none; font-family: Oswald, sans-serif; font-size: 14px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;">Instagram</a>
+                  <a href="https://www.tiktok.com/@firecreeksnacks" target="_blank" rel="noopener" class="scp2 scp3" style="display: flex; align-items: center; justify-content: center; height: 40px; box-sizing: border-box; background: rgb(240, 72, 40); color: rgb(255, 255, 255); border: 2px solid rgb(28, 24, 21); border-radius: 6px; box-shadow: rgb(28, 24, 21) 4px 4px 0px; text-decoration: none; font-family: Oswald, sans-serif; font-size: 14px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;">TikTok</a>
+                  <a href="https://www.facebook.com/firecreeksnacks" target="_blank" rel="noopener" class="scp2 scp3" style="display: flex; align-items: center; justify-content: center; height: 40px; box-sizing: border-box; background: rgb(240, 72, 40); color: rgb(255, 255, 255); border: 2px solid rgb(28, 24, 21); border-radius: 6px; box-shadow: rgb(28, 24, 21) 4px 4px 0px; text-decoration: none; font-family: Oswald, sans-serif; font-size: 14px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;">Facebook</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="background: rgb(255, 255, 255); border: 2px solid rgb(28, 24, 21); border-radius: 6px; box-shadow: rgba(28, 24, 21, 0.12) 0px 6px 18px; display: flex; flex-direction: column; overflow: hidden;">
+          <div style="background: rgb(165, 42, 32); color: rgb(255, 255, 255); padding: 20px 24px; display: flex; align-items: center; justify-content: space-between; gap: 12px; border-bottom: 2px solid rgb(28, 24, 21);">
+            <span style="font-family: Anton, sans-serif; font-size: 64px; line-height: 0.9;">03</span>
+            <span style="font-family: Oswald, sans-serif; font-size: 14px; letter-spacing: 0.16em; text-transform: uppercase; background: rgb(255, 255, 255); color: rgb(28, 24, 21); border: 2px solid rgb(28, 24, 21); padding: 6px 10px; border-radius: 4px;">1 entry per card</span>
+          </div>
+          <div style="padding: 24px; display: flex; flex-direction: column; gap: 16px; flex: 1 1 0%;">
+            <div style="display: flex; flex-direction: column; gap: 4px;">
+              <span style="font-family: Oswald, sans-serif; font-size: 14px; letter-spacing: 0.18em; text-transform: uppercase; color: rgb(240, 72, 40);">Free Mail-In Entry</span>
+              <h3 style="margin: 0px; font-family: Anton, sans-serif; font-weight: 400; font-size: 36px; line-height: 1; text-transform: uppercase;">Send Santa a Card</h3>
+            </div>
+            <ol style="margin: 0px; padding-left: 20px; display: flex; flex-direction: column; gap: 10px; font-size: 16px; line-height: 1.5; color: rgb(61, 53, 47);">
+              <li>Hand-print your full name, mailing address, email, phone number and date of birth on a 3x5 card.</li>
+              <li>Mail it in a stamped envelope to the address below. One card per envelope, one card per day.</li>
+              <li>Postmark by Dec 20, 2026. It must arrive by Dec 30, 2026.</li>
+            </ol>
+            <div style="background: rgb(250, 250, 249); border: 1px dashed rgb(155, 155, 150); border-radius: 6px; padding: 12px 14px; font-size: 15px; line-height: 1.5; color: rgb(28, 24, 21);">FireCreek Holiday Sweepstakes<br>6299 N. Eagle Road, Suite 1057<br>Boise ID 83713</div>
+            <p style="margin: 0px; font-size: 13px; color: rgb(117, 104, 96); line-height: 1.5;">Free to enter. Mechanically reproduced cards are void.</p>
+            <div style="margin-top: auto; padding-top: 6px;">
+              <div style="display: contents;"><button type="button" id="fcs-copy-addr" class="fcs-btn" style="display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 22px; width: 100%; font-family: var(--font-condensed); font-weight: 600; font-size: 14px; text-transform: uppercase; letter-spacing: 0.06em; line-height: 1; color: var(--cream); background: var(--char-900); border: 2px solid var(--char-900); border-radius: var(--radius-md); cursor: pointer; box-shadow: var(--shadow-stamp); transition: background var(--dur-fast) var(--ease-out), transform var(--dur-fast) var(--ease-out), box-shadow var(--dur-fast) var(--ease-out); opacity: 1; filter: none; user-select: none; text-decoration: none; box-sizing: border-box;">Copy Mailing Address</button></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="flavors" style="background: url({{ 'fcs-sweeps-snowfall-bg.webp' | asset_url }}) center center / cover no-repeat rgb(242, 242, 240); scroll-margin-top: 80px;">
+    <div style="max-width: 1240px; margin: 0px auto; padding: 88px 24px; display: flex; flex-direction: column; gap: 40px;">
+      <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 20px;">
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+          <div style="display: contents;"><header style="display: flex; flex-direction: column; gap: 10px; align-items: flex-start; text-align: left;"><span style="font-family: var(--font-condensed); font-weight: 600; font-size: var(--text-sm); text-transform: uppercase; letter-spacing: var(--tracking-widest); color: var(--flame);">Four Flavors, Zero Fruitcake</span><h2 style="font-family: var(--font-display); text-transform: uppercase; line-height: var(--leading-none); letter-spacing: var(--tracking-tight); font-size: var(--text-3xl); color: var(--char-900); margin: 0px;">Deck the Halls With<span style="color: var(--flame);"> Beef &amp; Pork</span></h2></header></div>
+          <span style="font-family: Oswald, sans-serif; font-size: 22px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: rgb(28, 24, 21);">Shop 10, 20 or 80 count boxes</span>
+        </div>
+        <p style="margin: 0px; font-size: 17px; line-height: 1.6; color: rgb(61, 53, 47); max-width: 420px; text-wrap: pretty;">Real hickory smoke, never liquid. Gluten-free, soy-free, no MSG, no nitrates added. Win, and you get to pick a new favorite every month.&nbsp;</p>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px;">
+        <div style="display: contents;"><div style="display: flex; flex-direction: column; background: var(--surface-card); border: 2px solid var(--char-900); border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-sm); transform: none; transition: transform var(--dur-base) var(--ease-out), box-shadow var(--dur-base) var(--ease-out);"><div style="position: relative; background: color-mix(in srgb, var(--flavor-original) 16%, var(--cream)); border-bottom: 2px solid var(--char-900); aspect-ratio: 1 / 1; display: flex; align-items: center; justify-content: center;"><img src="{{ 'fcs-sweeps-holiday-original.webp' | asset_url }}" alt="Original" style="width: 82%; height: 82%; object-fit: contain; transform: none; transition: transform var(--dur-slow) var(--ease-out); mix-blend-mode: multiply;"></div><div style="padding: 18px; display: flex; flex-direction: column; gap: 6px; flex: 1 1 0%;"><span style="font-family: var(--font-condensed); font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--flavor-original);">The Classic Carol</span><h3 style="font-family: var(--font-display); text-transform: uppercase; font-size: var(--text-xl); line-height: 1; color: var(--char-900); margin: 0px;">Original</h3><div style="margin-top: auto; padding-top: 14px;"><a href="/products/original-meat-sticks" target="_blank" rel="noopener" class="fcs-btn" style="display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 22px; width: 100%; font-family: var(--font-condensed); font-weight: 600; font-size: 14px; text-transform: uppercase; letter-spacing: 0.06em; line-height: 1; color: var(--paper); background: var(--flame); border: 2px solid var(--char-900); border-radius: var(--radius-md); cursor: pointer; box-shadow: none; transition: background var(--dur-fast) var(--ease-out), transform var(--dur-fast) var(--ease-out), box-shadow var(--dur-fast) var(--ease-out); opacity: 1; filter: none; user-select: none; text-decoration: none; box-sizing: border-box;">Shop Now</a></div></div></div></div>
+        <div style="display: contents;"><div style="display: flex; flex-direction: column; background: var(--surface-card); border: 2px solid var(--char-900); border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-sm); transform: none; transition: transform var(--dur-base) var(--ease-out), box-shadow var(--dur-base) var(--ease-out);"><div style="position: relative; background: color-mix(in srgb, var(--flavor-kicker) 16%, var(--cream)); border-bottom: 2px solid var(--char-900); aspect-ratio: 1 / 1; display: flex; align-items: center; justify-content: center;"><img src="{{ 'fcs-sweeps-holiday-kicker.webp' | asset_url }}" alt="Kicker" style="width: 82%; height: 82%; object-fit: contain; transform: none; transition: transform var(--dur-slow) var(--ease-out); mix-blend-mode: multiply;"></div><div style="padding: 18px; display: flex; flex-direction: column; gap: 6px; flex: 1 1 0%;"><span style="font-family: var(--font-condensed); font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--flavor-kicker);">Hotter Than a Yule Log</span><h3 style="font-family: var(--font-display); text-transform: uppercase; font-size: var(--text-xl); line-height: 1; color: var(--char-900); margin: 0px;">Kicker</h3><div style="margin-top: auto; padding-top: 14px;"><a href="/products/kicker-spicy-meat-sticks" target="_blank" rel="noopener" class="fcs-btn" style="display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 22px; width: 100%; font-family: var(--font-condensed); font-weight: 600; font-size: 14px; text-transform: uppercase; letter-spacing: 0.06em; line-height: 1; color: var(--paper); background: var(--flame); border: 2px solid var(--char-900); border-radius: var(--radius-md); cursor: pointer; box-shadow: none; transition: background var(--dur-fast) var(--ease-out), transform var(--dur-fast) var(--ease-out), box-shadow var(--dur-fast) var(--ease-out); opacity: 1; filter: none; user-select: none; text-decoration: none; box-sizing: border-box;">Shop Now</a></div></div></div></div>
+        <div style="display: contents;"><div style="display: flex; flex-direction: column; background: var(--surface-card); border: 2px solid var(--char-900); border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-sm); transform: none; transition: transform var(--dur-base) var(--ease-out), box-shadow var(--dur-base) var(--ease-out);"><div style="position: relative; background: color-mix(in srgb, var(--flavor-sweet-heat) 16%, var(--cream)); border-bottom: 2px solid var(--char-900); aspect-ratio: 1 / 1; display: flex; align-items: center; justify-content: center;"><img src="{{ 'fcs-sweeps-holiday-sweet-heat-bbq.webp' | asset_url }}" alt="Sweet Heat BBQ" style="width: 82%; height: 82%; object-fit: contain; transform: none; transition: transform var(--dur-slow) var(--ease-out); mix-blend-mode: multiply;"></div><div style="padding: 18px; display: flex; flex-direction: column; gap: 6px; flex: 1 1 0%;"><span style="font-family: var(--font-condensed); font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--flavor-sweet-heat);">Naughty &amp; Nice</span><h3 style="font-family: var(--font-display); text-transform: uppercase; font-size: var(--text-xl); line-height: 1; color: var(--char-900); margin: 0px;">Sweet Heat BBQ</h3><div style="margin-top: auto; padding-top: 14px;"><a href="/products/sweet-heat-bbq-meat-sticks" target="_blank" rel="noopener" class="fcs-btn" style="display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 22px; width: 100%; font-family: var(--font-condensed); font-weight: 600; font-size: 14px; text-transform: uppercase; letter-spacing: 0.06em; line-height: 1; color: var(--paper); background: var(--flame); border: 2px solid var(--char-900); border-radius: var(--radius-md); cursor: pointer; box-shadow: none; transition: background var(--dur-fast) var(--ease-out), transform var(--dur-fast) var(--ease-out), box-shadow var(--dur-fast) var(--ease-out); opacity: 1; filter: none; user-select: none; text-decoration: none; box-sizing: border-box;">Shop Now</a></div></div></div></div>
+        <div style="display: contents;"><div style="display: flex; flex-direction: column; background: var(--surface-card); border: 2px solid var(--char-900); border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-sm); transform: none; transition: transform var(--dur-base) var(--ease-out), box-shadow var(--dur-base) var(--ease-out);"><div style="position: relative; background: color-mix(in srgb, var(--flavor-teriyaki) 16%, var(--cream)); border-bottom: 2px solid var(--char-900); aspect-ratio: 1 / 1; display: flex; align-items: center; justify-content: center;"><img src="{{ 'fcs-sweeps-holiday-teriyaki.webp' | asset_url }}" alt="Teriyaki" style="width: 82%; height: 82%; object-fit: contain; transform: none; transition: transform var(--dur-slow) var(--ease-out); mix-blend-mode: multiply;"></div><div style="padding: 18px; display: flex; flex-direction: column; gap: 6px; flex: 1 1 0%;"><span style="font-family: var(--font-condensed); font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--flavor-teriyaki);">Silent Night, Savory Bite</span><h3 style="font-family: var(--font-display); text-transform: uppercase; font-size: var(--text-xl); line-height: 1; color: var(--char-900); margin: 0px;">Teriyaki</h3><div style="margin-top: auto; padding-top: 14px;"><a href="/products/teriyaki-meat-sticks" target="_blank" rel="noopener" class="fcs-btn" style="display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 22px; width: 100%; font-family: var(--font-condensed); font-weight: 600; font-size: 14px; text-transform: uppercase; letter-spacing: 0.06em; line-height: 1; color: var(--paper); background: var(--flame); border: 2px solid var(--char-900); border-radius: var(--radius-md); cursor: pointer; box-shadow: none; transition: background var(--dur-fast) var(--ease-out), transform var(--dur-fast) var(--ease-out), box-shadow var(--dur-fast) var(--ease-out); opacity: 1; filter: none; user-select: none; text-decoration: none; box-sizing: border-box;">Shop Now</a></div></div></div></div>
+      </div>
+      <div style="border: 2px solid rgb(28, 24, 21); border-radius: 6px; background: rgb(250, 250, 249); padding: 26px; display: flex; flex-direction: column; align-items: center; gap: 18px; text-align: center;">
+        <div style="display: flex; align-items: center; justify-content: center; gap: 14px; max-width: 760px;">
+          <span style="font-size: 18px; line-height: 1.4;"><strong>Never Tried FireCreek Snacks?</strong> New Customers can grab a 4-Piece Sampler Pack for $7.99 that includs one of each flavor, shipped - and it comes with 2 entries!</span>
+        </div>
+        <div style="display: contents;"><a href="/collections/firecreek-snacks-sticks" target="_blank" rel="noopener" class="fcs-btn" style="display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 22px; width: auto; font-family: var(--font-condensed); font-weight: 600; font-size: 14px; text-transform: uppercase; letter-spacing: 0.06em; line-height: 1; color: var(--paper); background: var(--flame); border: 2px solid var(--char-900); border-radius: var(--radius-md); cursor: pointer; box-shadow: var(--shadow-stamp); transition: background var(--dur-fast) var(--ease-out), transform var(--dur-fast) var(--ease-out), box-shadow var(--dur-fast) var(--ease-out); opacity: 1; filter: none; user-select: none; text-decoration: none; box-sizing: border-box;">Get the Sampler</a></div>
+      </div>
+    </div>
+  </section>
+
+  
+    <div style="height: 16px; border-top: 2px solid rgb(28, 24, 21); border-bottom: 2px solid rgb(28, 24, 21); background: repeating-linear-gradient(-45deg, rgb(240, 72, 40) 0px, rgb(240, 72, 40) 14px, rgb(255, 255, 255) 14px, rgb(255, 255, 255) 28px);"></div>
+  
+
+  <section id="rules" style="background: rgb(250, 250, 249); scroll-margin-top: 80px;">
+    <div style="max-width: 1240px; margin: 0px auto; padding: 88px 24px; display: flex; flex-wrap: wrap; gap: 48px; align-items: flex-start;">
+      <aside class="fcs-rules-aside" style="flex: 1 1 240px; min-width: 0px; position: sticky; top: 96px; display: flex; flex-direction: column; gap: 18px;">
+        <div style="display: contents;"><header style="display: flex; flex-direction: column; gap: 10px; align-items: flex-start; text-align: left;"><span style="font-family: var(--font-condensed); font-weight: 600; font-size: var(--text-sm); text-transform: uppercase; letter-spacing: var(--tracking-widest); color: var(--flame);">Checked Twice</span><h2 style="font-family: var(--font-display); text-transform: uppercase; line-height: var(--leading-none); letter-spacing: var(--tracking-tight); font-size: var(--text-2xl); color: var(--char-900); margin: 0px;">Official<span style="color: var(--flame);"> Rules</span></h2></header></div>
+        <nav style="display: flex; flex-direction: column; gap: 8px; font-family: Oswald, sans-serif; font-size: 14px; letter-spacing: 0.1em; text-transform: uppercase;">
+          <a href="#r1" class="scp0" style="color: rgb(87, 76, 68); text-decoration: none;">1. No purchase necessary</a>
+          <a href="#r2" class="scp0" style="color: rgb(87, 76, 68); text-decoration: none;">2. Eligibility</a>
+          <a href="#r3" class="scp0" style="color: rgb(87, 76, 68); text-decoration: none;">3. Entry period</a>
+          <a href="#r4" class="scp0" style="color: rgb(87, 76, 68); text-decoration: none;">4. How to enter</a>
+          <a href="#r5" class="scp0" style="color: rgb(87, 76, 68); text-decoration: none;">5. Entry limits and conditions</a>
+          <a href="#r6" class="scp0" style="color: rgb(87, 76, 68); text-decoration: none;">6. Prize</a>
+          <a href="#r7" class="scp0" style="color: rgb(87, 76, 68); text-decoration: none;">7. Winner selection</a>
+          <a href="#r8" class="scp0" style="color: rgb(87, 76, 68); text-decoration: none;">8. General terms</a>
+        </nav>
+      </aside>
+
+      <article style="flex: 3 1 560px; min-width: 0px; background: rgb(255, 255, 255); border: 2px solid rgb(28, 24, 21); border-radius: 6px; padding: clamp(24px, 4vw, 48px); display: flex; flex-direction: column; gap: 32px; font-size: 15px; line-height: 1.65; color: rgb(61, 53, 47);">
+        <div style="display: flex; flex-direction: column; gap: 4px; padding-bottom: 20px; border-bottom: 1px solid rgb(227, 227, 225);">
+          <h2 style="margin: 0px; font-family: Anton, sans-serif; font-weight: 400; font-size: 32px; line-height: 1.05; text-transform: uppercase; color: rgb(28, 24, 21);">FireCreek Holiday Sweepstakes: Official Rules</h2>
+        </div>
+
+        <div id="r1" style="display: flex; flex-direction: column; gap: 10px; scroll-margin-top: 96px;">
+          <h3 style="margin: 0px; font-family: Oswald, sans-serif; font-weight: 600; font-size: 18px; letter-spacing: 0.08em; text-transform: uppercase; color: rgb(28, 24, 21);">1. No purchase necessary</h3>
+          <p style="margin: 0px; font-weight: 700; color: rgb(28, 24, 21);">NO PURCHASE NECESSARY TO ENTER OR WIN. A PURCHASE WILL NOT INCREASE YOUR CHANCES OF WINNING. VOID WHERE PROHIBITED.</p>
+          <p style="margin: 0px;">The FireCreek Holiday Sweepstakes (the "Sweepstakes") is sponsored by RPKG Holdings LLC, doing business as FireCreek Snacks, 6299 N. Eagle Road, Suite 1057, Boise ID 83713 ("Sponsor"). The Sweepstakes is not sponsored, endorsed, or administered by, or associated with, Instagram, Meta, TikTok, or any other platform.</p>
+        </div>
+
+        <div id="r2" style="display: flex; flex-direction: column; gap: 10px; scroll-margin-top: 96px;">
+          <h3 style="margin: 0px; font-family: Oswald, sans-serif; font-weight: 600; font-size: 18px; letter-spacing: 0.08em; text-transform: uppercase; color: rgb(28, 24, 21);">2. Eligibility</h3>
+          <p style="margin: 0px;">Open to legal residents of the 48 contiguous United States and the District of Columbia who are 18 or older at the time of entry. Not open to owners, employees, or contractors of Sponsor, its co-packer, or its agencies, or to members of their immediate families or households.</p>
+        </div>
+
+        <div id="r3" style="display: flex; flex-direction: column; gap: 10px; scroll-margin-top: 96px;">
+          <h3 style="margin: 0px; font-family: Oswald, sans-serif; font-weight: 600; font-size: 18px; letter-spacing: 0.08em; text-transform: uppercase; color: rgb(28, 24, 21);">3. Entry period</h3>
+          <p style="margin: 0px;">The Sweepstakes begins at 12:00 a.m. Pacific Time on November 1, 2026 and ends at 11:59 p.m. Pacific Time on December 20, 2026 (the "Entry Period"). Sponsor's computer is the official clock.</p>
+        </div>
+
+        <div id="r4" style="display: flex; flex-direction: column; gap: 10px; scroll-margin-top: 96px;">
+          <h3 style="margin: 0px; font-family: Oswald, sans-serif; font-weight: 600; font-size: 18px; letter-spacing: 0.08em; text-transform: uppercase; color: rgb(28, 24, 21);">4. How to enter</h3>
+          <p style="margin: 0px;">There are three ways to enter.</p>
+          <p style="margin: 0px;"><strong style="color: rgb(28, 24, 21);">A. Purchase entry.</strong> Place an order at firecreeksnacks.com during the Entry Period. You receive 1 entry for every $10 spent, calculated on the order subtotal after discounts and before tax and shipping. Any order that includes a new customer 4-Piece Sampler Pack earns at least 2 entries. Entries are credited automatically to the email address used at checkout. Purchases on Amazon, TikTok Shop, or any other retailer do not earn entries.</p>
+          <p style="margin: 0px;"><strong style="color: rgb(28, 24, 21);">B. Social bonus entry.</strong> Post a photo or video featuring a FireCreek product on Instagram or TikTok from a public account. Tag @firecreeksnacks and include #firecreekgiveaway in the caption. Each qualifying post earns 2 entries. Social entrants are identified by their social handle, and a winning social entrant will be contacted by direct message. No purchase is required for social bonus entries.</p>
+          <p style="margin: 0px;"><strong style="color: rgb(28, 24, 21);">C. Free mail-in entry.</strong> Hand-print your full name, mailing address, email, phone number, and date of birth on a 3x5 card. Mail it in a stamped envelope to: FireCreek Holiday Sweepstakes, 6299 N. Eagle Road, Suite 1057, Boise ID 83713. Entries must be postmarked by December 20, 2026 and received by December 30, 2026. Each mail-in card receives 1 entry. One card per envelope. Mechanically reproduced entries are void.</p>
+        </div>
+
+        <div id="r5" style="display: flex; flex-direction: column; gap: 10px; scroll-margin-top: 96px;">
+          <h3 style="margin: 0px; font-family: Oswald, sans-serif; font-weight: 600; font-size: 18px; letter-spacing: 0.08em; text-transform: uppercase; color: rgb(28, 24, 21);">5. Entry limits and conditions</h3>
+          <ul style="margin: 0px; padding-left: 20px; display: flex; flex-direction: column; gap: 6px;">
+            <li>Social bonus entries: limit 20 qualifying posts per person.</li>
+            <li>Mail-in entries: limit 1 card per person per day.</li>
+            <li>Orders cancelled, refunded, or returned before the drawing lose their entries.</li>
+            <li>Each entrant is identified by email address, or by social handle for social bonus entries. Use of multiple emails or accounts to exceed limits voids all of that person's entries.</li>
+            <li>Posts must be original, must not infringe anyone's rights, and must follow the posting platform's rules. Sponsor may disqualify any post at its discretion.</li>
+          </ul>
+        </div>
+
+        <div id="r6" style="display: flex; flex-direction: column; gap: 10px; scroll-margin-top: 96px;">
+          <h3 style="margin: 0px; font-family: Oswald, sans-serif; font-weight: 600; font-size: 18px; letter-spacing: 0.08em; text-transform: uppercase; color: rgb(28, 24, 21);">6. Prize</h3>
+          <p style="margin: 0px;">One (1) Grand Prize: a year's supply of FireCreek Snacks, delivered as one (1) caddy (20 count box) per month for twelve (12) consecutive months, starting January 2027. Flavor selection can be the winner's choice each month or at Sponsor's discretion if preferred by winner. If a selected flavor is unavailable, Sponsor may substitute another flavor.</p>
+          <p style="margin: 0px;">Prize ships only to an address in the lower 48 United States or DC. Not eligible in Hawaii, Alaska or other territories. No cash substitute or transfer. Approximate retail value of the prize: $527.40 ($43.95 per caddy x 12).</p>
+        </div>
+
+        <div id="r7" style="display: flex; flex-direction: column; gap: 10px; scroll-margin-top: 96px;">
+          <h3 style="margin: 0px; font-family: Oswald, sans-serif; font-weight: 600; font-size: 18px; letter-spacing: 0.08em; text-transform: uppercase; color: rgb(28, 24, 21);">7. Winner selection and notification</h3>
+          <p style="margin: 0px;">The winner will be selected in a random drawing from all eligible entries on or about December 31, 2026. Odds of winning depend on the number of eligible entries received.</p>
+          <p style="margin: 0px;">The potential winner will be notified by email and must respond within 5 days. The potential winner may be required to sign an affidavit of eligibility and liability/publicity release. If the winner does not respond, is ineligible, or the prize notice is undeliverable, an alternate winner may be drawn.</p>
+        </div>
+
+        <div id="r8" style="display: flex; flex-direction: column; gap: 10px; scroll-margin-top: 96px;">
+          <h3 style="margin: 0px; font-family: Oswald, sans-serif; font-weight: 600; font-size: 18px; letter-spacing: 0.08em; text-transform: uppercase; color: rgb(28, 24, 21);">8. General terms</h3>
+          <p style="margin: 0px;"><strong style="color: rgb(28, 24, 21);">Content license.</strong> By submitting a post for bonus entries, entrant grants Sponsor a non-exclusive, royalty-free, perpetual license to repost, edit, and use the post, with credit to entrant's handle, in Sponsor's marketing and advertising in any media.</p>
+          <p style="margin: 0px;"><strong style="color: rgb(28, 24, 21);">Publicity.</strong> Except where prohibited, the winner agrees Sponsor may use the winner's name, city, state, and likeness for promotional purposes without further compensation.</p>
+          <p style="margin: 0px;"><strong style="color: rgb(28, 24, 21);">Privacy.</strong> Information collected is used to administer the Sweepstakes and as described in Sponsor's privacy policy at <a href="/policies/privacy-policy">firecreeksnacks.com/policies/privacy-policy</a>. Mail-in and social bonus entrants are not added to marketing emails unless they opt in.</p>
+          <p style="margin: 0px;"><strong style="color: rgb(28, 24, 21);">Release.</strong> Entrants release Sponsor and the platforms named above from liability arising from participation or prize use. Sponsor is not responsible for lost, late, incomplete, or misdirected entries, or for technical failures.</p>
+          <p style="margin: 0px;"><strong style="color: rgb(28, 24, 21);">Changes.</strong> Sponsor may cancel, suspend, or modify the Sweepstakes if fraud or technical problems corrupt its integrity, and may then draw from eligible entries received before the action.</p>
+          <p style="margin: 0px;"><strong style="color: rgb(28, 24, 21);">Governing law.</strong> Idaho law governs these rules.</p>
+          <p style="margin: 0px;"><strong style="color: rgb(28, 24, 21);">Winner list.</strong> For the winner's name, send a self-addressed stamped envelope to FireCreek Snacks, 6299 N. Eagle Road, Suite 1057, Boise ID 83713 by January 31, 2027.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <footer style="background: radial-gradient(120% 80% at 50% 120%, rgba(255, 255, 255, 0.1), transparent 60%), rgb(197, 52, 42); color: rgb(255, 255, 255); border-top: 2px solid rgb(28, 24, 21);">
+    <div style="max-width: 1240px; margin: 0px auto; padding: 48px 24px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px;">
+      <div style="display: flex; align-items: center; gap: 20px; flex-wrap: wrap;">
+        <img src="{{ 'fcs-sweeps-firecreek-logo-white.png' | asset_url }}" alt="FireCreek Snacks" style="height: 72px; width: auto;">
+        <span style="font-family: Yellowtail, cursive; font-size: 28px;">Made by a Butcher, Not a Boardroom.</span>
+      </div>
+      <nav style="display: flex; gap: 22px; flex-wrap: wrap; font-family: Oswald, sans-serif; font-size: 14px; letter-spacing: 0.12em; text-transform: uppercase;">
+        <a href="/collections/firecreek-snacks-sticks" target="_blank" rel="noopener" class="scp4" style="color: rgb(255, 255, 255); text-decoration: none;">Shop</a>
+        <a href="#rules" class="scp4" style="color: rgb(255, 255, 255); text-decoration: none;">Official Rules</a>
+        <a href="/policies/privacy-policy" class="scp4" style="color: rgb(255, 255, 255); text-decoration: none;">Privacy Policy</a>
+      </nav>
+    </div>
+  </footer></div></div></div>
+<script>
+
+(function () {
+  var END = Date.UTC(2026, 11, 21, 7, 59, 59); // Dec 20 2026, 11:59:59 p.m. PT
+  var els = {}; ['d','h','m','s'].forEach(function (k) { els[k] = document.querySelector('[data-fcs-cd="' + k + '"]'); });
+  var pad = function (n) { return String(n).padStart(2, '0'); };
+  function tick() {
+    var s = Math.max(0, Math.floor((END - Date.now()) / 1000));
+    if (els.d) els.d.textContent = pad(Math.floor(s / 86400));
+    if (els.h) els.h.textContent = pad(Math.floor(s / 3600) % 24);
+    if (els.m) els.m.textContent = pad(Math.floor(s / 60) % 60);
+    if (els.s) els.s.textContent = pad(s % 60);
+    if (s === 0) {
+      var box = document.querySelector('[data-fcs-cd="d"]');
+      var wrap = box && box.closest('div[style*="gap"]');
+    }
+  }
+  tick(); setInterval(tick, 1000);
+  document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+    a.addEventListener('click', function (e) {
+      var el = document.getElementById(a.getAttribute('href').slice(1));
+      if (!el) return;
+      e.preventDefault();
+      window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 80, behavior: 'smooth' });
+    });
+  });
+  var btn = document.getElementById('fcs-copy-addr');
+  if (btn) btn.addEventListener('click', function () {
+    var txt = 'FireCreek Holiday Sweepstakes, 6299 N. Eagle Road, Suite 1057, Boise ID 83713', old = btn.textContent;
+    try { navigator.clipboard && navigator.clipboard.writeText(txt); } catch (e) {}
+    btn.textContent = 'Address Copied';
+    setTimeout(function () { btn.textContent = old; }, 1800);
+  });
+})();
+
+</script>
+{% schema %}
+{
+  "name": "FC Holiday Sweepstakes",
+  "settings": [],
+  "presets": [{ "name": "FC Holiday Sweepstakes" }]
+}
+{% endschema %}

@@ -1,0 +1,212 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "banner": {
+      "type": "main-collection-banner",
+      "settings": {
+        "title": "Time For You To <strong>\"Meat\" the Legends<\/strong>",
+        "show_collection_description": true,
+        "show_collection_image": false,
+        "color_scheme": "scheme-2"
+      }
+    },
+    "product-grid": {
+      "type": "main-collection-product-grid",
+      "settings": {
+        "products_per_page": 16,
+        "columns_desktop": 4,
+        "columns_mobile": "2",
+        "color_scheme": "scheme-2",
+        "image_ratio": "portrait",
+        "image_shape": "default",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": true,
+        "quick_add": "standard",
+        "enable_filtering": false,
+        "filter_type": "horizontal",
+        "enable_sorting": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "featured_collection_QJY4hX": {
+      "type": "featured-collection",
+      "name": "t:sections.featured-collection.presets.name",
+      "settings": {
+        "class_name": "hp-sec3 shop-sec2",
+        "collection": "sampler-packs",
+        "products_to_show": 3,
+        "title": "Can't Decide? We Got You! <strong>Grab a Taste of Everything<\/strong>",
+        "heading_size": "h1",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "columns_desktop": 3,
+        "enable_desktop_slider": false,
+        "full_width": false,
+        "show_view_all": false,
+        "view_all_style": "solid",
+        "color_scheme": "scheme-5",
+        "image_ratio": "portrait",
+        "image_shape": "default",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "link",
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "newsletter_6NXDBz": {
+      "type": "newsletter",
+      "blocks": {
+        "heading_qNy3Te": {
+          "type": "heading",
+          "settings": {
+            "heading": "Get First Dibs, Delicious Discounts & Maybe a Dad Joke",
+            "heading_size": "h1"
+          }
+        },
+        "paragraph_KzytJY": {
+          "type": "paragraph",
+          "settings": {
+            "text": "<p>Oh yeah...get 10% off your first order when you sign up!<\/p>"
+          }
+        },
+        "email_form_BbH4e4": {
+          "type": "email_form",
+          "settings": {}
+        },
+        "paragraph_XQrjDq": {
+          "type": "paragraph",
+          "settings": {
+            "text": "<p>By signing up to receive emails from Firecreek, you agree to our <a href=\"\/policies\/privacy-policy\" title=\"Privacy Policy\">privacy policy<\/a>. We treat your info responsibly.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_qNy3Te",
+        "paragraph_KzytJY",
+        "email_form_BbH4e4",
+        "paragraph_XQrjDq"
+      ],
+      "settings": {
+        "color_scheme": "scheme-3",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "collapsible_content_QAi8fc": {
+      "type": "collapsible-content",
+      "blocks": {
+        "collapsible_row_68bEat": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "What makes FireCreek Snacks different from other meat sticks?",
+            "icon": "none",
+            "row_content": "<p>Most meat sticks are oily or greasy, rubbery, have thick and chewy casing, and are loaded with stuff you can’t pronounce. FireCreek Snacks meat sticks are handcrafted with clean ingredients, bold flavors, and a thinner, more tender casing that doesn’t fight your teeth. Basically, we’re the meat stick your snack drawer needed.<\/p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_RmkMRa": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Are FireCreek Snacks healthy?",
+            "icon": "none",
+            "row_content": "<p>Yep! They’re gluten-free, soy-free, nitrate-free & without artificial junk or fillers. Each stick packs in protein & flavor without the mystery meat or greasy aftermath. Think of them as your clean-eating cheat code that still tastes like a treat.<\/p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_hcG4pP": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "What kind of meat do you use?",
+            "icon": "none",
+            "row_content": "<p>We use premium beef & pork proudly sourced from American farms throughout the glorious midwest — no sketchy origins & no fillers. Just real meat, seasoned & smoked the old-school way...the way our founder’s family have been doing it for generations. Grandpa would approve.<\/p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_8iFWzC": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Do you use real smoke or liquid smoke flavoring?",
+            "icon": "none",
+            "row_content": "<p>No fake smoke here. We use <strong>real hickory hardwood smoke<\/strong>, not the artificial “liquid smoke” stuff most other brands rely on. It’s the difference between grilling in your backyard and waving a smoke-scented candle over your dinner. Our sticks are smoked the old-school way for that deep, rich flavor you can actually taste — because shortcuts don’t belong in snacks.<\/p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_fHmyiU": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Do they need to be refrigerated?",
+            "icon": "none",
+            "row_content": "<p>Nope! FireCreek Snacks are shelf-stable & ready to roll wherever your hunger strikes — gym bag, glove box, office drawer, or that weird snack stash in your nightstand (we see you). No fridge. No fuss. <\/p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_pQwie4": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Can I buy in bulk or subscribe?",
+            "icon": "none",
+            "row_content": "<p>Absolutely. We offer bundles, variety packs & a subscribe-and-save option that keeps your stash stocked & your cravings crushed. Just pick your flavors, set your schedule & snack like a legend.<br\/><br\/>Are you a business interested in Wholesale? Learn more <a href=\"https:\/\/www.firecreeksnacks.com\/pages\/wholesale\" title=\"https:\/\/www.firecreeksnacks.com\/pages\/wholesale\">HERE<\/a>.<\/p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_taTJkR": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Do you work with content creators, influencers & other partners?",
+            "icon": "none",
+            "row_content": "<p>Yes! Of course we do. If you feel like you are a good fit, we would love to chat! Just reach out to us <a href=\"https:\/\/www.firecreeksnacks.com\/pages\/contact\" title=\"https:\/\/www.firecreeksnacks.com\/pages\/contact\">HERE<\/a>. Let's make magic together!<\/p>",
+            "page": ""
+          }
+        }
+      },
+      "block_order": [
+        "collapsible_row_68bEat",
+        "collapsible_row_RmkMRa",
+        "collapsible_row_hcG4pP",
+        "collapsible_row_8iFWzC",
+        "collapsible_row_fHmyiU",
+        "collapsible_row_pQwie4",
+        "collapsible_row_taTJkR"
+      ],
+      "settings": {
+        "class_name": "shop-sec4",
+        "caption": "",
+        "heading": "Questions? We’ve Got Beef With Confusion",
+        "heading_size": "h1",
+        "heading_alignment": "left",
+        "layout": "none",
+        "container_color_scheme": "scheme-5",
+        "color_scheme": "scheme-5",
+        "open_first_collapsible_row": false,
+        "image": "shopify:\/\/shop_images\/faq_img.jpg",
+        "image_ratio": "adapt",
+        "desktop_layout": "image_first",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "banner",
+    "product-grid",
+    "featured_collection_QJY4hX",
+    "newsletter_6NXDBz",
+    "collapsible_content_QAi8fc"
+  ]
+}

@@ -1,0 +1,97 @@
+<div class="icon-text-section {{ section.settings.section_classname }}"
+     style="background-color: {{ section.settings.section_background }};">
+
+  <div class="icon-text-section__inner">
+
+    {%- for block in section.blocks -%}
+      {%- case block.type -%}
+
+        {%- when 'icon_text_block' -%}
+          <div class="icon-text-block">
+
+            {%- assign icon_image = block.settings.icon_image -%}
+
+            {%- if icon_image != blank -%}
+              <div class="icon-text-block__icon">
+                {{ icon_image
+                  | image_url: width: icon_image.width
+                  | image_tag: loading: 'lazy', class: 'icon-text-block__img'
+                }}
+              </div>
+            {%- endif -%}
+
+            <div class="icon-text-block__content">
+
+              {%- if block.settings.icon_heading != blank -%}
+                <h3 class="icon-text-block__heading">
+                  {{ block.settings.icon_heading }}
+                </h3>
+              {%- endif -%}
+
+              {%- if block.settings.icon_sub_heading != blank -%}
+                <p class="icon-text-block__subheading">
+                  {{ block.settings.icon_sub_heading }}
+                </p>
+              {%- endif -%}
+
+            </div>
+
+          </div>
+
+      {%- endcase -%}
+    {%- endfor -%}
+
+  </div>
+</div>
+
+{% schema %}
+  {
+  "name": "Custom Icon Text",
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_classname",
+      "label": "Section Classname"
+    },
+    {
+      "type": "color",
+      "id": "section_background",
+      "label": "Section Background"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Icon Text Block",
+      "type": "icon_text_block",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon_image",
+          "label": "Icon Image"
+        },
+        {
+          "type": "text",
+          "id": "icon_heading",
+          "label": "Icon Heading"
+        },
+        {
+          "type": "text",
+          "id": "icon_sub_heading",
+          "label": "Icon Sub Heading"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Icon Text"
+    }
+  ]
+}  
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

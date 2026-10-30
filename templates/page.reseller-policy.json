@@ -1,0 +1,49 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "rich_text_MBktzF": {
+      "type": "rich-text",
+      "blocks": {
+        "text_NNnEYG": {
+          "type": "text",
+          "settings": {
+            "text": "<h1>Reseller & Third-Party Marketplace Policy</h1><p>FireCreek Snacks is committed to delivering a consistent customer experience and maintaining the integrity of our brand across all channels. To achieve this, we have established the following policies regarding resellers and third-party marketplace sales.</p><h2>Authorized Resellers</h2><p>We value our wholesale and retail partners and welcome those who stock FireCreek Snacks for sale in <strong>brick-and-mortar retail stores</strong>, gyms, golf courses, specialty shops, and other approved physical or private online storefronts.</p><p>To qualify as an <strong>authorized reseller</strong>, partners must receive <strong>written approval</strong> from FireCreek Snacks. This ensures our products are represented accurately, priced appropriately, and handled according to our brand standards.</p><p>If you are interested in becoming an authorized wholesale partner, please contact us at <a href=\"mailto:jeremy@firecreeksnacks.com\" title=\"mailto:jeremy@firecreeksnacks.com\">jeremy@firecreeksnacks.com</a> for consideration.</p><h2>Prohibited Third-Party Marketplace Sales</h2><p>To protect our brand, product integrity, and end-customer experience, <strong>the resale of FireCreek Snacks on third-party marketplaces is strictly prohibited</strong>. This includes (but is not limited to):</p><ul><li>Walmart Marketplace</li><li>Amazon</li><li>eBay</li><li>Etsy</li><li>Target Plus</li><li>Faire (for resellers)</li><li>Any other similar third-party selling platforms</li></ul><p>FireCreek Snacks reserves the exclusive right to list, sell, and manage our brand presence on these marketplaces. Any seller found listing or attempting to sell FireCreek products on such platforms without written permission will be considered in violation of this policy.</p><h2>Enforcement</h2><p>We actively monitor third-party platforms and take violations of this policy seriously. <strong>Unauthorized listings may result in cease-and-desist actions, trademark enforcement, and removal requests filed with the platform.</strong> We will take appropriate legal action if necessary to protect our intellectual property and brand reputation.</p><p>We appreciate your cooperation in helping FireCreek Snacks provide an exceptional and consistent customer experience.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "text_NNnEYG"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "class_name": "about-sec1 policy-section",
+        "desktop_content_position": "center",
+        "content_alignment": "left",
+        "color_scheme": "scheme-2",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    }
+  },
+  "order": [
+    "main",
+    "rich_text_MBktzF"
+  ]
+}

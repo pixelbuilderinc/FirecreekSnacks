@@ -1,0 +1,49 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "rich_text_MBktzF": {
+      "type": "rich-text",
+      "blocks": {
+        "text_NNnEYG": {
+          "type": "text",
+          "settings": {
+            "text": "<h1>Affiliate Program</h1><h2>ABOUT</h2><p>Here at FireCreek Snacks, it starts with the meat—Premium beef & pork born and raised in the USA. Then we add bold, natural seasonings and real hickory smoke. There’s nothing artificial added, because there’s nothing to add. The taste is already there. You’ll NEVER find any artificial ingredients in FireCreek Snacks.</p><p>Simple, clean ingredients with exceptional flavor combined with USA-sourced premium quality beef & pork.  Let the meat be the star and season it with high-quality, simple yet bold flavors and real, hickory smoke.</p><p>Soon you'll understand why so many of our customers call it “The Best Snacks in the World!”</p><h2>WANT TO PARTNER WITH US?</h2><p>Our ideal partners will create original content that reaches audiences from all walks of life. We love working with content producers such as bloggers and review sites. We also welcome affiliate partnership with influencers across Youtube, Instagram, Pinterest, and Facebook.</p><h2>PROGRAM HIGHLIGHTS</h2><p>10% commission <br/>30 day cookie<br/>Affiliate Management Team with 15+ Years Experience<br/>Custom Promotions and Campaigns Available</p><h2>CONTACT DETAILS</h2><p>Affiliate Program Management from <a href=\"https://www.firecreeksnacks.com/\" title=\"https://www.firecreeksnacks.com/\">FireCreek Snacks</a><br/>Dustin Riechmann<br/><a href=\"mailto:dustin@firecreeksnacks.com\" title=\"mailto:dustin@firecreeksnacks.com\">dustin@firecreeksnacks.com</a></p><p></p>"
+          }
+        }
+      },
+      "block_order": [
+        "text_NNnEYG"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "class_name": "about-sec1 policy-section",
+        "desktop_content_position": "center",
+        "content_alignment": "left",
+        "color_scheme": "scheme-2",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    }
+  },
+  "order": [
+    "main",
+    "rich_text_MBktzF"
+  ]
+}

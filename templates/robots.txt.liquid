@@ -1,0 +1,29 @@
+# we use Shopify as our ecommerce platform
+{%- comment -%}
+# Caution! Please read https://help.shopify.com/en/manual/promoting-marketing/seo/editing-robots-txt before proceeding to make changes to this file.
+{%- endcomment -%}
+
+{% assign custom_allow_paths = "/policies/privacy-policy,/policies/refund-policy,/policies/terms-of-service" | split: "," %}
+
+{% for group in robots.default_groups %}
+  {{- group.user_agent -}}
+
+  {% for rule in group.rules %}
+    {%- assign disallow_path = rule | remove: "Disallow: " | strip -%}
+
+    {%- if disallow_path contains "/policies" -%}
+      {%- continue -%}
+    {%- endif -%}
+
+    {{- rule -}}
+  {% endfor %}
+
+  {%- for path in custom_allow_paths -%}
+Disallow:
+Allow: {{ path }}
+  {%- endfor -%}
+
+  {%- if group.sitemap != blank -%}
+    {{ group.sitemap }}
+  {%- endif -%}
+{% endfor %}

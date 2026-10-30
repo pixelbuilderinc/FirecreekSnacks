@@ -1,0 +1,135 @@
+{{ '_bsub-widget.css' | asset_url | stylesheet_tag }}
+{%- assign product_form_id = 'product-form-' | append: section.id -%}
+
+<div class="shopify-block shopify-app-block">
+  <fieldset class="bsub-widget" role="radiogroup"
+    x-data="SubscriptionWidget" 
+    data-money_format="{{ shop.money_format | escape }}"
+    data-product="{{ product | json | escape }}"
+    data-selected_variant="{{ product.selected_or_first_available_variant | json | escape }}">
+    <template x-if="selected.type == 'subscribe' && selected.frequency">
+      <input type="hidden" name="selling_plan" form="{{ product_form_id }}" 
+        :value="selected.frequency" />
+    </template>
+    <legend>Frequency</legend>
+
+    <div class="bsub-widget__wrapper">
+      <!-- Selling Plan Groups (Purchase Options) -->
+      <div class="bsub-widget__groups-container">
+        <!-- render One-time purchase option -->
+
+        <div class="bsub-widget__group">
+          <label class="bsub-widget__group-label">
+            <input type="radio" value="once" 
+              name="fs--custom-sub-widget"
+              x-model="selected.type">
+            <div class="bsub-widget__group-header">
+              <!-- BEGIN app snippet: icon-one-time -->
+              <svg class="bsub-widget__image" viewBox="0 0 72 72" fill="currentColor"> <g opacity="0.8"> <path d="M30 6L13.5 13.5L18 16.5L31.5 22.5L36 33L40.5 22.5L54 16.5L58.5 13.5L42 6L36 18L30 6Z" fill="black" fill-opacity="0.2"></path> <path fill-rule="evenodd" clip-rule="evenodd" d="M4.38849 10.3276L30.7645 20.2186L36 33.3073L41.2355 20.2186L67.6116 10.3276L61 30.1622V55.6139C61 56.8645 60.2243 57.9838 59.0534 58.4229L36 67.0679L12.9467 58.4229C11.7757 57.9838 11 56.8645 11 55.6139V30.1622L4.38849 10.3276ZM7.61156 13.6723L13 29.8376V55.6139C13 56.0308 13.2586 56.4039 13.6489 56.5503L36 64.9319L58.3512 56.5503C58.7415 56.4039 59 56.0308 59 55.6139V29.8376L64.3885 13.6722L42.7645 21.7812L36 38.6925L29.2355 21.7812L7.61156 13.6723Z" fill="currentColor"></path> <path fill-rule="evenodd" clip-rule="evenodd" d="M36.12 19.9325L41.6899 22.0132L40.99 23.8868L36.12 22.0675L31.01 23.9768L30.31 22.1033L36.12 19.9325Z" fill="currentColor"></path> <path fill-rule="evenodd" clip-rule="evenodd" d="M41.4523 4.67666L61.0545 13.0911L60.2656 14.9289L42.5477 7.32335L36.9285 21.3714L35.0715 20.6286L41.4523 4.67666Z" fill="currentColor"></path> <path fill-rule="evenodd" clip-rule="evenodd" d="M30.5477 4.67666L36.9285 20.6286L35.0715 21.3714L29.4523 7.32335L11.7345 14.9289L10.9456 13.0911L30.5477 4.67666Z" fill="currentColor"></path> <path fill-rule="evenodd" clip-rule="evenodd" d="M35.8245 39.4682L11.8245 30.4682L12.1756 29.5318L36.1756 38.5318L35.8245 39.4682Z" fill="currentColor"></path> <path fill-rule="evenodd" clip-rule="evenodd" d="M36.1755 39.4682L60.1755 30.4682L59.8244 29.5318L35.8244 38.5318L36.1755 39.4682Z" fill="currentColor"></path> <path fill-rule="evenodd" clip-rule="evenodd" d="M36.5 39V66H35.5V39H36.5Z" fill="currentColor"></path> </g> </svg>              <!-- END app snippet -->
+              <div class="bsub-widget__text">
+                One-time Purchase
+              </div>
+            </div>
+          </label>
+        </div>
+
+        <!-- selling plan group radio -->
+        <div class="bsub-widget__group">
+          <label class="bsub-widget__group-label">
+            <input class="bsub-widget__input" type="radio"
+              name="fs--custom-sub-widget"
+              x-model="selected.type">
+            <div class="bsub-widget__group-header">
+              <!-- BEGIN app snippet: icon-recurring -->
+              <svg class="bsub-widget__image" viewBox="0 0 72 72" fill="currentColor"> <g opacity="0.8"> <path fill-rule="evenodd" clip-rule="evenodd" d="M11 16C10.4477 16 10 16.4477 10 17V32.01H8V17C8 15.3431 9.34315 14 11 14H40C41.6569 14 43 15.3431 43 17V49H40.95V47H41V17C41 16.4477 40.5523 16 40 16H11Z" fill="currentColor"></path> <path d="M51 54C54.3137 54 57 51.3137 57 48C57 44.6863 54.3137 42 51 42C47.6863 42 45 44.6863 45 48C45 51.3137 47.6863 54 51 54Z" fill="currentColor" fill-opacity="0.2"></path> <path fill-rule="evenodd" clip-rule="evenodd" d="M51 43C48.2386 43 46 45.2386 46 48C46 50.7614 48.2386 53 51 53C53.7614 53 56 50.7614 56 48C56 45.2386 53.7614 43 51 43ZM44 48C44 44.134 47.134 41 51 41C54.866 41 58 44.134 58 48C58 51.866 54.866 55 51 55C47.134 55 44 51.866 44 48Z" fill="currentColor"></path> <path fill-rule="evenodd" clip-rule="evenodd" d="M53.5858 22H42V20H54.4142L67 32.5858V49H57V47H65V33.4142L53.5858 22Z" fill="currentColor"></path> <path fill-rule="evenodd" clip-rule="evenodd" d="M50.5 28.7929L55.2071 33.5H50.5V28.7929ZM51.5 31.2071V32.5H52.7929L51.5 31.2071Z" fill="currentColor"></path> <path fill-rule="evenodd" clip-rule="evenodd" d="M42 47H45V49H42V47Z" fill="currentColor"></path> <path fill-rule="evenodd" clip-rule="evenodd" d="M24 24.94C14.6112 24.94 7 32.5512 7 41.94C7 51.3288 14.6112 58.94 24 58.94C33.3888 58.94 41 51.3288 41 41.94C41 32.5512 33.3888 24.94 24 24.94ZM5 41.94C5 31.4466 13.5066 22.94 24 22.94C34.4934 22.94 43 31.4466 43 41.94C43 52.4334 34.4934 60.94 24 60.94C13.5066 60.94 5 52.4334 5 41.94Z" fill="currentColor"></path> <path fill-rule="evenodd" clip-rule="evenodd" d="M23.5 32.94H24.5V41.7329L30.3536 47.5864L29.6464 48.2936L23.5 42.1471V32.94Z" fill="currentColor"> </path> </g> </svg>               
+              <!-- END app snippet -->
+              <div class="bsub-widget__text">
+                <span>SUBSCRIBE &amp; SAVE UP TO 15%</span>
+                <br>
+                <span class="bsub-widget__group-discount-summary bsub__hidden" data-bsub-group-discount-summary=""></span>
+              </div>
+            </div>
+          </label>
+        </div>
+      </div>
+
+      <template x-if="selected.type == 'subscribe'">
+        <div>
+          <div class="bsub-options-container" data-bsub-selling-plan-group-id="be5676770f7a2a402f39044871b9ae3b86c22e15">
+            <fieldset class="bsub-widget__delivery-fieldset">
+              <legend>Frequency</legend>
+
+              <template x-for="plan in selling_plans" :key="plan.id">
+                <label>
+                  <input type="radio" name="fs--custom-sub-widget-plan"
+                    class="bsub-widget__input"
+                    :value="plan.id"
+                    x-model="selected.frequency" />
+                  <div class="bsub-widget__plan-header">
+                    <!-- BEGIN app snippet: icon-checked -->
+                    <svg class="bsub-widget__checked-icon bsub-widget__image" viewBox="0 0 24 24"><path fill="currentColor" d="M24,12 C24,18.627 18.627,24 12,24 C5.373,24 0,18.627 0,12 C0,5.373 5.373,0 12,0 C18.627,0 24,5.373 24,12 Z M7.0050175,11.4087067 C6.61372743,11.0189496 5.98056367,11.0201924 5.59080666,11.4114825 C5.20104965,11.8027726 5.20229244,12.4359363 5.5935825,12.8256933 L9.9325825,17.1476933 C10.3226506,17.5362331 10.9534086,17.5363886 11.3436681,17.1480412 L19.5076681,9.02404115 C19.8991503,8.63447708 19.9007052,8.00131401 19.5111412,7.60983186 C19.1215771,7.2183497 18.488414,7.21679478 18.0969319,7.60635885 L10.6386478,15.0281006 L7.0050175,11.4087067 Z"></path></svg>
+                    <!-- END app snippet --><!-- BEGIN app snippet: icon-unchecked -->
+                    <svg class="bsub-widget__unchecked-icon bsub-widget__image" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="9" fill="white" fill-opacity="0.1"></circle><circle cx="9" cy="9" r="8.5" stroke="black" stroke-opacity="0.2"></circle></svg>
+                    <!-- END app snippet -->
+                    <div class="bsub-widget__text">
+                      <div class="bsub-widget__main-text" x-text="`${plan.name} (${plan.price_adjustments[0].value}% off)`"></div>
+                    </div>
+                    <div class="bsub-widget__plan-pricing">
+                      <span x-text="u_FormatMoney(plan.per_delivery_price)"></span>
+                      <span>&nbsp;/&nbsp;delivery</span>
+                    </div>
+                  </div>
+                </label>
+              </template>
+            </fieldset>
+
+            <div class="bsub-widget__dynamic-discount-container bsub__hidden">
+              <hr>
+              <div class="bsub-widget__dynamic-discount-text"></div>
+            </div>
+
+            <div class="bsub-widget__extra-actions">
+              <button type="button" class="bsub-widget__toggle-details-btn bsub-widget__toggle-details-btn--closed"
+                @click="details_open = !details_open">
+                <!-- BEGIN app snippet: icon-info -->
+                <svg class="bsub-widget__image bsub-widget__icon-info" width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"> <path fill-rule="evenodd" clip-rule="evenodd" d="M0.0583496 7.00002C0.0583496 10.8338 3.16624 13.9417 7.00002 13.9417C10.8338 13.9417 13.9417 10.8338 13.9417 7.00002C13.9417 3.16624 10.8338 0.0583496 7.00002 0.0583496C3.16624 0.0583496 0.0583496 3.16624 0.0583496 7.00002ZM12.775 7.00002C12.775 10.1895 10.1895 12.775 7.00002 12.775C3.81057 12.775 1.22502 10.1895 1.22502 7.00002C1.22502 3.81057 3.81057 1.22502 7.00002 1.22502C10.1895 1.22502 12.775 3.81057 12.775 7.00002Z" fill="currentColor" fill-opacity="0.4"></path> <path fill-rule="evenodd" clip-rule="evenodd" d="M7 5.25C7.32217 5.25 7.58333 5.51117 7.58333 5.83333V10.5H8.16667C8.48883 10.5 8.75 10.7612 8.75 11.0833C8.75 11.4055 8.48883 11.6667 8.16667 11.6667H5.83333C5.51117 11.6667 5.25 11.4055 5.25 11.0833C5.25 10.7612 5.51117 10.5 5.83333 10.5H6.41667V6.41667C6.0945 6.41667 5.83333 6.1555 5.83333 5.83333C5.83333 5.51117 6.0945 5.25 6.41667 5.25H7Z" fill="currentColor" fill-opacity="0.4"></path> <path fill-rule="evenodd" clip-rule="evenodd" d="M6.70831 4.08331C7.19156 4.08331 7.58331 3.69156 7.58331 3.20831C7.58331 2.72506 7.19156 2.33331 6.70831 2.33331C6.22506 2.33331 5.83331 2.72506 5.83331 3.20831C5.83331 3.69156 6.22506 4.08331 6.70831 4.08331Z" fill="currentColor" fill-opacity="0.4"></path> </svg>
+                <!-- END app snippet -->
+                <div class="bsub-widget__sub-details-msg">
+                  Subscription details
+                </div>
+                <!-- BEGIN app snippet: icon-chevron -->
+                <svg class="bsub-widget__image bsub-widget__icon-chevron" width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6.07741 4.99998L2.62204 1.54461C2.45932 1.38189 2.45932 1.11807 2.62204 0.955352C2.78476 0.792633 3.04858 0.792633 3.21129 0.955352L6.96129 4.70535C7.12401 4.86807 7.12401 5.13189 6.96129 5.29461L3.21129 9.04461C3.04858 9.20733 2.78476 9.20733 2.62204 9.04461C2.45932 8.88189 2.45932 8.61807 2.62204 8.45535L6.07741 4.99998Z" fill="currentColor"></path></svg>
+                <!-- END app snippet -->
+              </button>
+            </div>
+          </div>
+
+          <div class="bsub__collapsible-wrapper"
+            :class="{ 'bsub__collapsible-wrapper--closed': !details_open }">
+            <div class="bsub-widget__sub-details">
+              <div class="bsub-widget__sub-details-heading">
+                Here's how it works:
+              </div>
+              <div class="bsub-widget__sub-details-desc">
+                These prices don't include taxes or other fees.
+                This subscription <span data-bsub-renewal-method="">auto-renews. It can be skipped or cancelled at anytime.</span>
+              </div>
+              <a class="bsub-widget__branding" href="https://boldcommerce.com/shopify/subscriptions"
+                target="_blank">
+                <!-- BEGIN app snippet: icon-shield -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 512 512"><path d="" stroke="none" fill="#080404" fill-rule="evenodd"></path><path d="M 243 25.327 C 183.992 64.708, 121.446 84.982, 58.913 84.997 L 44.326 85 43.162 95.750 C 39.665 128.025, 43.732 186.148, 52.551 229.966 C 66.405 298.794, 91.405 355.659, 128.403 402.496 C 137.816 414.412, 161.117 437.853, 173 447.360 C 190.951 461.723, 214.484 476.170, 235.753 485.887 C 251.225 492.956, 254.599 493.688, 260.118 491.176 C 262.528 490.078, 270.475 486.478, 277.777 483.174 C 330.737 459.217, 373.653 421.143, 406.112 369.321 C 441.282 313.171, 463.359 238.271, 468.988 156 C 470.327 136.434, 470.258 108.858, 468.838 95.750 L 467.674 85 453.087 84.997 C 390.948 84.982, 327.451 64.490, 269.737 25.824 C 263.237 21.469, 257.374 17.699, 256.709 17.445 C 256.044 17.192, 249.875 20.738, 243 25.327 M 245 75.526 C 201.762 101.929, 139.074 123.466, 93.419 127.604 L 85.696 128.303 86.334 146.402 C 88.349 203.529, 101.014 261.631, 121.485 307.655 C 147.961 367.179, 186.706 410.609, 238.500 438.816 C 256.491 448.614, 254.894 448.489, 269.281 441.230 C 317.753 416.771, 355.820 378.048, 382.297 326.266 C 408.385 275.243, 423.338 213.389, 425.657 146.902 L 426.306 128.304 418.403 127.590 C 408.688 126.714, 387.067 122.787, 373 119.345 C 338.983 111.022, 296.515 93.444, 266.284 75.174 C 260.665 71.778, 255.940 69.026, 255.784 69.057 C 255.628 69.089, 250.775 72, 245 75.526 M 248 111.607 C 227.075 126.062, 197.363 139.254, 171.500 145.573 C 160.157 148.345, 141.547 151, 133.468 151 C 128.379 151, 127.995 151.173, 127.348 153.749 C 126.411 157.485, 128.577 197.676, 130.515 212.500 C 137.864 268.708, 156.862 317.228, 185.376 352.605 C 194.125 363.460, 209.565 377.994, 221.088 386.220 C 226.264 389.916, 236.237 395.905, 243.250 399.528 L 256 406.115 268.750 399.528 C 305.127 380.733, 332.387 352.194, 352.393 311.961 C 371.426 273.685, 381.450 231.756, 384.178 179 C 384.818 166.625, 385.032 155.262, 384.652 153.750 C 384.005 151.172, 383.621 151, 378.532 151 C 370.453 151, 351.843 148.345, 340.500 145.573 C 314.681 139.265, 286.402 126.753, 264.295 111.855 C 260.332 109.185, 256.507 107.026, 255.795 107.058 C 255.083 107.090, 251.575 109.137, 248 111.607" stroke="none" fill="#040404" fill-rule="evenodd"></path></svg>
+                <!-- END app snippet -->Subscribe with Confidence
+              </a>
+              <a class="bsub-widget__policy-link" href="/policies/subscription-policy"
+                target="_blank">
+                <!-- BEGIN app snippet: icon-file -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 512 512"><path d="" stroke="none" fill="#080404" fill-rule="evenodd"></path><path d="M 93.500 1.404 C 80.619 5.495, 70.838 13.948, 65.113 25.935 L 61.500 33.500 61.500 256 L 61.500 478.500 65.113 486.065 C 69.878 496.043, 76.957 503.122, 86.935 507.887 L 94.500 511.500 256 511.500 L 417.500 511.500 425.065 507.887 C 435.043 503.122, 442.122 496.043, 446.887 486.065 L 450.500 478.500 450.762 314.250 L 451.023 150 398.762 149.980 C 369.326 149.969, 343.479 149.524, 339.583 148.961 C 320.551 146.210, 304.790 130.449, 302.039 111.417 C 301.476 107.521, 301.031 81.678, 301.020 52.250 L 301 0 199.250 0.067 C 119.897 0.119, 96.620 0.413, 93.500 1.404 M 331 59.105 L 331 109.704 333.253 113.048 C 338.144 120.305, 335.905 120.049, 391.862 119.759 L 442.007 119.500 386.504 64.003 L 331 8.507 331 59.105 M 162.170 211.706 C 160.888 211.956, 158.146 213.854, 156.076 215.924 C 149.721 222.279, 149.724 229.724, 156.084 236.084 C 158.865 238.865, 160.992 240.019, 164.178 240.476 C 166.555 240.817, 209.450 240.962, 259.500 240.798 L 350.500 240.500 353.618 238.276 C 358.267 234.960, 360.380 231.123, 360.380 226 C 360.380 220.877, 358.267 217.040, 353.618 213.724 L 350.500 211.500 257.500 211.376 C 206.350 211.308, 163.451 211.457, 162.170 211.706 M 162.170 271.706 C 160.888 271.956, 158.146 273.854, 156.076 275.924 C 149.721 282.279, 149.724 289.724, 156.084 296.084 C 158.865 298.865, 160.992 300.019, 164.178 300.476 C 166.555 300.817, 209.450 300.962, 259.500 300.798 L 350.500 300.500 353.618 298.276 C 358.267 294.960, 360.380 291.123, 360.380 286 C 360.380 280.877, 358.267 277.040, 353.618 273.724 L 350.500 271.500 257.500 271.376 C 206.350 271.308, 163.451 271.457, 162.170 271.706 M 162.170 331.706 C 160.888 331.956, 158.146 333.854, 156.076 335.924 C 149.721 342.279, 149.724 349.724, 156.084 356.084 C 158.865 358.865, 160.992 360.019, 164.178 360.476 C 166.555 360.817, 209.450 360.962, 259.500 360.798 L 350.500 360.500 353.618 358.276 C 358.267 354.960, 360.380 351.123, 360.380 346 C 360.380 340.877, 358.267 337.040, 353.618 333.724 L 350.500 331.500 257.500 331.376 C 206.350 331.308, 163.451 331.457, 162.170 331.706 M 162.170 391.702 C 160.888 391.954, 158.146 393.854, 156.076 395.924 C 149.721 402.279, 149.724 409.724, 156.084 416.084 C 158.861 418.861, 160.996 420.021, 164.178 420.481 C 166.555 420.824, 195.950 420.969, 229.500 420.803 C 287.295 420.516, 290.646 420.401, 293.276 418.618 C 297.970 415.436, 300.385 411.149, 300.385 406 C 300.385 400.851, 297.970 396.564, 293.276 393.382 C 290.636 391.592, 287.415 391.494, 227.500 391.372 C 192.850 391.301, 163.451 391.450, 162.170 391.702" stroke="none" fill="#040404" fill-rule="evenodd"></path></svg>
+                <!-- END app snippet -->View Subscription Policy
+              </a>
+            </div>
+          </div>
+        </div>        
+      </template>
+    </div>
+  </fieldset>
+</div>

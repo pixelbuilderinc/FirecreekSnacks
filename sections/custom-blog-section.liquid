@@ -1,0 +1,120 @@
+{% liquid
+assign selected_blog = section.settings.blog
+assign selected_tag = section.settings.article_tag
+%}
+
+<div class="featured-blog-category page-width {{ section.settings.classname }}">
+
+{% if section.settings.heading != blank %} <h2 class="section-title">{{ section.settings.heading }}</h2>
+{% endif %}
+
+  <div class="featured-blog-category__grid ">
+{% paginate selected_blog.articles by 50 %}
+
+  {% for article in selected_blog.articles %}
+
+    {% if selected_tag == blank or article.tags contains selected_tag %}
+
+      <article class="article-card">
+
+        {% if section.settings.show_image and article.image %}
+          <a href="{{ article.url }}">
+            <img
+              src="{{ article.image | image_url: width: 800 }}"
+              alt="{{ article.title | escape }}"
+              loading="lazy"
+              width="{{ article.image.width }}"
+              height="{{ article.image.height }}"
+            >
+          </a>
+        {% endif %}
+
+        <h3>
+          <a href="{{ article.url }}">
+            {{ article.title }}
+          </a>
+        </h3>
+
+        {% if section.settings.show_date %}
+          <p class="blog-date">{{ article.published_at | date: "%B %d, %Y" }}</p>
+        {% endif %}
+
+        {% if section.settings.show_excerpt %}
+          <div class="blog-excerpt">
+            {{ article.excerpt_or_content | strip_html | truncatewords: 25 }}
+          </div>
+        {% endif %}
+
+        <a href="{{ article.url }}" class="button">
+          Read More
+        </a>
+
+      </article>
+
+    {% endif %}
+
+  {% endfor %}
+
+  {% if paginate.pages > 1 %}
+    <div class="pagination-wrapper">
+      {{ paginate | default_pagination }}
+    </div>
+  {% endif %}
+
+{% endpaginate %}
+  </div>
+
+</div>
+
+{% schema %}
+{
+"name": "Blog Category Filter",
+"settings": [
+{
+"type": "text",
+"id": "heading",
+"label": "Heading",
+"default": "Latest Articles"
+},
+{
+"type": "text",
+"id": "classname",
+"label": "Class Name"
+},
+{
+"type": "blog",
+"id": "blog",
+"label": "Select Blog Category"
+},
+{
+"type": "text",
+"id": "article_tag",
+"label": "Filter by Tag (Optional)",
+"info": "Leave blank to show all posts in the selected blog."
+},
+{
+"type": "checkbox",
+"id": "show_image",
+"label": "Show Image",
+"default": true
+},
+{
+"type": "checkbox",
+"id": "show_date",
+"label": "Show Date",
+"default": true
+},
+{
+"type": "checkbox",
+"id": "show_excerpt",
+"label": "Show Excerpt",
+"default": true
+}
+],
+"presets": [
+{
+"name": "Blog Category Filter"
+}
+]
+}
+{% endschema %}

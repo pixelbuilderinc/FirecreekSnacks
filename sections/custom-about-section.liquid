@@ -1,0 +1,151 @@
+<section
+  class="about-section {{ section.settings.section_classname }}"
+  {% if section.settings.section_background != blank %}
+    style="background-color: {{ section.settings.section_background }};"
+  {% endif %}
+>
+  <div class="page-width">
+    <div class="about-inner">
+
+      <div class="about-info-wrap">
+
+        {% if section.settings.about_image != blank %}
+          {{
+            section.settings.about_image
+            | image_url: width: section.settings.about_image.width
+            | image_tag: loading: 'lazy', class: 'about-image'
+          }}
+        {% endif %}
+
+        {% if section.settings.about_caption != blank %}
+          <div class="about-caption">
+            {{ section.settings.about_caption }}
+          </div>
+        {% endif %}
+
+        {% if section.settings.about_heading != blank %}
+          <h3 class="about-heading">
+            {{ section.settings.about_heading }}
+          </h3>
+        {% endif %}
+
+        {% if section.settings.about_name != blank %}
+          <div class="about-name">
+            {{ section.settings.about_name }}
+          </div>
+        {% endif %}
+
+      </div>
+
+      <div class="about-content-wrap">
+
+        {% if section.settings.about_text != blank %}
+          <div class="about-text rte">
+            {{ section.settings.about_text }}
+          </div>
+        {% endif %}
+
+        {% if section.blocks.size > 0 %}
+          <div class="abt-card-wrap">
+
+            {% for block in section.blocks %}
+              {% case block.type %}
+                {% when 'cards_below' %}
+                  <div class="about-card-item" {{ block.shopify_attributes }}>
+
+                    {% if block.settings.cards_header != blank %}
+                      <h3 class="about-card-head">
+                        {{ block.settings.cards_header }}
+                      </h3>
+                    {% endif %}
+
+                    {% if block.settings.cards_text != blank %}
+                      <div class="about-card-text rte">
+                        {{ block.settings.cards_text }}
+                      </div>
+                    {% endif %}
+
+                  </div>
+              {% endcase %}
+            {% endfor %}
+
+          </div>
+        {% endif %}
+
+      </div>
+
+    </div>
+  </div>
+</section>
+
+{% schema %}
+  {
+  "name": "Custom About Section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_classname",
+      "label": "Section Classname"
+    },
+    {
+      "type": "color",
+      "id": "section_background",
+      "label": "Section Background"
+    },
+    {
+      "type": "image_picker",
+      "id": "about_image",
+      "label": "About Image"
+    },
+    {
+      "type": "text",
+      "id": "about_caption",
+      "label": "About Caption"
+    },
+    {
+      "type": "text",
+      "id": "about_heading",
+      "label": "About Heading"
+    },
+    {
+      "type": "text",
+      "id": "about_name",
+      "label": "About Name"
+    },
+    {
+      "type": "richtext",
+      "id": "about_text",
+      "label": "About Text"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Cards Below",
+      "type": "cards_below",
+      "settings": [
+        {
+          "type": "text",
+          "id": "cards_header",
+          "label": "Cards Header"
+        },
+        {
+          "type": "richtext",
+          "id": "cards_text",
+          "label": "Cards Text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom About Section"
+    }
+  ]
+}  
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

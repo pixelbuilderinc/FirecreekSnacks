@@ -1,0 +1,159 @@
+{%- assign section_image = section.settings.section_image -%}
+<div class="two-column-section {{ section.settings.classname }}">
+<div class="page-column page-width">
+
+  <!-- CONTENT COLUMN -->
+  <div class="two-col-section__content">
+
+    {%- if section.settings.section_caption != blank -%}
+      <h2 class="two-col-section__caption">
+        {{ section.settings.section_caption }}
+      </h2>
+    {%- endif -%}
+
+    {%- for block in section.blocks -%}
+      {%- case block.type -%}
+
+        {%- when 'header_block' -%}
+          <div class="two-col-section__header">
+            {{ block.settings.header_block }}
+          </div>
+
+        {%- when 'text_block' -%}
+          <div class="two-col-section__text">
+            {{ block.settings.section_text }}
+          </div>
+
+        {%- when 'section_button' -%}
+          {%- if block.settings.button_text != blank and block.settings.button_url != blank -%}
+            <div class="button-wrap">
+            <a {% if block.settings.open_in_new_tab == true %} target="_blank" {% endif %} class="two-col-section__button"
+               href="{{ block.settings.button_url }}">
+              {{ block.settings.button_text }}
+            </a>
+            <div class="button-subtext">
+              {{ block.settings.button_subtext }}
+            </div>
+          </div>
+          {%- endif -%}
+
+      {%- endcase -%}
+    {%- endfor -%}
+
+  </div>
+
+  <!-- IMAGE COLUMN -->
+  <div class="two-col-section__image">
+  
+    {%- if section_image != blank -%}
+       <div class="image-wrap">
+      {{ section_image
+        | image_url: width: section_image.width
+        | image_tag: loading: 'lazy', class: 'two-col-section__img'
+      }}
+       {%- if section.settings.image_caption != blank -%}
+      <div class="two-col-section__image-caption">
+       {{ section.settings.image_caption }}
+      </div>
+    {%- endif -%}
+      </div>
+
+   
+    {%- endif -%}
+
+  
+
+  </div>
+
+</div>
+</div>
+
+{% schema %}
+  {
+  "name": "Custom Image Text",
+  "settings": [
+    {
+      "type": "text",
+      "id": "classname",
+      "label": "Section Classname"
+    },
+    {
+      "type": "image_picker",
+      "id": "section_image",
+      "label": "Section Image"
+    },
+    {
+      "type": "richtext",
+      "id": "image_caption",
+      "label": "Image Caption"
+    },
+    {
+      "type": "text",
+      "id": "section_caption",
+      "label": "Section Caption"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Header Block",
+      "type": "header_block",
+      "settings": [
+        {
+          "type": "richtext",
+          "label": "Header Block",
+          "id": "header_block"
+        }
+      ]
+    },
+    {
+      "name": "Text Block",
+      "type": "text_block",
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "section_text",
+          "label": "Section Text"
+        }
+      ]
+    },
+    {
+      "name": "Section Button",
+      "type": "section_button",
+      "settings": [
+        {
+          "type": "text",
+          "id": "button_text",
+          "label": "Button Text"
+        },
+        {
+          "type": "url",
+          "id": "button_url",
+          "label": "Button URL"
+        },
+          {
+          "type": "checkbox",
+          "id": "open_in_new_tab",
+          "label": "Open in new tab",
+          "default": false
+        },
+        {
+          "type": "richtext",
+          "id": "button_subtext",
+          "label": "Button Sub Text"
+        },
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Image Text"
+    }
+  ]
+}  
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

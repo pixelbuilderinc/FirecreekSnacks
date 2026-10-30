@@ -1,0 +1,204 @@
+<div class="product-grid-section {{ section.settings.classname }}">
+
+  <div class="page-width">
+
+    <div class="product-section-header">
+
+      {% if section.settings.section_caption != blank %}
+        <div class="section-caption">
+          {{ section.settings.section_caption }}
+        </div>
+      {% endif %}
+
+      {% if section.settings.section_heading != blank %}
+        <h2 class="section-heading">
+          {{ section.settings.section_heading | newline_to_br }}
+        </h2>
+      {% endif %}
+
+      {% if section.settings.section_text != blank %}
+        <div class="section-text">
+          {{ section.settings.section_text }}
+        </div>
+      {% endif %}
+
+     
+
+    </div>
+
+    <div class="product-grid">
+
+      {% for block in section.blocks %}
+
+        <div
+          class="product-card  {% if block.settings.gf_fan_favorite == true %} favored-product {% endif %}"
+          {{ block.shopify_attributes }}
+        >
+          {% if block.settings.gf_fan_favorite == true %} <div class="product-top-badge">★ GF Fan Favorite</div>{% endif %}
+          {% if block.settings.badge_text !=blank %} <div class="product-badge">{{ block.settings.badge_text  }}</div>  {% endif %}
+          {% if block.settings.product_image != blank %}
+            {{
+              block.settings.product_image
+              | image_url: width: 800
+              | image_tag:
+                class: 'product-card__image',
+                loading: 'lazy'
+            }}
+          {% endif %}
+
+          <div class="product-card__content ">
+         
+            {% if block.settings.product_name != blank %}
+              <h3 class="product-card__title">
+                {{ block.settings.product_name }}
+              </h3>
+            {% endif %}
+
+            {% if block.settings.product_text != blank %}
+              <div class="product-card__text">
+                {{ block.settings.product_text }}
+              </div>
+            {% endif %}
+        
+        <div class="card_button__wrap">    
+            {% if block.settings.product_text_3 != blank %}
+              <a class="product-card__button"  {% if block.settings.url != blank %}
+            href="{{ block.settings.url }}"
+          {% endif %}>
+                {{ block.settings.product_text_3 }}
+              </a>
+            {% endif %}
+
+            {% if block.settings.product_sub_text != blank %}
+              <div class="product-card__sub-text">
+                {{ block.settings.product_sub_text }}
+              </div>
+            {% endif %}
+        </div>
+          </div>
+
+        </div>
+
+      {% endfor %}
+
+    </div>
+    {% if section.settings.make_button == false %}
+    {% if section.settings.section_subtext != blank %}
+    <div class="section-subtext">
+        {{ section.settings.section_subtext }}
+    </div>
+    {% endif %}
+  {% else %}
+    {% if section.settings.section_subtext != blank %}
+    <a class="section-subtext" href="{{ section.settings.button_url }}">
+        {{ section.settings.section_subtext }}
+    </a>
+    {% endif %}
+  {% endif %}  
+  </div>
+
+</div>
+
+{% schema %}
+{
+  "name": "Custom Product Grid",
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_caption",
+      "label": "Section Caption"
+    },
+    {
+      "type": "text",
+      "id": "classname",
+      "label": "Section Classname"
+    },
+    {
+      "type": "textarea",
+      "id": "section_heading",
+      "label": "Section Heading"
+    },
+    {
+      "type": "richtext",
+      "id": "section_text",
+      "label": "Section Text"
+    },
+    {
+      "type": "text",
+      "id": "section_subtext",
+      "label": "Section Subtext"
+    },
+    {
+      "type": "checkbox",
+      "id": "make_button",
+      "label": "Make Button?",
+      "default": false
+    },
+    {
+      "type": "url",
+      "id": "button_url",
+      "label": "Button URL"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Product Grid",
+      "type": "product_grid",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "product_image",
+          "label": "Product Image"
+        },
+        {
+          "type": "text",
+          "id": "product_name",
+          "label": "Product Name"
+        },
+        {
+          "type": "richtext",
+          "id": "product_text",
+          "label": "Product Text"
+        },
+        {
+          "type": "text",
+          "id": "product_text_3",
+          "label": "Product Button Text"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Product URL"
+        },
+        {
+          "type": "richtext",
+          "id": "product_sub_text",
+          "label": "Product Sub Text"
+        },
+        {
+        "type": "checkbox",
+        "id": "gf_fan_favorite",
+        "label": "GF Fan Favorite",
+        "default": false
+        },
+        {
+          "type": "text",
+          "id": "badge_text",
+          "label": "Badge Text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Product Grid"
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

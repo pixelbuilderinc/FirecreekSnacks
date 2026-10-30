@@ -1,0 +1,385 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "title": {
+          "type": "title",
+          "settings": {}
+        },
+        "loox_reviews_loox_rating_jfDpPk": {
+          "type": "shopify:\/\/apps\/loox-reviews\/blocks\/loox-rating\/5c3b337f-fd14-4df5-b1d6-80ec13e6e28e",
+          "settings": {
+            "contentSize": 23,
+            "pattern": "[count] Reviews",
+            "hideText": false,
+            "alignment": "",
+            "layout": "",
+            "textColor": "#1d252c",
+            "starColor": "#ffa51e",
+            "showAllReviews": false,
+            "looxOpenFloatingWidget": false,
+            "emptyRatingWidget": true
+          }
+        },
+        "text_LVMnbz": {
+          "type": "text",
+          "settings": {
+            "text": "{{ product.metafields.custom.short_description2.value }}",
+            "text_style": "body"
+          }
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button",
+            "swatch_shape": "circle"
+          }
+        },
+        "bold_subscriptions_bsub_widget_block_V6WcFD": {
+          "type": "shopify:\/\/apps\/bold-subscriptions\/blocks\/bsub-widget-block\/9ceb49f0-5fe5-4b5e-943d-f8af8985167d",
+          "settings": {
+            "default_subscribe": true,
+            "primary_color": "#3b63ff",
+            "secondary_color": "#7dba63",
+            "background_color": "#f8f9f9",
+            "border_radius": 4,
+            "header_text": "Purchase Options",
+            "one_time_text": "One-time Purchase",
+            "recurring_text": "Subscribe and Save",
+            "prepaid_recurring_text": "Prepaid Subscribe and Save",
+            "discount_summary_text": "(Save {discount})",
+            "discount_summary_plural_text": "(Save up to {discount})",
+            "frequency_header": "Delivery Frequency",
+            "frequency_text": "delivery",
+            "prepaid_checkbox_label_text": "Prepay for subscription",
+            "billing_frequency_header": "Billing Frequency",
+            "billing_frequency_text": "{count} Orders",
+            "delivery_frequency_discount_text": "({discount} off)",
+            "billing_frequency_discount_text": "({discount} off)",
+            "prepaid_total_text": "Billed {price} today",
+            "prepaid_continue_as_prepaid_text": "Prepaid order will auto-renew after {count} orders",
+            "prepaid_continue_as_standard_text": "Becomes a regular subscription after {count} orders",
+            "convertible_header": "Converts to",
+            "eligible_for_subscription_header": "Eligible for Subscription",
+            "initial_dynamic_discount_text": "Save {initial_percent_discount}% ({initial_fixed_discount})",
+            "subsequent_dynamic_discounts_text": "{subsequent_percent_discount}% ({subsequent_fixed_discount}) after {order_count} order(s)"
+          }
+        },
+        "quantity_selector": {
+          "type": "quantity_selector",
+          "settings": {}
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": false,
+            "show_gift_card_recipient": false
+          }
+        },
+        "custom_liquid_HyVjYA": {
+          "type": "custom_liquid",
+          "disabled": true,
+          "settings": {
+            "custom_liquid": "<p class=\"free-sf\">\n  Free shipping on orders $30+\n  <span class=\"tooltip\" data-tooltip=\"Lorem Ipsum\" data-tooltip-pos=\"up\" data-tooltip-length=\"medium\"><img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0048\/0064\/3142\/files\/Img_-_info_1.png?v=1745917039\" alt=\"Tooltip\"><\/span>\n<\/p>\n\n<style>\n.tooltip {\n  position: relative; \n  text-\n}\n\n.tooltip:after, .tooltip:before {\n    opacity: 0;\n    pointer-events: none;\n    bottom: 100%;\n    left: 50%;\n    position: absolute;\n    z-index: 10;\n    transform: translate(-50%, 10px);\n    transform-origin: top;\n    transition: all 0.18s ease-out 0.18s; \n}\n\n.tooltip:after {\n  background-color: #f5f5f5;\n  box-shadow: 0 0 3px #ddd;\n  content: attr(data-tooltip);\n  padding: 10px;\n  white-space: nowrap;\n  margin-bottom: 11px; \n}\n\n.tooltip:before {\n  width: 0;\n  height: 0;\n  content: \"\";\n  margin-bottom: 6px; \n}\n\n.tooltip:hover:before,\n.tooltip:hover:after {\n  opacity: 1;\n  pointer-events: auto;\n  transform: translate(-50%, 0); \n}\n\n[data-tooltip-pos=\"up\"]:before {\n  border-left: 6px solid transparent;\n  border-right: 6px solid transparent;\n  border-top: 6px solid #f5f5f5;\n  margin-bottom: 6px; \n}\n\n[data-tooltip-length]:after {\n  white-space: normal; \n}\n\n[data-tooltip-length=\"medium\"]:after {\n  width: 150px; \n}\n<\/style>"
+          }
+        },
+        "custom_liquid_V6heNY": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<p class=\"free-sf\">\n  Free shipping on orders $45+\n<\/p>"
+          }
+        },
+        "collapsible_tab_mxbaYM": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "INGREDIENTS AND NUTRITION FACTS",
+            "icon": "none",
+            "content": "",
+            "page": ""
+          }
+        }
+      },
+      "block_order": [
+        "title",
+        "loox_reviews_loox_rating_jfDpPk",
+        "text_LVMnbz",
+        "variant_picker",
+        "bold_subscriptions_bsub_widget_block_V6WcFD",
+        "quantity_selector",
+        "buy_buttons",
+        "custom_liquid_HyVjYA",
+        "custom_liquid_V6heNY",
+        "collapsible_tab_mxbaYM"
+      ],
+      "settings": {
+        "class_name": "hp-sec1 sp-sec1",
+        "enable_sticky_info": false,
+        "color_scheme": "scheme-3",
+        "media_size": "large",
+        "constrain_to_viewport": true,
+        "media_fit": "contain",
+        "gallery_layout": "thumbnail",
+        "mobile_thumbnails": "show",
+        "media_position": "left",
+        "image_zoom": "hover",
+        "hide_variants": false,
+        "enable_video_looping": false,
+        "padding_top": 36,
+        "padding_bottom": 12
+      }
+    },
+    "two_column_text_hkcwm6": {
+      "type": "two-column-text",
+      "blocks": {
+        "heading_VWUgPg": {
+          "type": "heading",
+          "settings": {
+            "heading": "Tasty. Clean. <strong>Guilt Free.<\/strong>",
+            "heading_size": "h1"
+          }
+        },
+        "text_FLNUfL": {
+          "type": "text",
+          "settings": {
+            "text": "<p>All the taste, none of the trash — just real ingredients & mouth-happy moments your taste buds & your body will thank you for!<\/p>",
+            "text_style": "body"
+          }
+        },
+        "image_biCDaG": {
+          "type": "image",
+          "disabled": true,
+          "settings": {
+            "image": "shopify:\/\/shop_images\/high_protein.png"
+          }
+        }
+      },
+      "block_order": [
+        "heading_VWUgPg",
+        "text_FLNUfL",
+        "image_biCDaG"
+      ],
+      "settings": {
+        "class_name": "sp-sec2",
+        "bg_color": "#1d252c",
+        "icon_1": "shopify:\/\/shop_images\/NO_NITRATES.png",
+        "icon_text_1": "<h3>NO NITRATES<\/h3><p>*Firecreek only uses Nitrates naturally ocurring from celery juice powder<\/p>",
+        "icon_2": "shopify:\/\/shop_images\/No_Artificial_Ingredients.png",
+        "icon_text_2": "<h3>No Artificial\u2028Ingredients<\/h3>",
+        "icon_3": "shopify:\/\/shop_images\/gluten_free.png",
+        "icon_text_3": "<h3>gluten free<\/h3>",
+        "icon_4": "shopify:\/\/shop_images\/soy_free.png",
+        "icon_text_4": "<h3>soy free<\/h3>",
+        "icon_5": "shopify:\/\/shop_images\/MSG_FREE.png",
+        "icon_text_5": "<h3>MSG FREE<\/h3>",
+        "icon_6": "shopify:\/\/shop_images\/LOW_SUGAR.png",
+        "icon_text_6": "<h3>LOW SUGAR<\/h3>",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "text_first",
+        "image_behavior": "none",
+        "content_layout": "no-overlap",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "left",
+        "section_color_scheme": "scheme-2",
+        "color_scheme": "scheme-2",
+        "padding_top": 100,
+        "padding_bottom": 100
+      }
+    },
+    "image_with_text_FWG4z6": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_3TVVTH": {
+          "type": "heading",
+          "settings": {
+            "heading": "<h2>American-Raised Meat. <strong><br\/>Real Hickory Smoke.<\/strong><\/h2>",
+            "heading_size": "h1"
+          }
+        },
+        "text_y9c6hp": {
+          "type": "text",
+          "settings": {
+            "text": "<p>We skip the shortcuts & source from midwestern farms we trust in the USA — then smoke ‘em low & slow for unbeatable taste using real hickory hardwood...the way it used to be.<\/p>",
+            "text_style": "body"
+          }
+        }
+      },
+      "block_order": [
+        "heading_3TVVTH",
+        "text_y9c6hp"
+      ],
+      "settings": {
+        "class_name": "sp-sec3",
+        "image": "shopify:\/\/shop_images\/Pete_and_Rashid_s_story.jpg",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "image_behavior": "none",
+        "content_layout": "no-overlap",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "left",
+        "section_color_scheme": "scheme-2",
+        "color_scheme": "scheme-2",
+        "padding_top": 0,
+        "padding_bottom": 100
+      }
+    },
+    "174523275913654d12": {
+      "type": "apps",
+      "blocks": {
+        "loox_reviews_loox_dynamic_section_QDJPFB": {
+          "type": "shopify:\/\/apps\/loox-reviews\/blocks\/loox-dynamic-section\/5c3b337f-fd14-4df5-b1d6-80ec13e6e28e",
+          "settings": {
+            "only_photos": false,
+            "aggregated": false,
+            "limit": 20,
+            "hide_thumbnails": false,
+            "maxwidth": 1160,
+            "is_sample": true
+          }
+        }
+      },
+      "block_order": [
+        "loox_reviews_loox_dynamic_section_QDJPFB"
+      ],
+      "settings": {
+        "include_margins": true,
+        "class_name": "sp-sec4",
+        "title": "WHAT OUR sNACKERS <strong>ARE SAYING<\/strong>"
+      }
+    },
+    "related-products": {
+      "type": "related-products",
+      "settings": {
+        "class_name": "sp-sec5",
+        "heading": "Get A <strong>Taste Of The Good Stuff<\/strong>",
+        "heading_size": "h2",
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "columns_mobile": "2",
+        "color_scheme": "scheme-5",
+        "image_ratio": "portrait",
+        "image_shape": "default",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "standard",
+        "padding_top": 100,
+        "padding_bottom": 100
+      }
+    },
+    "collapsible_content_XFPU6C": {
+      "type": "collapsible-content",
+      "blocks": {
+        "collapsible_row_DVKhCH": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "What makes FireCreek Snacks different from other meat sticks?",
+            "icon": "none",
+            "row_content": "<p>Most meat sticks are oily or greasy, rubbery, have thick and chewy casing, and are loaded with stuff you can’t pronounce. FireCreek Snacks meat sticks are handcrafted with clean ingredients, bold flavors, and a thinner, more tender casing that doesn’t fight your teeth. Basically, we’re the meat stick your snack drawer needed.<\/p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_k9rVNd": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Are FireCreek Snackshealthy?",
+            "icon": "none",
+            "row_content": "<p>Yep! They’re gluten-free, soy-free, nitrate-free & without artificial junk or fillers. Each stick packs in protein & flavor without the mystery meat or greasy aftermath. Think of them as your clean-eating cheat code that still tastes like a treat.<\/p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_zwdqBb": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "What kind of meat do you use?",
+            "icon": "none",
+            "row_content": "<p>We use premium beef & pork proudly sourced from American farms throughout the glorious midwest — no sketchy origins & no fillers. Just real meat, seasoned & smoked the old-school way...the way our founder’s family have been doing it for  generations. Grandpa would approve.<\/p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_TUg7LB": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Do you use real smoke or liquid smoke flavoring?",
+            "icon": "none",
+            "row_content": "<p>No fake smoke here. We use <strong>real hickory hardwood smoke<\/strong>, not the artificial “liquid smoke” stuff most other brands rely on. It’s the difference between grilling in your  backyard and waving a smoke-scented candle over your dinner. Our sticks are  smoked the old-school way for that deep, rich flavor you can actually taste - because<br\/>shortcuts don’t belong in snacks.<\/p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_B8f3rD": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Do they need to be refrigerated?",
+            "icon": "none",
+            "row_content": "<p>Nope! FireCreek Snacks are shelf-stable & ready to roll wherever your hunger strikes — gym bag, glove box, office drawer, or that weird snack stash in your nightstand (we see you). No fridge. No fuss.<\/p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_6Vgi4p": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "CanI buy in bulk or subscribe?",
+            "icon": "none",
+            "row_content": "<p>Absolutely. We offer bundles, variety packs & a subscribe-and-save option that keeps<br\/>your stash stocked & your cravings  crushed. Just pick your flavors, set your schedule & snack like a legend. <br\/><br\/>Are you a business interested in Wholesale? Learn more <a href=\"https:\/\/www.firecreeksnacks.com\/pages\/wholesale\" title=\"https:\/\/www.firecreeksnacks.com\/pages\/wholesale\">HERE<\/a>.<\/p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_i8TfPk": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Do you work with content creators, influencers & other partners?",
+            "icon": "none",
+            "row_content": "<p>Yes! Of course we do. If you feel like you are a good fit, we would love to chat! Just reach out to us <a href=\"https:\/\/www.firecreeksnacks.com\/pages\/contact\" title=\"https:\/\/www.firecreeksnacks.com\/pages\/contact\">HERE<\/a>. Let's make magic together!<\/p>",
+            "page": ""
+          }
+        }
+      },
+      "block_order": [
+        "collapsible_row_DVKhCH",
+        "collapsible_row_k9rVNd",
+        "collapsible_row_zwdqBb",
+        "collapsible_row_TUg7LB",
+        "collapsible_row_B8f3rD",
+        "collapsible_row_6Vgi4p",
+        "collapsible_row_i8TfPk"
+      ],
+      "settings": {
+        "class_name": "shop-sec4 sp-sec6",
+        "caption": "",
+        "heading": "FAQ",
+        "heading_size": "h1",
+        "heading_alignment": "left",
+        "layout": "none",
+        "container_color_scheme": "scheme-2",
+        "color_scheme": "scheme-2",
+        "open_first_collapsible_row": false,
+        "image": "shopify:\/\/shop_images\/faq_img.jpg",
+        "image_ratio": "adapt",
+        "desktop_layout": "image_first",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "main",
+    "two_column_text_hkcwm6",
+    "image_with_text_FWG4z6",
+    "174523275913654d12",
+    "related-products",
+    "collapsible_content_XFPU6C"
+  ]
+}
